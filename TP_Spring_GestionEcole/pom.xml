@@ -39,7 +39,7 @@
 		<!-- version de JSP -->
 		<jsp.version>2.3.1</jsp.version>
 		<!-- version de spring security -->
-		<spring.security.version>5.0.2.RELEASE</spring.security.version>
+		<spring.security.version>5.3.2.RELEASE</spring.security.version>
 		<!-- version de Spring soap Web Service -->
 		<spring_ws_version>2.4.6.RELEASE</spring_ws_version>
 		

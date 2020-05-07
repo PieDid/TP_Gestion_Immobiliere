@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 import com.intiformation.gestionimmo.domain.Adresse;
 
 @Entity(name="proprietaire")
-@Table(name="proprietaires")
+@DiscriminatorValue("ROLE_PROP")
 public class Proprietaire implements Serializable{
 
 	@Id
@@ -38,10 +39,7 @@ public class Proprietaire implements Serializable{
 	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
 	private List<Bien> liste_biens = new ArrayList<>();
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse") 
-	private Adresse adresse;
-	
+
 	
 	
 }

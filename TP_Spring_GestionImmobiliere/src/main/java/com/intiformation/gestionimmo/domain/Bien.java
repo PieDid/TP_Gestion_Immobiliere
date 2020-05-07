@@ -24,8 +24,6 @@ public class Bien implements Serializable{
 	@Column(name="statut")
 	private String statut;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "standard_id", referencedColumnName = "id_standard") 
-	private Standard standard;
+
 	
 }

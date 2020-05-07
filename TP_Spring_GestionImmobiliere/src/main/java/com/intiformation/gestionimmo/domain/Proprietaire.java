@@ -20,16 +20,10 @@ import com.intiformation.gestionimmo.domain.Adresse;
 
 @Entity(name="proprietaire")
 @DiscriminatorValue("ROLE_PROP")
-public class Proprietaire implements Serializable{
+public class Proprietaire extends Personne implements Serializable{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_proprietaire")
-	private int identifiant;
-	
-	@Column(name="nom")
-	private String nom;
-	
+
+	/* Propriétés */
 	@Column(name="tel_prive")
 	private String tel_prive;
 	
@@ -39,7 +33,90 @@ public class Proprietaire implements Serializable{
 	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
 	private List<Bien> liste_biens = new ArrayList<>();
 	
+	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
+	private List<ContratVente> liste_contratsVente = new ArrayList<>();
+	
+	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
+	private List<ContratLocation> liste_contratsLocation = new ArrayList<>();
 
+	
+	
+	
+	/* Constructeurs */
+	public Proprietaire(String tel_prive, String tel_travail) {
+		super();
+		this.tel_prive = tel_prive;
+		this.tel_travail = tel_travail;
+	}
+
+	public Proprietaire(String tel_prive, String tel_travail, List<Bien> liste_biens) {
+		super();
+		this.tel_prive = tel_prive;
+		this.tel_travail = tel_travail;
+		this.liste_biens = liste_biens;
+	}
+
+	public Proprietaire(String tel_prive, String tel_travail, List<Bien> liste_biens,
+			List<ContratVente> liste_contratsVente, List<ContratLocation> liste_contratsLocation) {
+		super();
+		this.tel_prive = tel_prive;
+		this.tel_travail = tel_travail;
+		this.liste_biens = liste_biens;
+		this.liste_contratsVente = liste_contratsVente;
+		this.liste_contratsLocation = liste_contratsLocation;
+	}
+
+
+	
+	/* Méthodes */
+	@Override
+	public String toString() {
+		return "Proprietaire [" + super.toString() + ", tel_prive=" + tel_prive + ", tel_travail=" + tel_travail + ", liste_biens=" + liste_biens
+				+ ", liste_contratsVente=" + liste_contratsVente + ", liste_contratsLocation=" + liste_contratsLocation
+				+ "]";
+	}
+
+
+	
+	/* Getters|Setters */
+	public String getTel_prive() {
+		return tel_prive;
+	}
+	public void setTel_prive(String tel_prive) {
+		this.tel_prive = tel_prive;
+	}
+
+	
+	public String getTel_travail() {
+		return tel_travail;
+	}
+	public void setTel_travail(String tel_travail) {
+		this.tel_travail = tel_travail;
+	}
+
+
+	public List<Bien> getListe_biens() {
+		return liste_biens;
+	}
+	public void setListe_biens(List<Bien> liste_biens) {
+		this.liste_biens = liste_biens;
+	}
+
+
+	public List<ContratVente> getListe_contratsVente() {
+		return liste_contratsVente;
+	}
+	public void setListe_contratsVente(List<ContratVente> liste_contratsVente) {
+		this.liste_contratsVente = liste_contratsVente;
+	}
+
+
+	public List<ContratLocation> getListe_contratsLocation() {
+		return liste_contratsLocation;
+	}
+	public void setListe_contratsLocation(List<ContratLocation> liste_contratsLocation) {
+		this.liste_contratsLocation = liste_contratsLocation;
+	}
 	
 	
 }

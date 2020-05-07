@@ -43,7 +43,7 @@ public class Personne implements Serializable{
 	private String tel_travail;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresseP") 
+	@JoinColumn(name = "adresseP_id", referencedColumnName = "adressePersonne") 
 	private AdressePersonne adresseP;
 
 	
@@ -81,61 +81,55 @@ public class Personne implements Serializable{
 
 
 	
+	/*_______________ Méthodes _______________*/
+	@Override
+	public String toString() {
+		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", tel_prive=" + tel_prive + ", tel_travail="
+				+ tel_travail + ", adresseP=" + adresseP + "]";
+	}
+	
+	
+	
 	/*__________________ G/S _________________*/
 	public int getIdentifiant() {
 		return identifiant;
 	}
 
-
 	public void setIdentifiant(int identifiant) {
 		this.identifiant = identifiant;
 	}
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 
 	public String getTel_prive() {
 		return tel_prive;
 	}
 
-
 	public void setTel_prive(String tel_prive) {
 		this.tel_prive = tel_prive;
 	}
-
 
 	public String getTel_travail() {
 		return tel_travail;
 	}
 
-
 	public void setTel_travail(String tel_travail) {
 		this.tel_travail = tel_travail;
 	}
-
 
 	public AdressePersonne getAdresseP() {
 		return adresseP;
 	}
 
-
 	public void setAdresseP(AdressePersonne adresseP) {
 		this.adresseP = adresseP;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

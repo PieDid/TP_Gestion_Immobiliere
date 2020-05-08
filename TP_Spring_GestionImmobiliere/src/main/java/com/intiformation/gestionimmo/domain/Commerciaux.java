@@ -3,45 +3,71 @@ package com.intiformation.gestionimmo.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Entity(name="commerciaux")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name = "code_classe", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("Commerciaux")
 public class Commerciaux extends Bien implements Serializable{
-	
-	/*_________________ props ________________*/
-	private int surface;
 
-	/*_________________ ctors ________________*/
+	/* Propriétés */
+	
+	@Column(name="nombre_pieces")
+	private int nbPieces;
+	
+	@Column(name="superficie")
+	private int superficie;
 	
 	
-	
-	public Commerciaux(String statut, String standad, AdresseBien adresseBien, String dateSoumission,
-			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int surface) {
-		super(statut, standad, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
-		this.surface = surface;
-	}
+	/* Constructeurs */
 
 	public Commerciaux() {
 		super();
 	}
-
-	/*_________________ meths ________________*/
 	
-	public int getSurface() {
-		return surface;
+
+	public Commerciaux(String statut, String standard, AdresseBien adresseBien, String dateSoumission,
+			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int nbPieces,
+			int superficie) {
+		super(statut, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
+		this.nbPieces = nbPieces;
+		this.superficie = superficie;
 	}
 
-	
-	public void setSurface(int surface) {
-		this.surface = surface;
+
+	/* Setters et Getters */
+
+	public int getNbPieces() {
+		return nbPieces;
+	}
+
+
+	public void setNbPieces(int nbPieces) {
+		this.nbPieces = nbPieces;
+	}
+
+
+	public int getSuperficie() {
+		return superficie;
+	}
+
+
+	public void setSuperficie(int superficie) {
+		this.superficie = superficie;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Commerciaux [nbPieces=" + nbPieces + ", superficie=" + superficie + "]";
 	}
 	
 	
 	
-	
-	
-	
 
+	
+	
+	
+	
 }

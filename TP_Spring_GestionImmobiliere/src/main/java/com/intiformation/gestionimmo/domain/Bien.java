@@ -20,8 +20,8 @@ public class Bien implements Serializable{
 	@Column(name="statut")
 	private String statut;
 	
-	@Column(name="standad")
-	private String standad;
+	@Column(name="standard")
+	private String standard;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")

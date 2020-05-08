@@ -1,16 +1,16 @@
 package com.intiformation.gestionimmo.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Maison")
-public class Maison extends Habitation implements Serializable{
+@DiscriminatorValue("Commerce")
+public class Commerce extends Commerciaux{
 
-	public Maison() {
+	/* ctors */
+	public Commerce() {
 		super();
 	}
+
 	
 }

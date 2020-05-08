@@ -49,7 +49,7 @@ public class ProprietaireRest {
 	
 	
 	@RequestMapping(value="/proprietaireUpdate/{identifiant}", method=RequestMethod.PUT)
-	public void upProprietaire (@PathVariable("identifiant") int pIdpProprietaire, @RequestBody Proprietaire pProprietaire) {
+	public void upProprietaire (@PathVariable("identifiant") int pIdProprietaire, @RequestBody Proprietaire pProprietaire) {
 		
 		proprioRepo.saveAndFlush(pProprietaire);
 		

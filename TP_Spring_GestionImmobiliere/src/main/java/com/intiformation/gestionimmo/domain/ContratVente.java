@@ -12,6 +12,11 @@ public class ContratVente extends Contrat implements Serializable{
 
 	/*_________________ props ________________*/
 	
+	/**
+	 * pour arreter le warning ^^
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name="prix")
 	private double prix;
 	

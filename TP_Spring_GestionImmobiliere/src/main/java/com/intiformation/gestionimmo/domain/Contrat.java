@@ -13,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +29,11 @@ public class Contrat implements Serializable{
 
 	/*_________________ props ________________*/
 	
+	/**
+	 * pour arreter le warning ^^
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_contrat")
@@ -36,8 +42,7 @@ public class Contrat implements Serializable{
 	@Column(name = "date")
 	private String date;
 	
-	@ManyToOne
-	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@OneToOne(mappedBy="contrat")
 	private Bien bien;
 	
 	@ManyToOne

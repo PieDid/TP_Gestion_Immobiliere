@@ -75,7 +75,7 @@ public class Visite implements Serializable{
 
 	public Visite(int idVisite, String date, String heure, Bien bien, Agent agent, Proprietaire proprietaire) {
 		super();
-		this.idVisite = idVisite;
+		this.id_visite = idVisite;
 		Date = date;
 		Heure = heure;
 		this.bien = bien;
@@ -86,11 +86,11 @@ public class Visite implements Serializable{
 	/* Getters et Setters */
 
 	public int getIdVisite() {
-		return idVisite;
+		return id_visite;
 	}
 
 	public void setIdVisite(int idVisite) {
-		this.idVisite = idVisite;
+		this.id_visite = idVisite;
 	}
 
 	public String getDate() {
@@ -135,7 +135,7 @@ public class Visite implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Visite [idVisite=" + idVisite + ", Date=" + Date + ", Heure=" + Heure + ", bien=" + bien + ", agent="
+		return "Visite [idVisite=" + id_visite + ", Date=" + Date + ", Heure=" + Heure + ", bien=" + bien + ", agent="
 				+ agent + ", proprietaire=" + proprietaire + "]";
 	}	
 	

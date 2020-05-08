@@ -13,6 +13,11 @@ public class ContratLocation extends Contrat implements Serializable{
 
 	/*_________________ props ________________*/
 	
+	/**
+	 * pour arreter le warning ^^
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "caution")
 	private double caution;
 	

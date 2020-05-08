@@ -54,7 +54,7 @@ public class Bien implements Serializable{
 			int revenu, List<Client> listeVisiteurs, Contrat contrat) {
 		super();
 		this.statut = statut;
-		this.standad = standad;
+		this.standard = standad;
 		this.adresseBien = adresseBien;
 		this.dateSoumission = dateSoumission;
 		this.dateDisposition = dateDisposition;
@@ -81,12 +81,12 @@ public class Bien implements Serializable{
 		this.statut = statut;
 	}
 
-	public String getStandad() {
-		return standad;
+	public String getStandard() {
+		return standard;
 	}
 
-	public void setStandad(String standad) {
-		this.standad = standad;
+	public void setStandard(String standad) {
+		this.standard = standad;
 	}
 
 	public AdresseBien getAdresseBien() {
@@ -140,7 +140,7 @@ public class Bien implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Biens [id_bien=" + id_bien + ", statut=" + statut + ", standad=" + standad + ", adresseBien="
+		return "Biens [id_bien=" + id_bien + ", statut=" + statut + ", standad=" + standard + ", adresseBien="
 				+ adresseBien + ", dateSoumission=" + dateSoumission + ", dateDisposition=" + dateDisposition
 				+ ", revenu=" + revenu + ", listeVisiteurs=" + listeVisite + ", contrat=" + contrat + "]";
 	}

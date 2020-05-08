@@ -30,7 +30,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 public class Application {
 
 	@Autowired
-	private Environment appEnvironment; // pour pointer le fichier appolication.properties
+	private Environment appEnvironment; // pour pointer le fichier application.properties
 	
 	/**
 	 * Methode main : lance l'application

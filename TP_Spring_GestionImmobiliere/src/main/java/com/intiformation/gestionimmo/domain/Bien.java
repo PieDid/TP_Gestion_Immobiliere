@@ -67,7 +67,7 @@ public class Bien implements Serializable{
 		this.dateSoumission = dateSoumission;
 		this.dateDisposition = dateDisposition;
 		this.revenu = revenu;
-		this.listeVisiteurs = listeVisiteurs;
+		this.listeVisite = listeVisite;
 		this.contrat = contrat;
 	}
 
@@ -129,12 +129,13 @@ public class Bien implements Serializable{
 		this.revenu = revenu;
 	}
 
-	public List<Client> getListeVisiteurs() {
-		return listeVisiteurs;
+
+	public List<Visite> getListeVisite() {
+		return listeVisite;
 	}
 
-	public void setListeVisiteurs(List<Client> listeVisiteurs) {
-		this.listeVisiteurs = listeVisiteurs;
+	public void setListeVisite(List<Visite> listeVisite) {
+		this.listeVisite = listeVisite;
 	}
 
 	public Contrat getContrat() {
@@ -149,7 +150,7 @@ public class Bien implements Serializable{
 	public String toString() {
 		return "Biens [id_bien=" + id_bien + ", statut=" + statut + ", standad=" + standad + ", adresseBien="
 				+ adresseBien + ", dateSoumission=" + dateSoumission + ", dateDisposition=" + dateDisposition
-				+ ", revenu=" + revenu + ", listeVisiteurs=" + listeVisiteurs + ", contrat=" + contrat + "]";
+				+ ", revenu=" + revenu + ", listeVisiteurs=" + listeVisite + ", contrat=" + contrat + "]";
 	}
 	
 	

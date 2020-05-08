@@ -30,17 +30,18 @@ public class Agent extends Personne implements Serializable{
 
 	
 	/* Constructeurs */
-	public Agent(int identifiant, String nom, String tel_prive, String tel_travail) {
-		super(identifiant, nom, tel_prive, tel_travail);
+	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut) {
+		super(identifiant, nom, email, motDePasse, statut);
 	}
 
-
-	public Agent(int identifiant, String nom, String tel_prive, String tel_travail, List<Contrat> contrat, List<Visite> liste_visites) {
-		super(identifiant, nom, tel_prive, tel_travail);
+	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, List<Contrat> contrat, List<Visite> liste_visites) {
+		super(identifiant, nom, email, motDePasse, statut);
 		this.contrat = contrat;
 		this.liste_visites = liste_visites;
 	}
 
+	
+	
 
 	/* Méthodes */
 	@Override
@@ -55,8 +56,6 @@ public class Agent extends Personne implements Serializable{
 	public List<Contrat> getContrat() {
 		return contrat;
 	}
-
-
 	public void setContrat(List<Contrat> contrat) {
 		this.contrat = contrat;
 	}
@@ -65,19 +64,9 @@ public class Agent extends Personne implements Serializable{
 	public List<Visite> getListe_visites() {
 		return liste_visites;
 	}
-
-
 	public void setListe_visites(List<Visite> liste_visites) {
 		this.liste_visites = liste_visites;
 	}
 	
-	
-	
-	
-	
-	
-	/* Setter/Getters */
-	
-
 	
 }

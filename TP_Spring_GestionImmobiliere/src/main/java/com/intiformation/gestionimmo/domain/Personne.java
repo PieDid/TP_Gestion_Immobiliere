@@ -36,14 +36,17 @@ public class Personne implements Serializable{
 	@Column(name="nom")
 	private String nom;
 	
-	@Column(name="tel_prive")
-	private String tel_prive;
+	@Column(name="email")
+	private String email;
 	
-	@Column(name="tel_travail")
-	private String tel_travail;
+	@Column(name="mot_de_passe")
+	private String motDePasse;
+	
+	@Column(name="statut")
+	private boolean statut;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresseP") 
+	@JoinColumn(name = "adresseP_id", referencedColumnName = "adressePersonne") 
 	private AdressePersonne adresseP;
 
 	
@@ -52,90 +55,93 @@ public class Personne implements Serializable{
 		super();
 	}
 
-
-	public Personne(String nom, String tel_prive, String tel_travail) {
+	public Personne(String nom, String email, String motDePasse, boolean statut) {
 		super();
 		this.nom = nom;
-		this.tel_prive = tel_prive;
-		this.tel_travail = tel_travail;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
 	}
 
 
-	public Personne(int identifiant, String nom, String tel_prive, String tel_travail) {
+	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut) {
 		super();
 		this.identifiant = identifiant;
 		this.nom = nom;
-		this.tel_prive = tel_prive;
-		this.tel_travail = tel_travail;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
 	}
 
 
-	public Personne(int identifiant, String nom, String tel_prive, String tel_travail, AdressePersonne adresseP) {
+	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
 		super();
 		this.identifiant = identifiant;
 		this.nom = nom;
-		this.tel_prive = tel_prive;
-		this.tel_travail = tel_travail;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
 		this.adresseP = adresseP;
 	}
 
 
+	
+	@Override
+	public String toString() {
+		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="
+				+ motDePasse + ", statut=" + statut + ", adresseP=" + adresseP + "]";
+	}
+	
+	
 	
 	/*__________________ G/S _________________*/
 	public int getIdentifiant() {
 		return identifiant;
 	}
 
-
 	public void setIdentifiant(int identifiant) {
 		this.identifiant = identifiant;
 	}
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-
-	public String getTel_prive() {
-		return tel_prive;
+	public String getEmail() {
+		return email;
 	}
 
-
-	public void setTel_prive(String tel_prive) {
-		this.tel_prive = tel_prive;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-
-	public String getTel_travail() {
-		return tel_travail;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
-
-	public void setTel_travail(String tel_travail) {
-		this.tel_travail = tel_travail;
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
-
 
 	public AdressePersonne getAdresseP() {
 		return adresseP;
 	}
 
-
 	public void setAdresseP(AdressePersonne adresseP) {
 		this.adresseP = adresseP;
 	}
-	
-	
-	
-	
-	
-	
+
+	public boolean isStatut() {
+		return statut;
+	}
+
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
 	
 	
 }

@@ -43,7 +43,11 @@ public class Contrat implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="agent_id", referencedColumnName="id_personne")
 	private Agent agent;
-
+	
+	@ManyToOne
+	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
+	private Proprietaire proprietaire;
+	
 	
 	/*_________________ ctors ________________*/
 	
@@ -53,42 +57,47 @@ public class Contrat implements Serializable{
 	public Contrat() {}
 	
 	/**
-	 * ctor sans l'id
+	 * ctor sans id
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 */
-	public Contrat(String date, Bien bien, Agent agent) {
+	public Contrat(String date, Bien bien, Agent agent, Proprietaire proprietaire) {
 		super();
 		this.date = date;
 		this.bien = bien;
 		this.agent = agent;
+		this.proprietaire = proprietaire;
 	}
-	
+
 	/**
 	 * ctor avec id
 	 * @param idContrat
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 */
-	public Contrat(int idContrat, String date, Bien bien, Agent agent) {
+	public Contrat(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire) {
 		super();
 		this.idContrat = idContrat;
 		this.date = date;
 		this.bien = bien;
 		this.agent = agent;
+		this.proprietaire = proprietaire;
 	}
 
 
 	/*_________________ meths ________________*/
 	
+
 	/**
 	 * sera appelé et complété dans les classes filles
 	 */
 	@Override
 	public String toString() {
-		return "[ idContrat=" + idContrat + ", date=" + date + ", bien=" + bien + ", agent=" + agent;
+		return "[ idContrat=" + idContrat + ", date=" + date + ", bien=" + bien + ", agent=" + agent + ", proprietaire=" + proprietaire;
 	}
 
 	/*__________________ G/S _________________*/
@@ -125,6 +134,13 @@ public class Contrat implements Serializable{
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
-	
+
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
 	
 } // end class

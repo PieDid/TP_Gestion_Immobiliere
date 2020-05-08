@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity(name="contratLocation")
 @DiscriminatorValue("Location")
@@ -26,6 +27,9 @@ public class ContratLocation extends Contrat implements Serializable{
 	
 	@Column(name = "garniture")
 	private String garniture;
+	
+	@OneToOne(mappedBy = "contratLocation")
+	private Locataire locataire;	
 
 	/*_________________ ctors ________________*/
 	
@@ -35,57 +39,62 @@ public class ContratLocation extends Contrat implements Serializable{
 	public ContratLocation() {
 		super();
 	}
-	
+
 	/**
-	 * ctor sans Id
+	 * ctor sans id
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 * @param caution
 	 * @param loyer
 	 * @param charge
 	 * @param typeBail
 	 * @param garniture
+	 * @param locataire
 	 */
-	public ContratLocation(String date, Bien bien, Agent agent, double caution, double loyer, double charge,
-			String typeBail, String garniture) {
-		super(date, bien, agent);
+	public ContratLocation(String date, Bien bien, Agent agent, Proprietaire proprietaire, double caution, double loyer,
+			double charge, String typeBail, String garniture, Locataire locataire) {
+		super(date, bien, agent, proprietaire);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
+		this.locataire = locataire;
 	}
-	
+
 	/**
 	 * ctor avec id
 	 * @param idContrat
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 * @param caution
 	 * @param loyer
 	 * @param charge
 	 * @param typeBail
 	 * @param garniture
+	 * @param locataire
 	 */
-	public ContratLocation(int idContrat, String date, Bien bien, Agent agent, double caution, double loyer,
-			double charge, String typeBail, String garniture) {
-		super(idContrat, date, bien, agent);
+	public ContratLocation(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire,
+			double caution, double loyer, double charge, String typeBail, String garniture, Locataire locataire) {
+		super(idContrat, date, bien, agent, proprietaire);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
+		this.locataire = locataire;
 	}
-
 
 	/*_________________ meths ________________*/
 	
 	@Override
 	public String toString() {
 		return "ContratLocation " + super.toString() + ", caution=" + caution + ", loyer=" + loyer + ", charge=" + charge + ", typeBail="
-				+ typeBail + ", garniture=" + garniture + " ]";
+				+ typeBail + ", garniture=" + garniture + ", locataire=" + locataire + " ]";
 	}
 
 	/*__________________ G/S _________________*/
@@ -129,6 +138,14 @@ public class ContratLocation extends Contrat implements Serializable{
 
 	public void setGarniture(String garniture) {
 		this.garniture = garniture;
+	}
+
+	public Locataire getLocataire() {
+		return locataire;
+	}
+
+	public void setLocataire(Locataire locataire) {
+		this.locataire = locataire;
 	}
 	
 } // end class

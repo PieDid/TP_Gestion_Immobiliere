@@ -26,17 +26,18 @@ public class ContratVente extends Contrat implements Serializable{
 	public ContratVente() {
 		super();
 	}
-
+	
 	/**
 	 * ctor sans id
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 * @param prix
 	 * @param etat
 	 */
-	public ContratVente(String date, Bien bien, Agent agent, double prix, String etat) {
-		super(date, bien, agent);
+	public ContratVente(String date, Bien bien, Agent agent, Proprietaire proprietaire, double prix, String etat) {
+		super(date, bien, agent, proprietaire);
 		this.prix = prix;
 		this.etat = etat;
 	}
@@ -47,15 +48,18 @@ public class ContratVente extends Contrat implements Serializable{
 	 * @param date
 	 * @param bien
 	 * @param agent
+	 * @param proprietaire
 	 * @param prix
 	 * @param etat
 	 */
-	public ContratVente(int idContrat, String date, Bien bien, Agent agent, double prix, String etat) {
-		super(idContrat, date, bien, agent);
+	public ContratVente(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire, double prix,
+			String etat) {
+		super(idContrat, date, bien, agent, proprietaire);
 		this.prix = prix;
 		this.etat = etat;
 	}
-	
+
+
 	/*_________________ meths ________________*/
 	
 	@Override

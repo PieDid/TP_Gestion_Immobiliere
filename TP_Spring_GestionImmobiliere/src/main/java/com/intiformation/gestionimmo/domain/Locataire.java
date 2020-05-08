@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 public class Locataire extends Personne implements Serializable{
 
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "contratLocation_id", referencedColumnName = "id_contratLocation")
+	@JoinColumn(name = "contratLocation_id", referencedColumnName = "id_contrat")
 	private ContratLocation contratLocation;
 
 	

@@ -30,7 +30,7 @@ public class Adresse implements Serializable{
 	@Column(name="ville")
 	private String ville;
 	
-	@OneToOne(mappedBy = "adresse")
+	@OneToOne(mappedBy = "adresseP")
 	private Proprietaire proprietaire;
 	
 	/*_________________ ctors ________________*/

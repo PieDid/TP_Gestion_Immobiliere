@@ -45,6 +45,10 @@ public class Visite implements Serializable{
 	@JoinColumn(name="agent_id", referencedColumnName="id_personne")
 	private Agent agent;	
 	
+	@ManyToOne
+	@JoinColumn(name="client_id", referencedColumnName="id_personne")
+	private Client client;
+	
 	//manytoone avec Propriétaire
 	@ManyToOne
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")

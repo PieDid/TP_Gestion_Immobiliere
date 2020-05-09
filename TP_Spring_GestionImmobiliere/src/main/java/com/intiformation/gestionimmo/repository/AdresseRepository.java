@@ -26,13 +26,13 @@ public interface AdresseRepository extends JpaRepository<Adresse, Integer>{
 	@Query("SELECT c FROM adresse c WHERE c.idAdresse = ?1")
 	public Adresse getAdresseById(int id);
 	
-	@Query("SELECT c FROM Adresse c WHERE c.rue = ?1")
+	@Query("SELECT c FROM adresse c WHERE c.rue = ?1")
 	public Adresse getAdresseByRue(String rue);
 		
-	@Query("SELECT c FROM Adresse c WHERE c.codePostal = ?1")
+	@Query("SELECT c FROM adresse c WHERE c.codePostal = ?1")
 	public List<Adresse> getListeAdresseByCodePostal(String codePostal);
 	
-	@Query("SELECT c FROM Adresse c WHERE c.ville = ?1")
+	@Query("SELECT c FROM adresse c WHERE c.ville = ?1")
 	public List<Adresse> getListeAdresseByVille(String ville);
 	
 }

@@ -3,8 +3,10 @@ package com.intiformation.gestionimmo.domain;
 import java.io.Serializable;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+@Entity(name="adressePersonne")
 @DiscriminatorValue("adressePersonne")
 public class AdressePersonne extends Adresse implements Serializable{
 

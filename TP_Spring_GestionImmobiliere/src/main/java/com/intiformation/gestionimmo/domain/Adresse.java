@@ -3,42 +3,45 @@ package com.intiformation.gestionimmo.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-@Entity(name="adresse")
-@Table(name="adresses")
-public class Adresse implements Serializable{
+@Entity(name = "adresse")
+@Table(name = "adresses")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type_adresse", discriminatorType = DiscriminatorType.STRING)
+public class Adresse implements Serializable {
 
-	/*_________________ props ________________*/
-	
+	/* _________________ props ________________ */
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto-increment
-	@Column(name="id_adresse")
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment
+	@Column(name = "id_adresse")
 	private int idAdresse;
-	
-	@Column(name="rue")
+
+	@Column(name = "rue")
 	private String rue;
-	
-	@Column(name="codePostal")
+
+	@Column(name = "codePostal")
 	private String codePostal;
-	
-	@Column(name="ville")
+
+	@Column(name = "ville")
 	private String ville;
-	
-	//@OneToOne(mappedBy = "adresseP")
-	private Proprietaire proprietaire;
-	
-	/*_________________ ctors ________________*/
-	
+
+	/* _________________ ctors ________________ */
+
 	/**
 	 * ctor vide
 	 */
-	public Adresse() {}
+	public Adresse() {
+	}
 
 	public Adresse(String rue, String codePostal, String ville) {
 		super();
@@ -46,28 +49,18 @@ public class Adresse implements Serializable{
 		this.codePostal = codePostal;
 		this.ville = ville;
 	}
-	
-	
 
-	public Adresse(int idAdresse, String rue, String codePostal, String ville, Proprietaire proprietaire) {
+	public Adresse(int idAdresse, String rue, String codePostal, String ville) {
 		super();
 		this.idAdresse = idAdresse;
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		this.proprietaire = proprietaire;
+
 	}
 
-	public Adresse(String rue, String codePostal, String ville, Proprietaire proprietaire) {
-		super();
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.proprietaire = proprietaire;
-	}
+	/* _________________ meths ________________ */
 
-	/*_________________ meths ________________*/
-	
 	/**
 	 * @return the idAdresse
 	 */
@@ -76,24 +69,11 @@ public class Adresse implements Serializable{
 	}
 
 	/**
-	 * @param idAdresse the idAdresse to set
+	 * @param idAdresse
+	 *            the idAdresse to set
 	 */
 	public void setIdAdresse(int idAdresse) {
 		this.idAdresse = idAdresse;
-	}
-
-	/**
-	 * @return the owner
-	 */
-	public Proprietaire getProprietaire() {
-		return proprietaire;
-	}
-
-	/**
-	 * @param proprietaire the owner to set
-	 */
-	public void setProprietaire(Proprietaire proprietaire) {
-		this.proprietaire = proprietaire;
 	}
 
 	@Override
@@ -101,8 +81,8 @@ public class Adresse implements Serializable{
 		return "[idAdresse=" + idAdresse + "] " + rue + " " + codePostal + " " + ville;
 	}
 
-	/*__________________ G/S _________________*/
-	
+	/* __________________ G/S _________________ */
+
 	/**
 	 * @return the rue
 	 */
@@ -111,7 +91,8 @@ public class Adresse implements Serializable{
 	}
 
 	/**
-	 * @param rue the rue to set
+	 * @param rue
+	 *            the rue to set
 	 */
 	public void setRue(String rue) {
 		this.rue = rue;
@@ -125,7 +106,8 @@ public class Adresse implements Serializable{
 	}
 
 	/**
-	 * @param codePostal the codePostal to set
+	 * @param codePostal
+	 *            the codePostal to set
 	 */
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
@@ -139,10 +121,11 @@ public class Adresse implements Serializable{
 	}
 
 	/**
-	 * @param ville the ville to set
+	 * @param ville
+	 *            the ville to set
 	 */
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	
+
 } // end class

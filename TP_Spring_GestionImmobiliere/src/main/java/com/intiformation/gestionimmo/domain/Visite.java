@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 
@@ -28,28 +31,32 @@ public class Visite implements Serializable{
 	private int id_visite;
 	
 	@Column(name = "date")
-	private String Date;
+	private String date;
 	
 	@Column(name = "heure")
-	private String Heure;
+	private String heure;
 	
 	/* Associations */
 
 	//manytoone avec Bien
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Bien bien;
 	
 	//manytoOne avec Agent
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="agent_id", referencedColumnName="id_personne")
 	private Agent agent;	
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
 	
 	//manytoone avec Propriétaire
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;
@@ -64,14 +71,14 @@ public class Visite implements Serializable{
 
 	public Visite(String date, String heure) {
 		super();
-		Date = date;
-		Heure = heure;
+		date = date;
+		heure = heure;
 	}
 
 	public Visite(String date, String heure, Bien bien, Agent agent, Proprietaire proprietaire) {
 		super();
-		Date = date;
-		Heure = heure;
+		date = date;
+		heure = heure;
 		this.bien = bien;
 		this.agent = agent;
 		this.proprietaire = proprietaire;
@@ -80,8 +87,8 @@ public class Visite implements Serializable{
 	public Visite(int idVisite, String date, String heure, Bien bien, Agent agent, Proprietaire proprietaire) {
 		super();
 		this.id_visite = idVisite;
-		Date = date;
-		Heure = heure;
+		date = date;
+		heure = heure;
 		this.bien = bien;
 		this.agent = agent;
 		this.proprietaire = proprietaire;
@@ -98,19 +105,19 @@ public class Visite implements Serializable{
 	}
 
 	public String getDate() {
-		return Date;
+		return date;
 	}
 
 	public void setDate(String date) {
-		Date = date;
+		date = date;
 	}
 
 	public String getHeure() {
-		return Heure;
+		return heure;
 	}
 
 	public void setHeure(String heure) {
-		Heure = heure;
+		heure = heure;
 	}
 
 	public Bien getBien() {
@@ -139,7 +146,7 @@ public class Visite implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Visite [idVisite=" + id_visite + ", Date=" + Date + ", Heure=" + Heure + ", bien=" + bien + ", agent="
+		return "Visite [idVisite=" + id_visite + ", Date=" + date + ", Heure=" + heure + ", bien=" + bien + ", agent="
 				+ agent + ", proprietaire=" + proprietaire + "]";
 	}	
 	

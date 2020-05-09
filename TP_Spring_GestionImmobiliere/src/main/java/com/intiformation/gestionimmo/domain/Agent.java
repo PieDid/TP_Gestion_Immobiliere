@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * Entity Agent immobilier
@@ -20,9 +22,11 @@ public class Agent extends Personne implements Serializable{
 
 	
 	/* Propriétés */
+	@JsonIgnore
 	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
 	private List<Contrat> contrat;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
 	private List<Visite> liste_visites;
 
@@ -30,12 +34,12 @@ public class Agent extends Personne implements Serializable{
 
 	
 	/* Constructeurs */
-	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut) {
-		super(identifiant, nom, email, motDePasse, statut);
+	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
+		super(nom, email, motDePasse, statut, adresseP);
 	}
 
-	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, List<Contrat> contrat, List<Visite> liste_visites) {
-		super(identifiant, nom, email, motDePasse, statut);
+	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Contrat> contrat, List<Visite> liste_visites) {
+		super(nom, email, motDePasse, statut, adresseP);
 		this.contrat = contrat;
 		this.liste_visites = liste_visites;
 	}

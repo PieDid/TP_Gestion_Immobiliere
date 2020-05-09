@@ -20,10 +20,10 @@ public interface VisiteRepository extends JpaRepository<Visite, Integer> {
 	 *    		-> count
 	 */
 	
-	@Query("SELECT v FROM Visite v WHERE v.id_visite = ?1")
+	@Query("SELECT v FROM visite v WHERE v.id_visite = ?1")
 	public Visite getVisiteById(int idVisite);
 	
-	@Query("SELECT v FROM Visite v WHERE v.date = ?1")
+	@Query("SELECT v FROM visite v WHERE v.date = ?1")
 	public List<Visite> getVisiteByDate(String date);
 
 }

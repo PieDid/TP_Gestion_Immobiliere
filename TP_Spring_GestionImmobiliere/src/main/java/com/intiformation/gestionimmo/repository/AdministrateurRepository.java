@@ -27,13 +27,13 @@ public interface AdministrateurRepository extends JpaRepository<Administrateur, 
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
 	// Les requêtes avec @Query 
-	@Query("SELECT a FROM Administrateur a WHERE a.identifiant = ?1")
+	@Query("SELECT a FROM administrateur a WHERE a.identifiant = ?1")
 	public Administrateur getAdministrateurById(int id);
 	
-	@Query("SELECT a FROM Administrateur a WHERE a.nom = ?1")
+	@Query("SELECT a FROM administrateur a WHERE a.nom = ?1")
 	public List<Administrateur> getAdministrateurByNom(String nom);
 	
-	@Query("SELECT a FROM Administrateur a WHERE a.statut = ?1")
+	@Query("SELECT a FROM administrateur a WHERE a.statut = ?1")
 	public List<Administrateur> getAdministrateurByStatut(boolean statut);
 	
 }

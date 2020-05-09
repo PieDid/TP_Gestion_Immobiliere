@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.intiformation.gestionimmo.domain.Adresse;
 
 @Entity(name="personne")
@@ -45,6 +46,7 @@ public class Personne implements Serializable{
 	@Column(name="statut")
 	private boolean statut;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresse") 
 	private AdressePersonne adresseP;
@@ -73,6 +75,16 @@ public class Personne implements Serializable{
 		this.statut = statut;
 	}
 
+	
+	public Personne(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
+		super();
+		this.nom = nom;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
+		this.adresseP = adresseP;
+	}
+	
 
 	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
 		super();

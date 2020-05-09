@@ -30,10 +30,10 @@ public interface ContratLocationRepository extends JpaRepository<ContratLocation
 	@Query("SELECT c FROM contratLocation c WHERE c.date = ?1")
 	public ContratLocation getContratLocationByDate(String date);
 		
-	@Query("SELECT c FROM contratLocation c WHERE c.agent_id = ?1")
+	@Query("SELECT c FROM contratLocation c WHERE c.agent.identifiant = ?1")
 	public List<ContratLocation> getListeContratLocationByIdAgent(int id_agent);
 	
-	@Query("SELECT c FROM contratLocation c WHERE c.proprietaire_id = ?1")
+	@Query("SELECT c FROM contratLocation c WHERE c.proprietaire.identifiant = ?1")
 	public List<ContratLocation> getListeContratLocationByIdProprietaire(int id_proprietaire);
 	
 	@Query("SELECT c FROM contratLocation c WHERE c.caution = ?1")

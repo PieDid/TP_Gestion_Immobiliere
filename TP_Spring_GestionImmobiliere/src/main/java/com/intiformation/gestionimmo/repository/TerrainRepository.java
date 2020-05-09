@@ -20,16 +20,16 @@ public interface TerrainRepository extends JpaRepository<Terrain, Integer> {
 	 *    		-> count
 	 */
 
-	@Query("SELECT t FROM Terrain t WHERE t.id_bien = ?1")
+	@Query("SELECT t FROM terrain t WHERE t.id_bien = ?1")
 	public Terrain getTerrainById (int id);
 	
-	@Query("SELECT t FROM Terrain t WHERE t.statut = ?1")
-	public Terrain getTerrainByStatut (String statut);
+	@Query("SELECT t FROM terrain t WHERE t.statut = ?1")
+	public Terrain getTerrainByStatut (boolean statut);
 	
-	@Query("SELECT * FROM Terrain t WHERE t.prix <= ?1")
+	@Query("SELECT t FROM terrain t WHERE t.prix <= ?1")
 	public List<Terrain> getTerrainByPrixMax (double prix);
 	
-	@Query("SELECT * FROM Terrain t WHERE t.offre = ?1")
+	@Query("SELECT t FROM terrain t WHERE t.offre = ?1")
 	public List<Terrain> getTerrainByOffre (String offre);
 	
 }

@@ -25,13 +25,13 @@ public interface PersonneRepository extends JpaRepository<Personne, Integer>{
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
 	// Les requêtes avec @Query 
-	@Query("SELECT p FROM Personne p WHERE p.identifiant = ?1")
+	@Query("SELECT p FROM personne p WHERE p.identifiant = ?1")
 	public Personne getPersonneById(int id);
 	
-	@Query("SELECT p FROM Personne p WHERE p.nom = ?1")
+	@Query("SELECT p FROM personne p WHERE p.nom = ?1")
 	public List<Personne> getPersonneByNom(String nom);
 	
-	@Query("SELECT p FROM Personne p WHERE p.statut = ?1")
+	@Query("SELECT p FROM personne p WHERE p.statut = ?1")
 	public List<Personne> getPersonneByStatut(boolean statut);
 	
 }

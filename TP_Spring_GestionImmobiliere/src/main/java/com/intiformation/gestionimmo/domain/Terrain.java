@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name="terrain")
 public class Terrain extends Bien implements Serializable{
 
 	/*_________________ props ________________*/

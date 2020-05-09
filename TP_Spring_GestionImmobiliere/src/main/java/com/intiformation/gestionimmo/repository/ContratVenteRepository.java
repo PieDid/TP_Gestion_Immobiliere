@@ -28,10 +28,10 @@ public interface ContratVenteRepository extends JpaRepository<ContratVente, Inte
 	@Query("SELECT c FROM contratVente c WHERE c.date = ?1")
 	public ContratVente getContratVenteByDate(String date);
 		
-	@Query("SELECT c FROM contratVente c WHERE c.agent_id = ?1")
+	@Query("SELECT c FROM contratVente c WHERE c.agent.identifiant = ?1")
 	public List<ContratVente> getListeContratVenteByIdAgent(int id_agent);
 	
-	@Query("SELECT c FROM contratVente c WHERE c.proprietaire_id = ?1")
+	@Query("SELECT c FROM contratVente c WHERE c.proprietaire.identifiant = ?1")
 	public List<ContratVente> getListeContratVenteByIdProprietaire(int id_proprietaire);
 	
 	@Query("SELECT c FROM contratVente c WHERE c.prix = ?1")

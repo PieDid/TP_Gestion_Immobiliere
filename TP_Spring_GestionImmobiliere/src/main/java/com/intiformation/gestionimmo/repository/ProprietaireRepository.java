@@ -25,13 +25,13 @@ public interface ProprietaireRepository extends JpaRepository<Proprietaire, Inte
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
 	// Les requêtes avec @Query 
-	@Query("SELECT p FROM Proprietaire p WHERE p.identifiant = ?1")
+	@Query("SELECT p FROM proprietaire p WHERE p.identifiant = ?1")
 	public Proprietaire getProprietaireById(int id);
 	
-	@Query("SELECT p FROM Proprietaire p WHERE p.nom = ?1")
+	@Query("SELECT p FROM proprietaire p WHERE p.nom = ?1")
 	public List<Proprietaire> getProprietaireByNom(String nom);
 	
-	@Query("SELECT p FROM Proprietaire p WHERE p.statut = ?1")
+	@Query("SELECT p FROM proprietaire p WHERE p.statut = ?1")
 	public List<Proprietaire> getProprietaireByStatut(boolean statut);
 	
 }

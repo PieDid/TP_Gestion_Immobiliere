@@ -25,13 +25,13 @@ public interface AgentRepository extends JpaRepository<Agent, Integer>{
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
 	// Les requêtes avec @Query 
-	@Query("SELECT a FROM Agent a WHERE a.identifiant = ?1")
+	@Query("SELECT a FROM agent a WHERE a.identifiant = ?1")
 	public Agent getAgentById(int id);
 	
-	@Query("SELECT a FROM Agent a WHERE a.nom = ?1")
+	@Query("SELECT a FROM agent a WHERE a.nom = ?1")
 	public List<Agent> getAgentByNom(String nom);
 	
-	@Query("SELECT a FROM Agent a WHERE a.statut = ?1")
+	@Query("SELECT a FROM agent a WHERE a.statut = ?1")
 	public List<Agent> getAgentByStatut(boolean statut);
 	
 }

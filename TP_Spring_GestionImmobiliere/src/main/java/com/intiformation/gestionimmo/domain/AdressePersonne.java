@@ -6,15 +6,22 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name="adressePersonne")
 @DiscriminatorValue("adressePersonne")
 public class AdressePersonne extends Adresse implements Serializable{
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "adresseP")
 	private Personne personne;
 
 	public AdressePersonne() {
 		super();
+	}
+	
+	public AdressePersonne(String rue, String codePostal, String ville) {
+		super(rue, codePostal, ville);
 	}
 
 	public AdressePersonne(String rue, String codePostal, String ville, Personne personne) {

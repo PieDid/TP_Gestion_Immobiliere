@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Classe mère de ContratVente et de ContratLocation
  *
@@ -42,13 +44,16 @@ public class Contrat implements Serializable{
 	@Column(name = "date")
 	private String date;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy="contrat")
 	private Bien bien;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="agent_id", referencedColumnName="id_personne")
 	private Agent agent;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;

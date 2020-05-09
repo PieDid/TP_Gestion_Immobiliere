@@ -20,16 +20,16 @@ public interface CommerciauxRepository extends JpaRepository<Commerciaux, Intege
 	 *    		-> count
 	 */
 	
-	@Query("SELECT c FROM Commerciaux c WHERE c.id_bien = ?1")
+	@Query("SELECT c FROM commerciaux c WHERE c.id_bien = ?1")
 	public Commerciaux getCommerciauxById(int idCommerciaux);
 	
-	@Query("SELECT c FROM Commerciaux c WHERE c.statut = ?1")
-	public Commerciaux getCommerciauxByStatut (String statut);
+	@Query("SELECT c FROM commerciaux c WHERE c.statut = ?1")
+	public Commerciaux getCommerciauxByStatut (boolean statut);
 	
-	@Query("SELECT c FROM Commerciaux c WHERE c.prix <= ?1")
+	@Query("SELECT c FROM commerciaux c WHERE c.prix <= ?1")
 	public List<Commerciaux> getCommerciauxByPrixMax (double prix);
 	
-	@Query("SELECT c FROM Commerciaux c WHERE c.offre = ?1")
+	@Query("SELECT c FROM commerciaux c WHERE c.offre = ?1")
 	public List<Commerciaux> getCommerciauxByOffre (String offre);
 
 }

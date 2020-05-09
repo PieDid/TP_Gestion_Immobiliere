@@ -20,16 +20,16 @@ public interface BureauRepository extends JpaRepository<Bureau, Integer> {
 	 *    		-> count
 	 */
 
-	@Query("SELECT b FROM Bureau b WHERE b.id_bien = ?1")
+	@Query("SELECT b FROM bureau b WHERE b.id_bien = ?1")
 	public Bureau getBureauById (int idBureau);
 	
-	@Query("SELECT b FROM Bureau b WHERE b.statut = ?1")
-	public Bureau getBureauByStatut (String statut);
+	@Query("SELECT b FROM bureau b WHERE b.statut = ?1")
+	public Bureau getBureauByStatut (boolean statut);
 	
-	@Query("SELECT b FROM Bureau b WHERE b.prix <= ?1")
+	@Query("SELECT b FROM bureau b WHERE b.prix <= ?1")
 	public List<Bureau> getBureauByPrixMax (double prix);
 	
-	@Query("SELECT b FROM Bureau b WHERE b.offre = ?1")
+	@Query("SELECT b FROM bureau b WHERE b.offre = ?1")
 	public List<Bureau> getBureauByOffre (String offre);
 	
 }

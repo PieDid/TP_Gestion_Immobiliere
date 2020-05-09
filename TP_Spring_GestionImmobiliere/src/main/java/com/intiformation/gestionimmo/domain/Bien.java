@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity(name="bien")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -45,13 +47,16 @@ public class Bien implements Serializable{
 	@Column(name="revenu")
 	private int revenu;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "bien", cascade = CascadeType.ALL)
 	private List<Visite> listeVisite;
 	
+	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "contrat_id", referencedColumnName = "id_contrat")
 	private Contrat contrat;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "proprietaire_id" , referencedColumnName = "id_personne")
 	private Proprietaire proprietaire;

@@ -7,6 +7,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name="contratLocation")
 @DiscriminatorValue("Location")
 public class ContratLocation extends Contrat implements Serializable{
@@ -33,6 +35,7 @@ public class ContratLocation extends Contrat implements Serializable{
 	@Column(name = "garniture")
 	private String garniture;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy = "contratLocation")
 	private Locataire locataire;	
 

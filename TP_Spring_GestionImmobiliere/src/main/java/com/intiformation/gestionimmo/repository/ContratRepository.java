@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.intiformation.gestionimmo.domain.Agent;
 import com.intiformation.gestionimmo.domain.Contrat;
+import com.intiformation.gestionimmo.domain.Proprietaire;
 
 
 public interface ContratRepository extends JpaRepository<Contrat, Integer>{
@@ -29,11 +31,11 @@ public interface ContratRepository extends JpaRepository<Contrat, Integer>{
 	@Query("SELECT c FROM contrat c WHERE c.date = ?1")
 	public Contrat getContratByDate(String date);
 		
-	@Query("SELECT c FROM contrat c WHERE c.agent_id = ?1")
-	public List<Contrat> getListeContratByIdAgent(int id_agent);
+	@Query("SELECT c FROM contrat c WHERE c.agent.identifiant = ?1")
+	public List<Contrat> getListeContratByIdAgent(int pIdAgent);
 	
-	@Query("SELECT c FROM contrat c WHERE c.proprietaire_id = ?1")
-	public List<Contrat> getListeContratByIdProprietaire(int id_proprietaire);
+	@Query("SELECT c FROM contrat c WHERE c.proprietaire.identifiant = ?1")
+	public List<Contrat> getListeContratByProprietaireId(int pIdProprietaire);
 	
 	
 	

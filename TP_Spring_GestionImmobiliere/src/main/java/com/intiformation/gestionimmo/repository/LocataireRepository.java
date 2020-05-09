@@ -25,13 +25,13 @@ public interface LocataireRepository extends JpaRepository<Locataire, Integer>{
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
 	// Les requêtes avec @Query 
-	@Query("SELECT l FROM Locataire l WHERE l.identifiant = ?1")
+	@Query("SELECT l FROM locataire l WHERE l.identifiant = ?1")
 	public Locataire getLocataireById(int id);
 	
-	@Query("SELECT l FROM Locataire l WHERE l.nom = ?1")
+	@Query("SELECT l FROM locataire l WHERE l.nom = ?1")
 	public List<Locataire> getLocataireByNom(String nom);
 	
-	@Query("SELECT l FROM Locataire l WHERE l.statut = ?1")
+	@Query("SELECT l FROM locataire l WHERE l.statut = ?1")
 	public List<Locataire> getLocataireByStatut(boolean statut);
 	
 }

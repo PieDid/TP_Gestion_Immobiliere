@@ -1,5 +1,7 @@
 package com.intiformation.gestionimmo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,5 +22,14 @@ public interface EntrepotRepository extends JpaRepository<Entrepot, Integer> {
 	
 	@Query("SELECT e FROM Entrepot e WHERE e.id_bien = ?1")
 	public Entrepot getEntrepotById (int idEntrepot);
+	
+	@Query("SELECT e FROM Entrepot e WHERE e.statut = ?1")
+	public Entrepot getEntrepotByStatut (String statut);
+	
+	@Query("SELECT e FROM Entrepot e WHERE e.prix <= ?1")
+	public List<Entrepot> getEntrepotByPrixMax (double prix);
+	
+	@Query("SELECT e FROM Entrepot e WHERE e.offre = ?1")
+	public List<Entrepot> getEntrepotByOffre (String offre);
 	
 }

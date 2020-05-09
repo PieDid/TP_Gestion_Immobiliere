@@ -1,5 +1,7 @@
 package com.intiformation.gestionimmo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,4 +22,13 @@ public interface CommerceRepository extends JpaRepository<Commerce, Integer> {
 	
 	@Query("SELECT c FROM Commerce c WHERE c.id_bien = ?1")
 	public Commerce getCommerceById (int idCommerce);
+	
+	@Query("SELECT c FROM Commerce c WHERE c.statut = ?1")
+	public Commerce getCommerceByStatut (String statut);
+	
+	@Query("SELECT c FROM Commerce c WHERE c.prix <= ?1")
+	public List<Commerce> getCommerceByPrixMax (double prix);
+	
+	@Query("SELECT c FROM Commerce c WHERE c.offre = ?1")
+	public List<Commerce> getCommerceByOffre (String offre);
 }

@@ -1,0 +1,83 @@
+package com.intiformation.gestionimmo.RestWebService;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.intiformation.gestionimmo.domain.Commerciaux;
+import com.intiformation.gestionimmo.domain.Entrepot;
+import com.intiformation.gestionimmo.repository.CommerciauxRepository;
+
+@RestController
+@RequestMapping("/commerciaux-rest")
+public class CommerciauxRest {
+
+	@Autowired
+	private CommerciauxRepository commerciauxRepo;
+
+	public void setCommerciauxRepo(CommerciauxRepository commerciauxRepo) {
+		this.commerciauxRepo = commerciauxRepo;
+	}
+	
+	@RequestMapping(value="/commerciauxList", method=RequestMethod.GET)
+	public List<Commerciaux> ListCommerciaux() {
+		
+		return commerciauxRepo.findAll();
+		
+	}//end find-all
+	
+	
+	@RequestMapping(value="/commerciauxAdd", method=RequestMethod.POST)
+	public void saveCommerciaux(@RequestBody Commerciaux commerciaux) {
+		
+		commerciauxRepo.save(commerciaux);
+		
+	}//end save
+	
+	
+	@RequestMapping(value="/commerciaux/{id_bien}", method=RequestMethod.GET)
+	public Commerciaux getCommerciaux(@PathVariable("id_bien") int pIdCommerciaux) {
+		
+		return commerciauxRepo.getOne(pIdCommerciaux);
+		
+	}//end get
+	
+	
+	@RequestMapping(value="/commerciauxUpdate/{id_bien}", method=RequestMethod.PUT)
+	public void upCommerciaux (@PathVariable("id_bien") int pIdCommerciaux, @RequestBody Commerciaux commerciaux) {
+		
+		commerciauxRepo.saveAndFlush(commerciaux);
+		
+	}//end update
+	
+	
+	@RequestMapping(value="/commerciauxDelete/{id_bien}", method=RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteCommerciaux(@PathVariable("id_bien") int pIdCommerciaux) {
+		
+		commerciauxRepo.deleteById(pIdCommerciaux);
+		
+		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		
+	}//end delete
+	
+	@RequestMapping(value="/commerciauxList/{prixMax}", method=RequestMethod.GET)
+	public List<Commerciaux> listeCommerciauxByPrixMax(@PathVariable("prixMax") int pPrixMax) {
+		return commerciauxRepo.getCommerciauxByPrixMax(pPrixMax);
+	
+	}//end getAllByPrixMax
+	
+	
+	@RequestMapping(value="/commerciauxList/{offre}", method=RequestMethod.GET)
+	public List<Commerciaux> listeCommerciauxByOffre(@PathVariable("offre") String pOffre) {
+		return commerciauxRepo.getCommerciauxByOffre(pOffre);
+	
+	}//end getAllByOffre
+	
+}//end class

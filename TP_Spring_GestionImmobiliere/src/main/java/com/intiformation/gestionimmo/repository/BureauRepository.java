@@ -1,5 +1,7 @@
 package com.intiformation.gestionimmo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,5 +22,14 @@ public interface BureauRepository extends JpaRepository<Bureau, Integer> {
 
 	@Query("SELECT b FROM Bureau b WHERE b.id_bien = ?1")
 	public Bureau getBureauById (int idBureau);
+	
+	@Query("SELECT b FROM Bureau b WHERE b.statut = ?1")
+	public Bureau getBureauByStatut (String statut);
+	
+	@Query("SELECT b FROM Bureau b WHERE b.prix <= ?1")
+	public List<Bureau> getBureauByPrixMax (double prix);
+	
+	@Query("SELECT b FROM Bureau b WHERE b.offre = ?1")
+	public List<Bureau> getBureauByOffre (String offre);
 	
 }

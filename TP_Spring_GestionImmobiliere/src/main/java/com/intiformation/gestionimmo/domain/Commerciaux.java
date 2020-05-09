@@ -27,10 +27,10 @@ public class Commerciaux extends Bien implements Serializable{
 	}
 	
 
-	public Commerciaux(String statut, String standard, AdresseBien adresseBien, String dateSoumission,
+	public Commerciaux(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
 			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int nbPieces,
 			int superficie) {
-		super(statut, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
 		this.nbPieces = nbPieces;
 		this.superficie = superficie;
 	}
@@ -60,7 +60,7 @@ public class Commerciaux extends Bien implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Commerciaux [nbPieces=" + nbPieces + ", superficie=" + superficie + "]";
+		return "Commerciaux [" + super.toString() + ", nbPieces=" + nbPieces + ", superficie=" + superficie + "]";
 	}
 	
 	

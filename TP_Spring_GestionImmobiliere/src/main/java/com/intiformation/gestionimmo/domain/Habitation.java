@@ -21,9 +21,9 @@ public class Habitation extends Bien implements Serializable{
 		super();
 	}
 
-	public Habitation(String statut, String standad, AdresseBien adresseBien, String dateSoumission,
+	public Habitation(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
 			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int superficie) {
-		super(statut, standad, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
 		this.superficie = superficie;
 	}
 	
@@ -35,6 +35,11 @@ public class Habitation extends Bien implements Serializable{
 
 	public void setSuperficie(int superficie) {
 		this.superficie = superficie;
+	}
+
+	@Override
+	public String toString() {
+		return "Habitation [" + super.toString() + ", superficie=" + superficie + "]";
 	}
 	
 

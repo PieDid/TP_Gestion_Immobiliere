@@ -17,10 +17,10 @@ public class Commerce extends Commerciaux implements Serializable {
 		
 	}
 
-	public Commerce(String statut, String standard, AdresseBien adresseBien, String dateSoumission,
+	public Commerce(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
 			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int nbPieces,
 			int superficie) {
-		super(statut, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat, nbPieces,
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat, nbPieces,
 				superficie);
 		
 	}

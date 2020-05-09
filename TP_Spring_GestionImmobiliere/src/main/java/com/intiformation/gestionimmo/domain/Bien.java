@@ -17,8 +17,17 @@ public class Bien implements Serializable{
 	@Column(name="id_bien")
 	private int id_bien;
 	
+	//boolean disponible ? true ou false
 	@Column(name="statut")
-	private String statut;
+	private boolean statut;
+	
+	//type d'offre (location ou vente)
+	@Column(name="offre")
+	private String offre;
+	
+	//Le prix proposé du bien (négociable plus tard avec les potentiels clients)
+	@Column(name="prix")
+	private double prix;
 	
 	@Column(name="standard")
 	private String standard;
@@ -50,11 +59,13 @@ public class Bien implements Serializable{
 		super();
 	}
 
-	public Bien(String statut, String standad, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
+	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
 			int revenu, List<Client> listeVisiteurs, Contrat contrat) {
 		super();
 		this.statut = statut;
-		this.standard = standad;
+		this.offre = offre;
+		this.prix = prix;
+		this.standard = standard;
 		this.adresseBien = adresseBien;
 		this.dateSoumission = dateSoumission;
 		this.dateDisposition = dateDisposition;
@@ -73,12 +84,28 @@ public class Bien implements Serializable{
 		this.id_bien = id_bien;
 	}
 
-	public String getStatut() {
+	public boolean isStatut() {
 		return statut;
 	}
 
-	public void setStatut(String statut) {
+	public void setStatut(boolean statut) {
 		this.statut = statut;
+	}
+
+	public String getOffre() {
+		return offre;
+	}
+
+	public void setOffre(String offre) {
+		this.offre = offre;
+	}
+
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
 	}
 
 	public String getStandard() {
@@ -140,9 +167,10 @@ public class Bien implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Biens [id_bien=" + id_bien + ", statut=" + statut + ", standad=" + standard + ", adresseBien="
-				+ adresseBien + ", dateSoumission=" + dateSoumission + ", dateDisposition=" + dateDisposition
-				+ ", revenu=" + revenu + ", listeVisiteurs=" + listeVisite + ", contrat=" + contrat + "]";
+		return "Bien [id_bien=" + id_bien + ", statut=" + statut + ", offre=" + offre + ", prix=" + prix + ", standard="
+				+ standard + ", adresseBien=" + adresseBien + ", dateSoumission=" + dateSoumission
+				+ ", dateDisposition=" + dateDisposition + ", revenu=" + revenu + ", listeVisite=" + listeVisite
+				+ ", contrat=" + contrat + "]";
 	}
 	
 	

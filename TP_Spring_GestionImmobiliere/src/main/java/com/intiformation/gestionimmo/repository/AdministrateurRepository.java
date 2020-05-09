@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestionimmo.domain.Administrateur;
 
+@Repository
 public interface AdministrateurRepository extends JpaRepository<Administrateur, Integer>{
 
 	/*___________ Les méthodes de bases de JpaRepository (opérations CRUD) ___________*/

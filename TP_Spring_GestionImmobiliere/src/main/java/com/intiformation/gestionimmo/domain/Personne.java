@@ -45,8 +45,8 @@ public class Personne implements Serializable{
 	@Column(name="statut")
 	private boolean statut;
 	
-	//@OneToOne(cascade = CascadeType.PERSIST)
-	//@JoinColumn(name = "adresseP_id", referencedColumnName = "adressePersonne") 
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresse") 
 	private AdressePersonne adresseP;
 
 	

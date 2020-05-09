@@ -20,10 +20,10 @@ public class Agent extends Personne implements Serializable{
 
 	
 	/* Propriétés */
-	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
 	private List<Contrat> contrat;
 	
-	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
 	private List<Visite> liste_visites;
 
 	

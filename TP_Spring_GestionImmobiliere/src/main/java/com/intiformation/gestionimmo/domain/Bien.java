@@ -13,7 +13,7 @@ public class Bien implements Serializable{
 	
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto-increment
+	@GeneratedValue(strategy=GenerationType.AUTO) // auto-increment
 	@Column(name="id_bien")
 	private int id_bien;
 	
@@ -45,13 +45,16 @@ public class Bien implements Serializable{
 	@Column(name="revenu")
 	private int revenu;
 	
-	@OneToMany(mappedBy = "biens", cascade = CascadeType.ALL)
-	private List<Visite > listeVisite;
+	@OneToMany(mappedBy = "bien", cascade = CascadeType.ALL)
+	private List<Visite> listeVisite;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "contrat_id", referencedColumnName = "id_contrat")
 	private Contrat contrat;
 	
+	@ManyToOne
+	@JoinColumn(name = "proprietaire_id" , referencedColumnName = "id_personne")
+	private Proprietaire proprietaire;
 	/*_________________ ctors ________________*/
 	
 

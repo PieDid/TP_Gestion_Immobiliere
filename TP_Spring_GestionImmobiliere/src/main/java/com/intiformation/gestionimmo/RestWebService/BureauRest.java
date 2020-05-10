@@ -83,4 +83,16 @@ public class BureauRest {
 	
 	}//end getAllByOffre
 	
+	@RequestMapping(value="/bureauList/{superficie}", method=RequestMethod.GET)
+	public List<Bureau> listeBureauBySuperficie(@PathVariable("superficie") int superficie) {
+		return bureauRepo.getBureauBySuperficie(superficie);
+	
+	}//end getAllByPrixMax
+	
+	@RequestMapping(value="/bureauList/{nbPieces}", method=RequestMethod.GET)
+	public List<Bureau> listeBureauByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return bureauRepo.getBureauByPieces(nbPieces);
+	
+	}//end getAllByPrixMax
+	
 }//end class

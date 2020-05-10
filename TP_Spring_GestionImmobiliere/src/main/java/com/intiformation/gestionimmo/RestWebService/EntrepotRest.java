@@ -81,4 +81,16 @@ public class EntrepotRest {
 	
 	}//end getAllByOffre
 	
+	@RequestMapping(value="/entrepotList/{superficie}", method=RequestMethod.GET)
+	public List<Entrepot> listeEntrepotBySuperficie(@PathVariable("superficie") int superficie) {
+		return entrepotRepo.getEntrepotBySuperficie(superficie);
+	
+	}//end getAllByPrixMax
+	
+	@RequestMapping(value="/entrepotList/{nbPieces}", method=RequestMethod.GET)
+	public List<Entrepot> listeEntrepotByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return entrepotRepo.getEntrepotByPieces(nbPieces);
+	
+	}//end getAllByPrixMax
+	
 }//end class

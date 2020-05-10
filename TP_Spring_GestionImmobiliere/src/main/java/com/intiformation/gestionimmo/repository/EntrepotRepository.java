@@ -32,4 +32,10 @@ public interface EntrepotRepository extends JpaRepository<Entrepot, Integer> {
 	@Query("SELECT e FROM entrepot e WHERE e.offre = ?1")
 	public List<Entrepot> getEntrepotByOffre (String offre);
 	
+	@Query("SELECT e FROM entrepot e WHERE e.superficie >= ?1")
+	public List<Entrepot> getEntrepotBySuperficie (int superficie);
+	
+	@Query("SELECT e FROM entrepot e WHERE e.nombre_pieces = ?1")
+	public List<Entrepot> getEntrepotByPieces (int nbPieces);
+	
 }

@@ -80,4 +80,16 @@ public class CommerciauxRest {
 	
 	}//end getAllByOffre
 	
+	@RequestMapping(value="/commerciauxList/{superficie}", method=RequestMethod.GET)
+	public List<Commerciaux> listeCommerciauxBySuperficie(@PathVariable("superficie") int superficie) {
+		return commerciauxRepo.getCommerciauxBySuperficie(superficie);
+	
+	}//end getAllBySuperficie
+	
+	@RequestMapping(value="/commerciauxList/{nbPieces}", method=RequestMethod.GET)
+	public List<Commerciaux> listeCommerciauxByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return commerciauxRepo.getCommerciauxByPieces(nbPieces);
+	
+	}//end getAllByPieces
+	
 }//end class

@@ -31,5 +31,11 @@ public interface CommerciauxRepository extends JpaRepository<Commerciaux, Intege
 	
 	@Query("SELECT c FROM commerciaux c WHERE c.offre = ?1")
 	public List<Commerciaux> getCommerciauxByOffre (String offre);
+	
+	@Query("SELECT c FROM commerciaux c WHERE c.superficie >= ?1")
+	public List<Commerciaux> getCommerciauxBySuperficie (int superficie);
+	
+	@Query("SELECT c FROM commerciaux c WHERE c.nombre_pieces = ?1")
+	public List<Commerciaux> getCommerciauxByPieces (int nbPieces);
 
 }

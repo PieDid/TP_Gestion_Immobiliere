@@ -84,6 +84,16 @@ public class CommerceRest {
 	}//end getAllByOffre
 	
 	
+	@RequestMapping(value="/commerceList/{superficie}", method=RequestMethod.GET)
+	public List<Commerce> listeCommerceBySuperficie(@PathVariable("superficie") int superficie) {
+		return commerceRepo.getCommerceBySuperficie (superficie);
 	
+	}//end getAllBySuperficie
+	
+	@RequestMapping(value="/commerceList/{nbPieces}", method=RequestMethod.GET)
+	public List<Commerce> listeCommerceByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return commerceRepo.getCommerceByPieces(nbPieces);
+	
+	}//end getAllByNbPieces
 	
 }//end class

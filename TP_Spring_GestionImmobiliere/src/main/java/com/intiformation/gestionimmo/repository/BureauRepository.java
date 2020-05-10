@@ -32,4 +32,10 @@ public interface BureauRepository extends JpaRepository<Bureau, Integer> {
 	@Query("SELECT b FROM bureau b WHERE b.offre = ?1")
 	public List<Bureau> getBureauByOffre (String offre);
 	
+	@Query("SELECT b FROM bureau b WHERE b.superficie >= ?1")
+	public List<Bureau> getBureauBySuperficie (int superficie);
+	
+	@Query("SELECT b FROM bureau b WHERE b.nombre_pieces = ?1")
+	public List<Bureau> getBureauByPieces (int nbPieces);
+	
 }

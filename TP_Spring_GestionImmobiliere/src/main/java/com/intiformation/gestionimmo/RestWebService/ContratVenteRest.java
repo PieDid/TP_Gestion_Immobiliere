@@ -3,6 +3,7 @@ package com.intiformation.gestionimmo.RestWebService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.intiformation.gestionimmo.domain.Contrat;
 import com.intiformation.gestionimmo.domain.ContratVente;
 import com.intiformation.gestionimmo.repository.ContratVenteRepository;
 
@@ -48,5 +50,31 @@ public class ContratVenteRest {
 		contratVenteRepository.deleteById(pIdContratVente);
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 	}//end deleteContratVente()
+	
+	@RequestMapping(value="/contratVente/date/{date}", method=RequestMethod.GET)
+	public ContratVente getContratByDate(@PathVariable("date") String date) {
+		return contratVenteRepository.getContratVenteByDate(date);
+	} // end getContratVenteByDate()
+	
+	@RequestMapping(value="/contratVente/agent/{idAgent}", method=RequestMethod.GET)
+	public List<ContratVente> getListeContratVenteByIdAgent(@PathVariable("idAgent") int pIdAgent) {
+		return contratVenteRepository.getListeContratVenteByIdAgent(pIdAgent);
+	}//end getContratVenteByIdAgent()
+	
+	@RequestMapping(value="/contratVente/proprietaire/{idProprietaire}", method=RequestMethod.GET)
+	public List<ContratVente> getListeContratVenteByIdProprietaire(@PathVariable("idProprietaire") int pIdProprietaire) {
+		return contratVenteRepository.getListeContratVenteByIdProprietaire(pIdProprietaire);
+	}//end getContratVenteByIdProprietaire()
+	
+	@RequestMapping(value="/contratVente/prix/{prix}", method=RequestMethod.GET)
+	public List<ContratVente> getListeContratVenteByPrix(@PathVariable("prix") double pPrix) {
+		return contratVenteRepository.getListeContratVenteByPrix(pPrix);
+	}//end getContratVenteByPrix()
+	
+	@RequestMapping(value="/contratVente/etat/{etat}", method=RequestMethod.GET)
+	public List<ContratVente> getListeContratVenteByEtat(@PathVariable("etat") String pEtat){
+		return contratVenteRepository.getListeContratVenteByEtat(pEtat);
+	}//end getContratVenteByEtat()
+	
 	
 }

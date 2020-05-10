@@ -66,6 +66,20 @@ public class Bien implements Serializable{
 	public Bien() {
 		super();
 	}
+	
+	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
+			List<Client> listeVisiteurs, Contrat contrat) {
+		super();
+		this.statut = statut;
+		this.offre = offre;
+		this.prix = prix;
+		this.standard = standard;
+		this.adresseBien = adresseBien;
+		this.dateSoumission = dateSoumission;
+		this.dateDisposition = dateDisposition;
+		this.listeVisite = listeVisite;
+		this.contrat = contrat;
+	}
 
 	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
 			int revenu, List<Client> listeVisiteurs, Contrat contrat) {

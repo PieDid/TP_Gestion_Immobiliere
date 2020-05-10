@@ -34,11 +34,16 @@ public class Agent extends Personne implements Serializable{
 
 	
 	/* Constructeurs */
-	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
+	
+	public Agent(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP) {
 		super(nom, email, motDePasse, statut, adresseP);
 	}
 
-	public Agent(int identifiant, String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Contrat> contrat, List<Visite> liste_visites) {
+	public Agent() {
+		super();
+	}
+
+	public Agent(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Contrat> contrat, List<Visite> liste_visites) {
 		super(nom, email, motDePasse, statut, adresseP);
 		this.contrat = contrat;
 		this.liste_visites = liste_visites;

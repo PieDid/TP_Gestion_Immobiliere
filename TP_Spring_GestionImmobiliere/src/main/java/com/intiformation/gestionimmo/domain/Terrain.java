@@ -20,8 +20,8 @@ public class Terrain extends Bien implements Serializable{
 
 	/*_______________ ctor _______________*/
 	public Terrain(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
-			String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat, int superficie) {
-		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat);
+			String dateDisposition, List<Client> listeVisiteurs, Contrat contrat, int superficie) {
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, listeVisiteurs, contrat);
 		this.superficie = superficie;
 	}
 

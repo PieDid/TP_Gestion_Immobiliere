@@ -54,6 +54,21 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private ClientRepository clientRepository;
 	
+	@Autowired
+	private AdresseRepository adresseRepository;
+	
+	@Autowired
+	private AdressePersonneRepository adressePRepository;
+	
+	@Autowired
+	private AdresseBienRepository adresseBRepository;
+	
+	@Autowired
+	private AgentRepository agentRepository;
+	
+	@Autowired
+	private TerrainRepository terrainRepository;
+	
 	/**
 	 * Methode main : lance l'application
 	 * @param args
@@ -81,14 +96,180 @@ public class Application implements CommandLineRunner{
 		
 		
 		/*========================================================================*/
-		/*============== Méthode de bases de la DAO (UserRepository) =============*/
+		/*============== Méthode de bases de la DAO (*Repository) =============*/
+		/*========================================================================*/
+		/*========================================================================*/
+		/*============== Tests sur les Méthode de AdresseRepository =============*/
 		/*========================================================================*/
 		/*____________________________ ajout d'une adressePersonne & adresseBien ___________________________*/
 		// définir l'adressePersonne à ajouter
 		AdressePersonne adresseP = new AdressePersonne("rue_P", "codePostal_P", "ville_P");
+		AdressePersonne adresseP1 = new AdressePersonne("rue_P1", "codePostal_P1", "ville_P1");
 		
 		// définir l'adresseBien à ajouter
 		AdresseBien adresseB = new AdresseBien("rue_B", "codePostal_B", "ville_B");
+		AdresseBien adresseB1 = new AdresseBien("rue_B1", "codePostal_B1", "ville_B1");
+		
+		adressePRepository.save(adresseP1);
+		adresseBRepository.save(adresseB1);
+		
+		/*____________________________ liste des adresses ___________________________*/
+		List<Adresse> listeAdresses = adresseRepository.findAll();
+		
+		System.out.println("Liste des adresses dans la bdd : ");
+		for (Adresse a : listeAdresses) {
+			System.out.println("\t > " + a.toString());
+		}
+		/*____________________________ liste des adresses Personnes ___________________________*/
+		List<AdressePersonne> listeAdressesPersonnes = adressePRepository.findAll();
+		
+		System.out.println("Liste des adressesPersonnes dans la bdd : ");
+		for (AdressePersonne a : listeAdressesPersonnes) {
+			System.out.println("\t > " + a.toString());
+		}
+		/*____________________________ liste des adresses Biens ___________________________*/
+		List<AdresseBien> listeAdressesBiens = adresseBRepository.findAll();
+		
+		System.out.println("Liste des adressesBiens dans la bdd : ");
+		for (AdresseBien a : listeAdressesBiens) {
+			System.out.println("\t > " + a.toString());
+		}
+		
+		/*____________________________ modif d'une adressePersonne & adresseBien ____________*/
+		adresseP1.setCodePostal("75009");
+		adresseB1.setCodePostal("75010");
+		adressePRepository.save(adresseP1);
+		adresseBRepository.save(adresseB1);
+		
+		/*____________________________ méthodes non crud sur adresse ____________*/
+		Adresse ad = adresseRepository.getAdresseById(1);
+		System.out.println("\t > " + ad.getIdAdresse() + " : " + ad.getRue() + ", " + ad.getCodePostal());
+		
+		ad = adresseRepository.getAdresseByRue("rue_B1");
+		System.out.println("GET BY RUE\n\t > " + ad.getIdAdresse() + " : " + ad.getRue() + ", " + ad.getCodePostal());
+		
+		List<Adresse> liste_ad = adresseRepository.getListeAdresseByCodePostal("75009");
+		for (Adresse a : liste_ad) {
+			System.out.println("\t > " + a.getIdAdresse() + " : " + a.getRue() + ", " + a.getCodePostal());
+		}
+		
+		liste_ad = adresseRepository.getListeAdresseByVille("ville_P");
+		for (Adresse a : liste_ad) {
+			System.out.println("\t > " + a.getIdAdresse() + " : " + a.getRue() + ", " + a.getCodePostal());
+		}
+		
+		/*____________________________ suppression d'une adressePersonne & adresseBien ____________*/
+		//suppression de l'entité par son id
+//		adressePRepository.deleteById(1);
+		
+		//suppression de l'entité
+//		adresseBRepository.delete(adresseB1);
+		
+		
+		
+		/*========================================================================*/
+		/*============== Tests sur les Méthode de AgentRepository ================*/
+		/*========================================================================*/
+		// définir les agents à ajouter
+//		Agent agent = new Agent("nom", "email", "motDePasse", true, null, null, null);
+//		Agent agent1 = new Agent("nom1", "email1", "motDePasse1", true, null);
+//				
+//		agentRepository.save(agent);
+//		agentRepository.save(agent1);
+//				
+//		/*____________________________ liste des agents ___________________________*/
+//		List<Agent> listeAgents = agentRepository.findAll();
+//			
+//		System.out.println("Liste des agents dans la bdd : ");
+//		for (Agent a : listeAgents) {
+//			System.out.println("\t > " + a.getIdentifiant() + " : " + a.toString() + ", " + a.getNom());
+//		}
+//		
+//				
+//		/*____________________________ modif d'un agent ____________*/
+//		Agent ag = agentRepository.getAgentById(1);
+//		System.out.println("\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
+//		Agent ag2 = agentRepository.getAgentById(2);
+//		System.out.println("\t > " + ag2.getIdentifiant() + " : " + ag2.getNom() + ", " + ag2.getAdresseP());
+//		
+//		ag.setNom("nomModifié");
+//		System.out.println("\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
+//		agentRepository.save(ag);
+//		
+//		
+//		/*____________________________ méthodes non crud sur agent ____________*/
+//		List<Agent> liste_ag = agentRepository.getAgentByNom("nom");
+//		for (Agent a : liste_ag) {
+//			System.out.println("GET BY NOM\n\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
+//		}
+//		
+//		liste_ag = agentRepository.getAgentByStatut(true);
+//		for (Agent a : liste_ag) {
+//			System.out.println("GET BY STATUT\n\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP() + ", " + ag.isStatut());
+//		}
+		
+				
+		/*____________________________ suppression d'un agent ____________*/
+		//suppression de l'entité par son id
+//		agentRepository.deleteById(1);
+				
+		//suppression de l'entité
+//		agentRepository.delete(ag2);
+		
+		
+		
+		
+		
+		
+		
+		/*========================================================================*/
+		/*============== Tests sur les Méthode de TerrainRepository ===============*/
+		/*========================================================================*/
+		// définir les terrains à ajouter
+		Terrain terrain = new Terrain(true, "offre", 15000.00, "standard", adresseB, "10/10/2020", "10/10/2020", null, null, 1230);
+		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "standard1", adresseB, "15/11/2020", "15/11/2020", null, null, 2000);
+				
+		terrainRepository.save(terrain);
+		terrainRepository.save(terrain1);
+				
+		/*____________________________ liste des terrains ___________________________*/
+		List<Terrain> listeTerrains = terrainRepository.findAll();
+			
+		System.out.println("Liste des terrains dans la bdd : ");
+		for (Terrain a : listeTerrains) {
+			System.out.println("\t > " + a.getId_bien() + " : " + a.toString() + ", " + a.getOffre() + ", " + a.getPrix());
+		}
+		
+				
+		/*____________________________ modif d'un terrain ____________*/
+		Terrain t = terrainRepository.getTerrainById(1);
+		System.out.println("\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
+		
+		t.setPrix(15500.00);
+		System.out.println("\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
+		terrainRepository.save(t);
+		
+		
+		/*____________________________ méthodes non crud sur terrain ____________*/
+		List<Terrain> liste_t = terrainRepository.getTerrainByOffre("offre1");
+		for (Terrain a : liste_t) {
+			System.out.println("GET BY OFFRE\n\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
+		}
+		
+		liste_t = terrainRepository.getTerrainByPrixMax(20000.00);
+		for (Terrain a : liste_t) {
+			System.out.println("GET BY PrixMax\n\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
+		}
+		
+				
+		/*____________________________ suppression d'un terrain ____________*/
+		//suppression de l'entité par son id
+//		terrainRepository.deleteById(1);
+				
+		//suppression de l'entité
+//		terrainRepository.delete(t);
+		
+		
 		
 		
 		
@@ -98,168 +279,138 @@ public class Application implements CommandLineRunner{
 		
 		
 		
+		
+		
+		
+		/*========================================================================*/
+		/*============== Tests sur les Méthode de ClientRepository ===============*/
+		/*========================================================================*/
 		/*____________________________ ajout d'un Client ___________________________*/
 		// définir le Client à ajouter
-		Client client1 = new Client("nom", "email", "motDePasse", true, adresseP, null, null);
-
-		
-		//ajout du client via la méthode save()
-		clientRepository.save(client1);
-		
-		
-		/*____________________________ liste des users ___________________________*/
-		List<Client> listeClients = clientRepository.findAll();
-		
-		System.out.println("Liste des clients dans la bdd : ");
-		for (Client c : listeClients) {
-			System.out.println("\t > " + c.getIdentifiant() + " : " + c.getNom());
-		}
-		
-		
-		/*______________________ récup d'un client via son id ______________________*/
-		/**
-		 * 		> utilisation de la méhode findById()
-		 * 				-> cette méthode retourne un type Optional<T>
-		 * 						-> Optional<T> : objet conteneur pouvant ou non contenir
-		 * 										 une valeur non null.
-		 * 
-		 * 										 si une valeur est présente, la méthode isPresent() renvoie 'true'
-		 * 										 et la méthode get() renvoie la valeur
-		 */
-		System.out.println("Récup d'un client via son id : ");
-		
-		Client clientId1 = null;
-		
-		Optional<Client> clientOpt = clientRepository.findById(1);
-		
-		if(clientOpt.isPresent()) {
-			clientId1 = clientOpt.get();
-			System.out.println("\t -> " + clientId1.getIdentifiant() + " : " + clientId1.getNom());
-		}
-		
-		
-		/*______________________ nombre de clients dans la bdd _____________________*/
-		System.out.println("Nombre de clients dans la bdd : ");
-		
-		Long nombreClientsBdd = clientRepository.count();
-		
-		System.out.println("\t > clients = " + nombreClientsBdd);
-		
-		
-		/*____________________________ modif d'un client ___________________________*/
-		/**
-		 * 		> JpaRepository ne définit pas de méthode pour la mise à jour
-		 * 
-		 * 		> pour la mise à jour, on va utiliser 2 méthodes :
-		 * 			
-		 * 			-> getOne(ID id) : permet de récupérer une réf vers l'entité (proxy)
-		 * 							sans faire de requete vers la bdd
-		 * 
-		 * 					-> sur cette réf, on peut définir ce qu'on veut
-		 * 			
-		 * 			-> save() : fera juste une instruction UPDATE vers la bdd
-		 */
-		System.out.println("Modif d'un client dans la bdd : ");
-		
-		Client clientUp = clientRepository.getClientById(1);
-		
-		clientUp.setNom("Geoffrey Turgeon");
-		
-		clientRepository.save(clientUp);
-		
-		
-		/*_________________________ suppression d'un client ________________________*/
-		/**
-		 * 		> pour la suppression, on peut utiliser 2 méthodes :
-		 * 			
-		 * 			-> deleteById
-		 * 			
-		 * 			-> delete 
-		 */
-		
-		//suppression de l'entité par son id
-//		userRepository.deleteById(1);
-		
-		//suppression de l'entité
-//		userRepository.delete(userUp);
-		
-		
-		
-		/*========================================================================*/
-		/*============ Méthode de requêtes de la DAO (UserRepository) ============*/
-		/*========================================================================*/
-		/*______________________ récup des users via le nom ______________________*/
-		System.out.println("Liste des Users by name (méthode de requête)");
-		
-		List<Client> listeClientsByName = clientRepository.getClientByNom("Geoffrey Turgeon");
-		
-		for (Client u : listeClientsByName) {
-			System.out.println("\t > " + u.getIdentifiant() + " : " + u.getNom());
-		}System.out.println();
-		
-		
-		/*_________________________ affichage du statut d'un client ________________________*/
-		System.out.println("Liste des Clients by statut (méthode de requête)");
-		
-		List<Client> listeClientsByStatut = clientRepository.getClientByStatut(true);
-		
-		for (Client u : listeClientsByStatut) {
-			System.out.println("\t > " + u.getIdentifiant() + " : " + u.getNom() + ", statut = " + u.isStatut());
-		}System.out.println();
-		
-		
-		/*_________________________ suppression d'un client ________________________*/
-		/**
-		 * 		> pour la suppression, on peut utiliser 2 méthodes :
-		 * 			
-		 * 			-> deleteById
-		 * 			
-		 * 			-> delete 
-		 */
-		
-		//suppression de l'entité par son id
-		clientRepository.deleteById(1);
-		
-		//suppression de l'entité
-//		userRepository.delete(userUp);
-		
-		
-		/*__________________ récup des clients via le nom et id ____________________*/
-//		System.out.println("Liste des Clients by nom et id (méthode de requête)");
+//		Client client1 = new Client("nom", "email", "motDePasse", true, adresseP, null, null);
+//
 //		
-//		for (Client u : clientRepository.findByNomAndIdentifiant("Slainie Bélair", 2)) {
+//		//ajout du client via la méthode save()
+//		clientRepository.save(client1);
+//		
+//		
+//		/*____________________________ liste des users ___________________________*/
+//		List<Client> listeClients = clientRepository.findAll();
+//		
+//		System.out.println("Liste des clients dans la bdd : ");
+//		for (Client c : listeClients) {
+//			System.out.println("\t > " + c.getIdentifiant() + " : " + c.getNom());
+//		}
+//		
+//		
+//		/*______________________ récup d'un client via son id ______________________*/
+//		/**
+//		 * 		> utilisation de la méhode findById()
+//		 * 				-> cette méthode retourne un type Optional<T>
+//		 * 						-> Optional<T> : objet conteneur pouvant ou non contenir
+//		 * 										 une valeur non null.
+//		 * 
+//		 * 										 si une valeur est présente, la méthode isPresent() renvoie 'true'
+//		 * 										 et la méthode get() renvoie la valeur
+//		 */
+//		System.out.println("Récup d'un client via son id : ");
+//		
+//		Client clientId1 = null;
+//		
+//		Optional<Client> clientOpt = clientRepository.findById(1);
+//		
+//		if(clientOpt.isPresent()) {
+//			clientId1 = clientOpt.get();
+//			System.out.println("\t -> " + clientId1.getIdentifiant() + " : " + clientId1.getNom());
+//		}
+//		
+//		
+//		/*______________________ nombre de clients dans la bdd _____________________*/
+//		System.out.println("Nombre de clients dans la bdd : ");
+//		
+//		Long nombreClientsBdd = clientRepository.count();
+//		
+//		System.out.println("\t > clients = " + nombreClientsBdd);
+//		
+//		
+//		/*____________________________ modif d'un client ___________________________*/
+//		/**
+//		 * 		> JpaRepository ne définit pas de méthode pour la mise à jour
+//		 * 
+//		 * 		> pour la mise à jour, on va utiliser 2 méthodes :
+//		 * 			
+//		 * 			-> getOne(ID id) : permet de récupérer une réf vers l'entité (proxy)
+//		 * 							sans faire de requete vers la bdd
+//		 * 
+//		 * 					-> sur cette réf, on peut définir ce qu'on veut
+//		 * 			
+//		 * 			-> save() : fera juste une instruction UPDATE vers la bdd
+//		 */
+//		System.out.println("Modif d'un client dans la bdd : ");
+//		
+//		Client clientUp = clientRepository.getClientById(1);
+//		
+//		clientUp.setNom("Geoffrey Turgeon");
+//		
+//		clientRepository.save(clientUp);
+//		
+//		
+//		/*_________________________ suppression d'un client ________________________*/
+//		/**
+//		 * 		> pour la suppression, on peut utiliser 2 méthodes :
+//		 * 			
+//		 * 			-> deleteById
+//		 * 			
+//		 * 			-> delete 
+//		 */
+//		
+//		//suppression de l'entité par son id
+////		userRepository.deleteById(1);
+//		
+//		//suppression de l'entité
+////		userRepository.delete(userUp);
+//		
+//		
+//		
+//		/*========================================================================*/
+//		/*============ Méthode de requêtes de la DAO (UserRepository) ============*/
+//		/*========================================================================*/
+//		/*______________________ récup des users via le nom ______________________*/
+//		System.out.println("Liste des Users by name (méthode de requête)");
+//		
+//		List<Client> listeClientsByName = clientRepository.getClientByNom("Geoffrey Turgeon");
+//		
+//		for (Client u : listeClientsByName) {
 //			System.out.println("\t > " + u.getIdentifiant() + " : " + u.getNom());
 //		}System.out.println();
-
-		
-		/*__________________ récup des users via le nom ou id ____________________*/
-//		System.out.println("Liste des Users by name ou id (méthode de requête)");
 //		
-//		for (User u : userRepository.findByNameOrId("Slainie Bélair", 1)) {
-//			System.out.println("\t > " + u.getId() + " : " + u.getName());
-//		}
-//		for (User u : userRepository.findByNameOrId("blabla", 2)) {
-//			System.out.println("\t > " + u.getId() + " : " + u.getName());
-//		}
-//		System.out.println();
-		
-		
-		
-		/*========================================================================*/
-		/*=========== Requêtes avec @Query de la DAO (UserRepository) ============*/
-		/*========================================================================*/
-		/*_______________________ récup d'un user via l' id ______________________*/
-//		System.out.println("Get user by id (requête @Query)");
 //		
-//		User u = userRepository.searchUserById(2);
-//		System.out.println("\t > " + u.getId() + " : " + u.getName());
-		
-		
-		/*_______________________ récup d'un user via l' id ______________________*/
-//		System.out.println("Get user by name (requête @Query)");
+//		/*_________________________ affichage du statut d'un client ________________________*/
+//		System.out.println("Liste des Clients by statut (méthode de requête)");
 //		
-//		u = userRepository.rechercherUserByNom("Slainie Bélair");
-//		System.out.println("\t > " + u.getId() + " : " + u.getName());
+//		List<Client> listeClientsByStatut = clientRepository.getClientByStatut(true);
+//		
+//		for (Client u : listeClientsByStatut) {
+//			System.out.println("\t > " + u.getIdentifiant() + " : " + u.getNom() + ", statut = " + u.isStatut());
+//		}System.out.println();
+//		
+//		
+//		/*_________________________ suppression d'un client ________________________*/
+//		/**
+//		 * 		> pour la suppression, on peut utiliser 2 méthodes :
+//		 * 			
+//		 * 			-> deleteById
+//		 * 			
+//		 * 			-> delete 
+//		 */
+		
+		//suppression de l'entité par son id
+//		clientRepository.deleteById(1);
+		
+		//suppression de l'entité
+//		userRepository.delete(userUp);
+		
+		
 		
 		
 		

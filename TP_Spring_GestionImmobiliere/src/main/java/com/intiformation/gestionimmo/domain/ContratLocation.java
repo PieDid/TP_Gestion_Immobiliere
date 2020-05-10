@@ -35,9 +35,9 @@ public class ContratLocation extends Contrat implements Serializable{
 	@Column(name = "garniture")
 	private String garniture;
 	
-	@JsonIgnore
-	@OneToOne(mappedBy = "contratLocation")
-	private Locataire locataire;	
+//	@JsonIgnore
+//	@OneToOne(mappedBy = "contratLocation")
+//	private Locataire locataire;	
 
 	/*_________________ ctors ________________*/
 	
@@ -61,15 +61,14 @@ public class ContratLocation extends Contrat implements Serializable{
 	 * @param garniture
 	 * @param locataire
 	 */
-	public ContratLocation(String date, Bien bien, Agent agent, Proprietaire proprietaire, double caution, double loyer,
-			double charge, String typeBail, String garniture, Locataire locataire) {
-		super(date, bien, agent, proprietaire);
+	public ContratLocation(String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client, double caution, double loyer,
+			double charge, String typeBail, String garniture) {
+		super(date, bien, agent, proprietaire, client);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
-		this.locataire = locataire;
 	}
 
 	/**
@@ -86,15 +85,14 @@ public class ContratLocation extends Contrat implements Serializable{
 	 * @param garniture
 	 * @param locataire
 	 */
-	public ContratLocation(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire,
-			double caution, double loyer, double charge, String typeBail, String garniture, Locataire locataire) {
-		super(idContrat, date, bien, agent, proprietaire);
+	public ContratLocation(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client,
+			double caution, double loyer, double charge, String typeBail, String garniture) {
+		super(idContrat, date, bien, agent, proprietaire, client);
 		this.caution = caution;
 		this.loyer = loyer;
 		this.charge = charge;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
-		this.locataire = locataire;
 	}
 
 	/*_________________ meths ________________*/
@@ -102,7 +100,7 @@ public class ContratLocation extends Contrat implements Serializable{
 	@Override
 	public String toString() {
 		return "ContratLocation " + super.toString() + ", caution=" + caution + ", loyer=" + loyer + ", charge=" + charge + ", typeBail="
-				+ typeBail + ", garniture=" + garniture + ", locataire=" + locataire + " ]";
+				+ typeBail + ", garniture=" + garniture + " ]";
 	}
 
 	/*__________________ G/S _________________*/
@@ -148,12 +146,4 @@ public class ContratLocation extends Contrat implements Serializable{
 		this.garniture = garniture;
 	}
 
-	public Locataire getLocataire() {
-		return locataire;
-	}
-
-	public void setLocataire(Locataire locataire) {
-		this.locataire = locataire;
-	}
-	
 } // end class

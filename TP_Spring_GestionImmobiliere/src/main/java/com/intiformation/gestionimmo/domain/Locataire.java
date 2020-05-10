@@ -31,6 +31,18 @@ public class Locataire extends Personne implements Serializable{
 	public String toString() {
 		return "Locataire [contratLocation=" + contratLocation + "]";
 	}
+
+
+	
+	//getters|setters
+	public ContratLocation getContratLocation() {
+		return contratLocation;
+	}
+
+	public void setContratLocation(ContratLocation contratLocation) {
+		this.contratLocation = contratLocation;
+	}
+	
 	
 	
 	

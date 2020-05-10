@@ -41,8 +41,8 @@ public class ContratVente extends Contrat implements Serializable{
 	 * @param prix
 	 * @param etat
 	 */
-	public ContratVente(String date, Bien bien, Agent agent, Proprietaire proprietaire, double prix, String etat) {
-		super(date, bien, agent, proprietaire);
+	public ContratVente(String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client, double prix, String etat) {
+		super(date, bien, agent, proprietaire, client);
 		this.prix = prix;
 		this.etat = etat;
 	}
@@ -57,9 +57,9 @@ public class ContratVente extends Contrat implements Serializable{
 	 * @param prix
 	 * @param etat
 	 */
-	public ContratVente(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire, double prix,
+	public ContratVente(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client, double prix,
 			String etat) {
-		super(idContrat, date, bien, agent, proprietaire);
+		super(idContrat, date, bien, agent, proprietaire, client);
 		this.prix = prix;
 		this.etat = etat;
 	}

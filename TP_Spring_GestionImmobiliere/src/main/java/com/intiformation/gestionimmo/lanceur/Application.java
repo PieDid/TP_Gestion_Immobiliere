@@ -100,7 +100,7 @@ public class Application implements CommandLineRunner{
 		
 		/*____________________________ ajout d'un Client ___________________________*/
 		// définir le Client à ajouter
-		Client client1 = new Client("nom", "email", "motDePasse", true, adresseP, null);
+		Client client1 = new Client("nom", "email", "motDePasse", true, adresseP, null, null);
 
 		
 		//ajout du client via la méthode save()

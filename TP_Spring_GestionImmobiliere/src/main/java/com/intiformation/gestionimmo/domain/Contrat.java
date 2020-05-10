@@ -59,6 +59,12 @@ public class Contrat implements Serializable{
 	private Proprietaire proprietaire;
 	
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "client_id", referencedColumnName="id_personne")
+	private Client client;
+	
+	
 	/*_________________ ctors ________________*/
 	
 	/**
@@ -73,12 +79,13 @@ public class Contrat implements Serializable{
 	 * @param agent
 	 * @param proprietaire
 	 */
-	public Contrat(String date, Bien bien, Agent agent, Proprietaire proprietaire) {
+	public Contrat(String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client) {
 		super();
 		this.date = date;
 		this.bien = bien;
 		this.agent = agent;
 		this.proprietaire = proprietaire;
+		this.client = client;
 	}
 
 	/**
@@ -89,13 +96,14 @@ public class Contrat implements Serializable{
 	 * @param agent
 	 * @param proprietaire
 	 */
-	public Contrat(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire) {
+	public Contrat(int idContrat, String date, Bien bien, Agent agent, Proprietaire proprietaire, Client client) {
 		super();
 		this.idContrat = idContrat;
 		this.date = date;
 		this.bien = bien;
 		this.agent = agent;
 		this.proprietaire = proprietaire;
+		this.client = client;
 	}
 
 
@@ -107,7 +115,8 @@ public class Contrat implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "[ idContrat=" + idContrat + ", date=" + date + ", bien=" + bien + ", agent=" + agent + ", proprietaire=" + proprietaire;
+		return "Contrat [idContrat=" + idContrat + ", date=" + date + ", bien=" + bien + ", agent=" + agent
+				+ ", proprietaire=" + proprietaire + ", client=" + client + "]";
 	}
 
 	/*__________________ G/S _________________*/
@@ -152,5 +161,14 @@ public class Contrat implements Serializable{
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 	
 } // end class

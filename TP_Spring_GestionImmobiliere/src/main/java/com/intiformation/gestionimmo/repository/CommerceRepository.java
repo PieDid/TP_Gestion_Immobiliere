@@ -35,6 +35,6 @@ public interface CommerceRepository extends JpaRepository<Commerce, Integer> {
 	@Query("SELECT c FROM commerce c WHERE c.superficie >= ?1")
 	public List<Commerce> getCommerceBySuperficie (int superficie);
 	
-	@Query("SELECT c FROM commerce c WHERE c.nombre_pieces = ?1")
+	@Query("SELECT c FROM commerce c WHERE c.nbPieces = ?1")
 	public List<Commerce> getCommerceByPieces (int nbPieces);
 }

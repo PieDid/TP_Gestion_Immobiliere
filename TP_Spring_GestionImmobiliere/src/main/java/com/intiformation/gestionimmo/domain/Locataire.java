@@ -1,6 +1,7 @@
 package com.intiformation.gestionimmo.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -26,10 +27,20 @@ public class Locataire extends Personne implements Serializable{
 	}
 	
 	
+	
+	
+	public Locataire(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, ContratLocation contratLocation) {
+		super(nom, email, motDePasse, statut, adresseP);
+		this.contratLocation = contratLocation;
+	}
+
+
+
+
 	/* Méthodes */
 	@Override
 	public String toString() {
-		return "Locataire [contratLocation=" + contratLocation + "]";
+		return "Locataire [" + super.toString() + ", contratLocation=" + contratLocation + "]";
 	}
 
 

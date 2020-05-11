@@ -47,7 +47,7 @@ public class Client extends Personne implements Serializable{
 	//méthodes
 	@Override
 	public String toString() {
-		return "Client [liste_visites=" + liste_visites + ", liste_contrats=" + liste_contrats + "]";
+		return "Client [" + super.toString() + ", liste_visites=" + liste_visites + ", liste_contrats=" + liste_contrats + "]";
 	}
 
 

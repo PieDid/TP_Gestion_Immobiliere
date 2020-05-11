@@ -76,6 +76,9 @@ public class Application implements CommandLineRunner{
 	private AdministrateurRepository administrateurRepository;
 	
 	@Autowired
+	private LocataireRepository locataireRepository;
+	
+	@Autowired
 	private PersonneRepository personneRepository;
 	
 	/**
@@ -579,6 +582,67 @@ public class Application implements CommandLineRunner{
 				
 		//suppression de l'entité
 		personneRepository.delete(person);
+		
+		
+		
+		
+		
+		
+		
+		
+		/*========================================================================*/
+		/*========== Tests sur les Méthode de LocataireRepository ===========*/
+		/*========================================================================*/
+		// définir les adressePersonne pour locataires à ajouter
+		AdressePersonne adresseP10 = new AdressePersonne("rue_P10", "codePostal_P10", "ville_P10");
+		AdressePersonne adresseP11 = new AdressePersonne("rue_P11", "codePostal_P11", "ville_P11");
+		adressePRepository.save(adresseP10);
+		adressePRepository.save(adresseP11);
+		
+		// définir les locataires à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
+		Locataire locataire = new Locataire("nomLocataire", "email", "motDePasse", true, null, null);
+		Locataire locataire1 = new Locataire("nomLocataire1", "email1", "motDePasse1", true, null, null);
+				
+		locataireRepository.save(locataire);
+		locataireRepository.save(locataire1);
+				
+		/*____________________________ liste des locataires ___________________________*/
+		List<Locataire> listeLocataires = locataireRepository.findAll();
+			
+		System.out.println("Liste des locataires dans la bdd : ");
+		for (Locataire l : listeLocataires) {
+			System.out.println("\t > " + l.getIdentifiant() + " : " + l.getNom());
+		}
+		
+				
+		/*____________________________ modif d'un locataire ____________*/
+		Locataire locatair = locataireRepository.getLocataireById(11);
+		System.out.println("MODIF LOCATAIRE :\n\t > " + locatair.getIdentifiant() + " : " + locatair.getNom() + ", " + locatair.getAdresseP());
+		
+		locatair.setNom("nomAdmin_modifié");
+		System.out.println("\t > " + locatair.getIdentifiant() + " : " + locatair.getNom() + ", " + locatair.getAdresseP());
+		locataireRepository.save(locatair);
+		
+		
+		/*____________________________ méthodes non crud sur locataire ____________*/
+		List<Locataire> liste_locataire = locataireRepository.getLocataireByNom("nomLocataire");
+		for (Locataire l : liste_locataire) {
+			System.out.println("GET BY NOM\n\t > " + l.getIdentifiant() + " : " + l.getNom() + ", " + l.getAdresseP());
+		}
+		
+		liste_locataire = locataireRepository.getLocataireByStatut(true);
+		for (Locataire l : liste_locataire) {
+			System.out.println("GET BY STATUT\n\t > " + l.getIdentifiant() + " : " + l.getNom() + ", " + l.getAdresseP() + ", " + l.isStatut());
+		}
+		
+				
+		/*____________________________ suppression d'un locataire ____________*/
+		//suppression de l'entité par son id
+		locataireRepository.deleteById(10);
+				
+		//suppression de l'entité
+		locataireRepository.delete(locatair);
+		
 		
 		
 		

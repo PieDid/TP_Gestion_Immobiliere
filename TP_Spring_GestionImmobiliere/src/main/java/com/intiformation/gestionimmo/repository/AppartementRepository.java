@@ -37,8 +37,8 @@ public interface AppartementRepository extends JpaRepository<Appartement, Intege
 	@Query("SELECT h FROM appartement h WHERE h.standard = ?1")
 	public List<Appartement> getAppartementByStandard(String standard);
 	
-	@Query("SELECT h FROM appartement h WHERE h.adresseBien.idAdresse = ?1")
-	public List<Appartement> getAppartementByIdAdresseBien(int idAdresse);
+//	@Query("SELECT h FROM appartement h WHERE h.adresseBien.idAdresse = ?1")
+//	public List<Appartement> getAppartementByIdAdresseBien(int idAdresse);
 	
 	@Query("SELECT h FROM appartement h WHERE h.dateSoumission = ?1")
 	public List<Appartement> getAppartementByDateSoumission(String dateSoumission);
@@ -49,14 +49,14 @@ public interface AppartementRepository extends JpaRepository<Appartement, Intege
 	@Query("SELECT h FROM appartement h WHERE h.revenu = ?1")
 	public List<Appartement> getAppartementByRevenu(int revenu);
 	
-	@Query("SELECT h FROM appartement h WHERE h.visite.id_visite = ?1")
-	public List<Appartement> getAppartementByVisite(int id_visite);
-	
-	@Query("SELECT h FROM appartement h WHERE h.contrat.id_contrat = ?1")
-	public List<Appartement> getAppartementByIdContrat(int id_contrat);
-	
-	@Query("SELECT h FROM appartement h WHERE h.proprietaires.identifiant = ?1")
-	public List<Appartement> getAppartementByIdProprietaire(int id_personne);
+//	@Query("SELECT h FROM appartement h WHERE h.visite.id_visite = ?1")
+//	public List<Appartement> getAppartementByVisite(int id_visite);
+//	
+//	@Query("SELECT h FROM appartement h WHERE h.contrat.id_contrat = ?1")
+//	public List<Appartement> getAppartementByIdContrat(int id_contrat);
+//	
+//	@Query("SELECT h FROM appartement h WHERE h.proprietaires.identifiant = ?1")
+//	public List<Appartement> getAppartementByIdProprietaire(int id_personne);
 	
 	@Query("SELECT h FROM appartement h WHERE h.superficie = ?1")
 	public List<Appartement> getAppartementBySuperficie(int superficie);

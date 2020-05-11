@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.intiformation.gestionimmo.domain.Appartement;
 import com.intiformation.gestionimmo.domain.Maison;
 import com.intiformation.gestionimmo.repository.MaisonRepository;
 
@@ -69,4 +70,47 @@ public class MaisonRest {
 		return maisonRepo.getMaisonByOffre(pOffre);
 	
 	}//end getAllByOffre
+	
+	@RequestMapping(value="/maisonList/prix /{prix }", method=RequestMethod.GET)
+	public List<Maison> listemaisonByPrix(@PathVariable("prix ") double pPrix ) {
+		return maisonRepo.getMaisonByPrixMax(pPrix);
+	
+	}//end listemaisonByPrix
+	
+	@RequestMapping(value="/maisonList/dateSoumission/{date}", method=RequestMethod.GET)
+	public List<Maison> listemaisonByDateSoumission(@PathVariable("date") String pDate) {
+		return maisonRepo.getMaisonByDateSoumission(pDate);
+	
+	}//end listemaisonByDateSoumission
+	
+	@RequestMapping(value="/maisonList/dateDisposition/{date}", method=RequestMethod.GET)
+	public List<Maison> listemaisonByDateDisposition(@PathVariable("date") String pDate) {
+		return maisonRepo.getMaisonByDateDisposition(pDate);
+	
+	}//end listemaisonByDateDisposition
+	
+	@RequestMapping(value="/maisonList/superficie/{superficie}", method=RequestMethod.GET)
+	public List<Maison> listemaisonBySuperficie(@PathVariable("superficie") int pSuperficie) {
+		return maisonRepo.getMaisonBySuperficie(pSuperficie);
+	
+	}//end listemaisonBySuperficie
+	
+	
+//	@RequestMapping(value="/maisonList/visite/{idVisite}", method=RequestMethod.GET)
+//	public List<Maison> listemaisonByVisite(@PathVariable("idVisite") int pIdVisite) {
+//		return maisonRepo.getMaisonByVisite(pIdVisite);
+//	
+//	}//end listemaisonByVisite
+//	
+//	@RequestMapping(value="/maisonList/contrat/{idContrat}", method=RequestMethod.GET)
+//	public List<Maison> listemaisonByContrat(@PathVariable("idContrat") int pIdContrat) {
+//		return maisonRepo.getMaisonByIdContrat(pIdContrat);
+//	
+//	}//end listemaisonByContrat
+//	
+//	@RequestMapping(value="/maisonList/proprietaires/{idProprietaire}", method=RequestMethod.GET)
+//	public List<Maison> listemaisonByProprietaire(@PathVariable("idProprietaire") int pIdProprietaire) {
+//		return maisonRepo.getMaisonByIdProprietaire(pIdProprietaire);
+//	
+//	}//end listemaisonByContrat
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiformation.gestionimmo.domain.Habitation;
 import com.intiformation.gestionimmo.domain.Studio;
 import com.intiformation.gestionimmo.repository.StudioRepository;
 
@@ -22,6 +23,11 @@ public class StudioRest {
 	@Autowired
 	private StudioRepository studioRepo;
 	
+	
+	public void setStudioRepo(StudioRepository studioRepo) {
+		this.studioRepo = studioRepo;
+	}
+
 	@RequestMapping(value="/studioList", method=RequestMethod.GET)
 	public List<Studio> Liststudio() {
 		
@@ -64,10 +70,53 @@ public class StudioRest {
 	}//end delete
 	
 	
-	
 	@RequestMapping(value="/studioList/{offre}", method=RequestMethod.GET)
 	public List<Studio> listestudioByOffre(@PathVariable("offre") String pOffre) {
 		return studioRepo.getStudioByOffre(pOffre);
 	
 	}//end getAllByOffre
+	
+	@RequestMapping(value="/studioList/prix /{prix }", method=RequestMethod.GET)
+	public List<Studio> listestudioByPrix(@PathVariable("prix ") double pPrix ) {
+		return studioRepo.getStudioByPrixMax(pPrix);
+	
+	}//end listestudioByPrix
+	
+	@RequestMapping(value="/studioList/dateSoumission/{date}", method=RequestMethod.GET)
+	public List<Studio> listestudioByDateSoumission(@PathVariable("date") String pDate) {
+		return studioRepo.getStudioByDateSoumission(pDate);
+	
+	}//end listestudioByDateSoumission
+	
+	@RequestMapping(value="/studioList/dateDisposition/{date}", method=RequestMethod.GET)
+	public List<Studio> listestudioByDateDisposition(@PathVariable("date") String pDate) {
+		return studioRepo.getStudioByDateDisposition(pDate);
+	
+	}//end listestudioByDateDisposition
+	
+	@RequestMapping(value="/studioList/superficie/{superficie}", method=RequestMethod.GET)
+	public List<Studio> listestudioBySuperficie(@PathVariable("superficie") int pSuperficie) {
+		return studioRepo.getStudioBySuperficie(pSuperficie);
+	
+	}//end listestudioBySuperficie
+	
+	
+//	@RequestMapping(value="/studioList/visite/{idVisite}", method=RequestMethod.GET)
+//	public List<Studio> listestudioByVisite(@PathVariable("idVisite") int pIdVisite) {
+//		return studioRepo.getStudioByVisite(pIdVisite);
+//	
+//	}//end listestudioByVisite
+//	
+//	@RequestMapping(value="/studioList/contrat/{idContrat}", method=RequestMethod.GET)
+//	public List<Studio> listehstudioByContrat(@PathVariable("idContrat") int pIdContrat) {
+//		return studioRepo.getStudioByIdContrat(pIdContrat);
+//	
+//	}//end listestudioByContrat
+//	
+//	@RequestMapping(value="/studioList/proprietaires/{idProprietaire}", method=RequestMethod.GET)
+//	public List<Studio> listestudioByProprietaire(@PathVariable("idProprietaire") int pIdProprietaire) {
+//		return studioRepo.getStudioByIdProprietaire(pIdProprietaire);
+//	
+//	}//end listestudioByContrat
+	
 }

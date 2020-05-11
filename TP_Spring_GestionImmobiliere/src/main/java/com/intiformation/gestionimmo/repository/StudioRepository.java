@@ -23,7 +23,7 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 	 */
 	
 	@Query("SELECT h FROM studio h WHERE h.id_bien = ?1")
-	public Studio getStudioById(int idCommerciaux);
+	public Studio getStudioById(int idBien);
 	
 	@Query("SELECT h FROM studio h WHERE h.statut = ?1")
 	public Studio getStudioByStatut (boolean statut);
@@ -37,8 +37,8 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 	@Query("SELECT h FROM studio h WHERE h.standard = ?1")
 	public List<Studio> getStudioByStandard(String standard);
 	
-	@Query("SELECT h FROM studio h WHERE h.adresseBien.idAdresse = ?1")
-	public List<Studio> geStudioByIdAdresseBien(int idAdresse);
+//	@Query("SELECT h FROM studio h WHERE h.adresseBien.idAdresse = ?1")
+//	public List<Studio> geStudioByIdAdresseBien(int idAdresse);
 	
 	@Query("SELECT h FROM studio h WHERE h.dateSoumission = ?1")
 	public List<Studio> getStudioByDateSoumission(String dateSoumission);
@@ -49,14 +49,14 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 	@Query("SELECT h FROM studio h WHERE h.revenu = ?1")
 	public List<Studio> getStudioByRevenu(int revenu);
 	
-	@Query("SELECT h FROM studio h WHERE h.visite.id_visite = ?1")
-	public List<Studio> getStudioByVisite(int id_visite);
-	
-	@Query("SELECT h FROM studio h WHERE h.contrat.id_contrat = ?1")
-	public List<Studio> getStudioByIdContrat(int id_contrat);
-	
-	@Query("SELECT h FROM studio h WHERE h.proprietaires.identifiant = ?1")
-	public List<Studio> getStudioByIdProprietaire(int id_personne);
+//	@Query("SELECT h FROM studio h WHERE h.visite.id_visite = ?1")
+//	public List<Studio> getStudioByVisite(int id_visite);
+//	
+//	@Query("SELECT h FROM studio h WHERE h.contrat.id_contrat = ?1")
+//	public List<Studio> getStudioByIdContrat(int id_contrat);
+//	
+//	@Query("SELECT h FROM studio h WHERE h.proprietaires.identifiant = ?1")
+//	public List<Studio> getStudioByIdProprietaire(int id_personne);
 	
 	@Query("SELECT h FROM studio h WHERE h.superficie = ?1")
 	public List<Studio> getStudioBySuperficie(int superficie);

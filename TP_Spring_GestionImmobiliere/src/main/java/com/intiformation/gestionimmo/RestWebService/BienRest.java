@@ -22,6 +22,12 @@ public class BienRest {
 	@Autowired
 	private BienRepository bienRepo;
 	
+	
+	public void setBienRepo(BienRepository bienRepo) {
+		this.bienRepo = bienRepo;
+	}
+
+
 	@RequestMapping(value="/bienList", method=RequestMethod.GET)
 	public List<Bien> ListBien() {
 		
@@ -64,14 +70,28 @@ public class BienRest {
 	}//end delete
 	
 	
-	
-	@RequestMapping(value="/bienList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/bienList/offre/{offre}", method=RequestMethod.GET)
 	public List<Bien> listebienByOffre(@PathVariable("offre") String pOffre) {
 		return bienRepo.getBienByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
-	
-	
+//	@RequestMapping(value="/bienList/visite/{idVisite}", method=RequestMethod.GET)
+//	public List<Bien> listebienByVisite(@PathVariable("idVisite") int pIdVisite) {
+//		return bienRepo.getBienByVisite(pIdVisite);
+//	
+//	}//end listebienByVisite
+//	
+//	@RequestMapping(value="/bienList/contrat/{idContrat}", method=RequestMethod.GET)
+//	public List<Bien> listebienByContrat(@PathVariable("idContrat") int pIdContrat) {
+//		return bienRepo.getBienByIdContrat(pIdContrat);
+//	
+//	}//end listebienByContrat
+//	
+//	@RequestMapping(value="/bienList/proprietaires/{idProprietaire}", method=RequestMethod.GET)
+//	public List<Bien> listebienByProprietaire(@PathVariable("idProprietaire") int pIdProprietaire) {
+//		return bienRepo.getBienByIdProprietaire(pIdProprietaire);
+//	
+//	}//end listebienByContrat
 
 }

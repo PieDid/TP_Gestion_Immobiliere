@@ -27,7 +27,7 @@ public interface BienRepository extends JpaRepository<Bien, Integer>{
 	@Query("SELECT b FROM bien b WHERE b.statut = ?1")
 	public List<Bien> getBienByStatut(boolean statut);
 	
-	@Query("SELECT b FROM bien b WHERE b.prix = ?1")
+	@Query("SELECT b FROM bien b WHERE b.offre = ?1")
 	public List<Bien> getBienByOffre(String offre);
 	
 	@Query("SELECT b FROM bien b WHERE b.standard = ?1")
@@ -45,14 +45,14 @@ public interface BienRepository extends JpaRepository<Bien, Integer>{
 	@Query("SELECT b FROM bien b WHERE b.revenu = ?1")
 	public List<Bien> getBienByRevenu(int revenu);
 	
-	@Query("SELECT b FROM bien b WHERE b.visite.id_visite = ?1")
-	public List<Bien> getBienByVisite(int id_visite);
-	
-	@Query("SELECT b FROM bien b WHERE b.contrat.id_contrat = ?1")
-	public List<Bien> getBienByIdContrat(int id_contrat);
-	
-	@Query("SELECT b FROM bien b WHERE b.proprietaires.id_identifiant = ?1")
-	public List<Bien> getBienByIdProprietaire(int id_personne);
+//	@Query("SELECT b FROM bien b WHERE b.visite.id_visite = ?1")
+//	public List<Bien> getBienByVisite(int id_visite);
+//	
+//	@Query("SELECT b FROM bien b WHERE b.contrat.idContrat = ?1")
+//	public List<Bien> getBienByIdContrat(int id_contrat);
+//	
+//	@Query("SELECT b FROM bien b WHERE b.proprietaires.id_identifiant = ?1")
+//	public List<Bien> getBienByIdProprietaire(int id_personne);
 	
 
 }

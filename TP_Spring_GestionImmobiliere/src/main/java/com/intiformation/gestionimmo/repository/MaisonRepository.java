@@ -38,8 +38,8 @@ public interface MaisonRepository extends JpaRepository<Maison, Integer> {
 	@Query("SELECT h FROM maison h WHERE h.standard = ?1")
 	public List<Maison> getMaisonByStandard(String standard);
 	
-	@Query("SELECT h FROM maison h WHERE h.adresseBien.idAdresse = ?1")
-	public List<Maison> getMaisonByIdAdresseBien(int idAdresse);
+//	@Query("SELECT h FROM maison h WHERE h.adresseBien.idAdresse = ?1")
+//	public List<Maison> getMaisonByIdAdresseBien(int idAdresse);
 	
 	@Query("SELECT h FROM maison h WHERE h.dateSoumission = ?1")
 	public List<Maison> getMaisonByDateSoumission(String dateSoumission);
@@ -50,14 +50,14 @@ public interface MaisonRepository extends JpaRepository<Maison, Integer> {
 	@Query("SELECT h FROM maison h WHERE h.revenu = ?1")
 	public List<Maison> getMaisonByRevenu(int revenu);
 	
-	@Query("SELECT h FROM maison h WHERE h.visite.id_visite = ?1")
-	public List<Maison> getMaisonByVisite(int id_visite);
-	
-	@Query("SELECT h FROM maison h WHERE h.contrat.id_contrat = ?1")
-	public List<Maison> getMaisonByIdContrat(int id_contrat);
-	
-	@Query("SELECT h FROM maison h WHERE h.proprietaires.identifiant = ?1")
-	public List<Maison> getMaisonByIdProprietaire(int id_personne);
+//	@Query("SELECT h FROM maison h WHERE h.visite.id_visite = ?1")
+//	public List<Maison> getMaisonByVisite(int id_visite);
+//	
+//	@Query("SELECT h FROM maison h WHERE h.contrat.id_contrat = ?1")
+//	public List<Maison> getMaisonByIdContrat(int id_contrat);
+//	
+//	@Query("SELECT h FROM maison h WHERE h.proprietaires.identifiant = ?1")
+//	public List<Maison> getMaisonByIdProprietaire(int id_personne);
 	
 	@Query("SELECT h FROM maison h WHERE h.superficie = ?1")
 	public List<Maison> getMaisonBySuperficie(int superficie);

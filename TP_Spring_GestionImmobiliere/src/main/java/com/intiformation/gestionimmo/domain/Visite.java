@@ -71,26 +71,28 @@ public class Visite implements Serializable{
 
 	public Visite(String date, String heure) {
 		super();
-		date = date;
-		heure = heure;
+		this.date = date;
+		this.heure = heure;
 	}
 
-	public Visite(String date, String heure, Bien bien, Agent agent, Proprietaire proprietaire) {
+	public Visite(Agent agent, Bien bien, Client client, String date, String heure, Proprietaire proprietaire) {
 		super();
-		date = date;
-		heure = heure;
+		this.date = date;
+		this.heure = heure;
 		this.bien = bien;
 		this.agent = agent;
+		this.client = client;
 		this.proprietaire = proprietaire;
 	}
 
-	public Visite(int idVisite, String date, String heure, Bien bien, Agent agent, Proprietaire proprietaire) {
+	public Visite(int idVisite, Agent agent, Bien bien, Client client, String date, String heure, Proprietaire proprietaire) {
 		super();
 		this.id_visite = idVisite;
-		date = date;
-		heure = heure;
+		this.date = date;
+		this.heure = heure;
 		this.bien = bien;
 		this.agent = agent;
+		this.client = client;
 		this.proprietaire = proprietaire;
 	}
 	
@@ -109,7 +111,7 @@ public class Visite implements Serializable{
 	}
 
 	public void setDate(String date) {
-		date = date;
+		this.date = date;
 	}
 
 	public String getHeure() {
@@ -117,7 +119,7 @@ public class Visite implements Serializable{
 	}
 
 	public void setHeure(String heure) {
-		heure = heure;
+		this.heure = heure;
 	}
 
 	public Bien getBien() {

@@ -31,7 +31,7 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 	@Query("SELECT h FROM studio h WHERE h.offre = ?1")
 	public List<Studio> getStudioByOffre (String offre);
 	
-	@Query("SELECT h FROM studio h WHERE h.prix = ?1")
+	@Query("SELECT h FROM studio h WHERE h.prix <= ?1")
 	public List<Studio> getStudioByPrixMax (double prix);
 	
 	@Query("SELECT h FROM studio h WHERE h.standard = ?1")
@@ -58,7 +58,7 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 //	@Query("SELECT h FROM studio h WHERE h.proprietaires.identifiant = ?1")
 //	public List<Studio> getStudioByIdProprietaire(int id_personne);
 	
-	@Query("SELECT h FROM studio h WHERE h.superficie = ?1")
+	@Query("SELECT h FROM studio h WHERE h.superficie >= ?1")
 	public List<Studio> getStudioBySuperficie(int superficie);
 	
 }

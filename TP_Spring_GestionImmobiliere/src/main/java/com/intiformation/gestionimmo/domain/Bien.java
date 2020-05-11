@@ -69,7 +69,7 @@ public class Bien implements Serializable{
 	}
 	
 	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
-			List<Client> listeVisiteurs, Contrat contrat) {
+			List<Visite> listeVisiteurs, Contrat contrat) {
 		super();
 		this.statut = statut;
 		this.offre = offre;
@@ -83,7 +83,7 @@ public class Bien implements Serializable{
 	}
 
 	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
-			int revenu, List<Client> listeVisiteurs, Contrat contrat) {
+			int revenu, List<Visite> listeVisiteurs, Contrat contrat) {
 		super();
 		this.statut = statut;
 		this.offre = offre;

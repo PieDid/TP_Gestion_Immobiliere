@@ -31,7 +31,7 @@ public interface AppartementRepository extends JpaRepository<Appartement, Intege
 	@Query("SELECT h FROM appartement h WHERE h.offre = ?1")
 	public List<Appartement> getAppartementByOffre (String offre);
 	
-	@Query("SELECT h FROM appartement h WHERE h.prix = ?1")
+	@Query("SELECT h FROM appartement h WHERE h.prix <= ?1")
 	public List<Appartement> getAppartementByPrixMax (double prix);
 	
 	@Query("SELECT h FROM appartement h WHERE h.standard = ?1")
@@ -58,6 +58,6 @@ public interface AppartementRepository extends JpaRepository<Appartement, Intege
 //	@Query("SELECT h FROM appartement h WHERE h.proprietaires.identifiant = ?1")
 //	public List<Appartement> getAppartementByIdProprietaire(int id_personne);
 	
-	@Query("SELECT h FROM appartement h WHERE h.superficie = ?1")
+	@Query("SELECT h FROM appartement h WHERE h.superficie >= ?1")
 	public List<Appartement> getAppartementBySuperficie(int superficie);
 }

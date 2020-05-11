@@ -32,7 +32,7 @@ public interface MaisonRepository extends JpaRepository<Maison, Integer> {
 	@Query("SELECT h FROM maison h WHERE h.offre = ?1")
 	public List<Maison> getMaisonByOffre (String offre);
 	
-	@Query("SELECT h FROM maison h WHERE h.prix = ?1")
+	@Query("SELECT h FROM maison h WHERE h.prix <= ?1")
 	public List<Maison> getMaisonByPrixMax (double prix);
 	
 	@Query("SELECT h FROM maison h WHERE h.standard = ?1")
@@ -59,7 +59,7 @@ public interface MaisonRepository extends JpaRepository<Maison, Integer> {
 //	@Query("SELECT h FROM maison h WHERE h.proprietaires.identifiant = ?1")
 //	public List<Maison> getMaisonByIdProprietaire(int id_personne);
 	
-	@Query("SELECT h FROM maison h WHERE h.superficie = ?1")
+	@Query("SELECT h FROM maison h WHERE h.superficie >= ?1")
 	public List<Maison> getMaisonBySuperficie(int superficie);
 	
 }

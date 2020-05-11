@@ -179,52 +179,52 @@ public class Application implements CommandLineRunner{
 		
 		
 		
-//		/*========================================================================*/
-//		/*============== Tests sur les Méthode de TerrainRepository ===============*/
-//		/*========================================================================*/
-//		// définir les terrains à ajouter
-//		Terrain terrain = new Terrain(true, "offre", 15000.00, "standard", adresseB, "10/10/2020", "10/10/2020", null, null, 1230);
-//		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "standard1", adresseB, "15/11/2020", "15/11/2020", null, null, 2000);
-//				
-//		terrainRepository.save(terrain);
-//		terrainRepository.save(terrain1);
-//				
-//		/*____________________________ liste des terrains ___________________________*/
-//		List<Terrain> listeTerrains = terrainRepository.findAll();
-//			
-//		System.out.println("Liste des terrains dans la bdd : ");
-//		for (Terrain a : listeTerrains) {
-//			System.out.println("\t > " + a.getId_bien() + " : " + a.toString() + ", " + a.getOffre() + ", " + a.getPrix());
-//		}
-//		
-//				
-//		/*____________________________ modif d'un terrain ____________*/
-//		Terrain t = terrainRepository.getTerrainById(1);
-//		System.out.println("\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
-//		
-//		t.setPrix(15500.00);
-//		System.out.println("\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
-//		terrainRepository.save(t);
-//		
-//		
-//		/*____________________________ méthodes non crud sur terrain ____________*/
-//		List<Terrain> liste_t = terrainRepository.getTerrainByOffre("offre1");
-//		for (Terrain a : liste_t) {
-//			System.out.println("GET BY OFFRE\n\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
-//		}
-//		
-//		liste_t = terrainRepository.getTerrainByPrixMax(20000.00);
-//		for (Terrain a : liste_t) {
-//			System.out.println("GET BY PrixMax\n\t > " + t.getId_bien() + " : " + t.getOffre() + ", " + t.getPrix());
-//		}
-//		
-//				
-//		/*____________________________ suppression d'un terrain ____________*/
-//		//suppression de l'entité par son id
-////		terrainRepository.deleteById(1);
-//				
-//		//suppression de l'entité
-////		terrainRepository.delete(t);
+		/*========================================================================*/
+		/*============== Tests sur les Méthode de TerrainRepository ===============*/
+		/*========================================================================*/
+		// définir les terrains à ajouter
+		Terrain terrain = new Terrain(true, "offre", 15000.00, "standard", null, "10/10/2020", "10/10/2020", null, null, 1230);
+		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "standard1", null, "15/11/2020", "15/11/2020", null, null, 2000);
+				
+		terrainRepository.save(terrain);
+		terrainRepository.save(terrain1);
+				
+		/*____________________________ liste des terrains ___________________________*/
+		List<Terrain> listeTerrains = terrainRepository.findAll();
+			
+		System.out.println("Liste des terrains dans la bdd : ");
+		for (Terrain a : listeTerrains) {
+			System.out.println("\t > " + a.getId_bien() + " : \tOffre :" + a.getOffre() + ", " + a.getPrix() + "€ , Superficie : " + a.getSuperficie() + " Ares");
+		}
+		
+				
+		/*____________________________ modif d'un terrain ____________*/
+		Terrain t = terrainRepository.getTerrainById(2);
+		System.out.println("MODIF TERRAIN\n\t > " + t.getId_bien() + " : \tOffre :" + t.getOffre() + ", " + t.getPrix() + "€ , Superficie : " + t.getSuperficie() + " Ares");
+		
+		t.setPrix(17500.00);
+		System.out.println("\t > " + t.getId_bien() + " : \tOffre :" + t.getOffre() + ", " + t.getPrix() + "€ , Superficie : " + t.getSuperficie() + " Ares");
+		terrainRepository.save(t);
+		
+		
+		/*____________________________ méthodes non crud sur terrain ____________*/
+		List<Terrain> liste_t = terrainRepository.getTerrainByOffre("offre1");
+		for (Terrain a : liste_t) {
+			System.out.println("GET BY OFFRE\n\t > " + a.getId_bien() + " : \tOffre :" + a.getOffre() + ", " + a.getPrix() + "€ , Superficie : " + a.getSuperficie() + " Ares");
+		}
+		
+		liste_t = terrainRepository.getTerrainByPrixMax(20000.00);
+		for (Terrain a : liste_t) {
+			System.out.println("GET BY PrixMax\n\t > " + a.getId_bien() + " : \tOffre :" + a.getOffre() + ", " + a.getPrix() + "€ , Superficie : " + a.getSuperficie() + " Ares");
+		}
+		
+				
+		/*____________________________ suppression d'un terrain ____________*/
+		//suppression de l'entité par son id
+//		terrainRepository.deleteById(1);
+				
+		//suppression de l'entité
+//		terrainRepository.delete(t);
 		
 		
 		

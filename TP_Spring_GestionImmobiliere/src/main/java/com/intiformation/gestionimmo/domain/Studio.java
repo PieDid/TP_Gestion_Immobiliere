@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="studio")
 @DiscriminatorValue("Studio")
 public class Studio extends Habitation implements Serializable{
 

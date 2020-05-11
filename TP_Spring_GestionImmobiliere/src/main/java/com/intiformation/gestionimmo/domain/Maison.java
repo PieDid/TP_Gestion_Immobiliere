@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name="maison")
 @DiscriminatorValue("Maison")
 public class Maison extends Habitation implements Serializable{
 

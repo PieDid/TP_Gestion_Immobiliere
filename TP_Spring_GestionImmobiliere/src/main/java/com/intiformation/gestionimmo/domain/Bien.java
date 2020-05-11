@@ -34,6 +34,7 @@ public class Bien implements Serializable{
 	@Column(name="standard")
 	private String standard;
 	
+	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private AdresseBien adresseBien;

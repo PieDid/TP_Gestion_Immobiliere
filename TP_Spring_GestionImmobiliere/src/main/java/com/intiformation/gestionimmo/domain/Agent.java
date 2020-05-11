@@ -24,12 +24,11 @@ public class Agent extends Personne implements Serializable{
 	/* Propriétés */
 	@JsonIgnore
 	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
-	private List<Contrat> contrat;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
 	private List<Visite> liste_visites;
 
+	@JsonIgnore
+	@OneToMany(mappedBy="agent", cascade= CascadeType.ALL)
+	private List<Contrat> liste_contrats;
 	
 
 	
@@ -43,9 +42,9 @@ public class Agent extends Personne implements Serializable{
 		super();
 	}
 
-	public Agent(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Contrat> contrat, List<Visite> liste_visites) {
+	public Agent(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Contrat> liste_contrats, List<Visite> liste_visites) {
 		super(nom, email, motDePasse, statut, adresseP);
-		this.contrat = contrat;
+		this.liste_contrats = liste_contrats;
 		this.liste_visites = liste_visites;
 	}
 
@@ -55,18 +54,18 @@ public class Agent extends Personne implements Serializable{
 	/* Méthodes */
 	@Override
 	public String toString() {
-		return "Agent [" + super.toString() + ", contrat=" + contrat + ", liste_visites=" + liste_visites + "]";
+		return "Agent [" + super.toString() + ", liste_contrats=" + liste_contrats + ", liste_visites=" + liste_visites + "]";
 	}
 
 
 	
 	
 	/* Getters|Setters */
-	public List<Contrat> getContrat() {
-		return contrat;
+	public List<Contrat> getListe_contrats() {
+		return liste_contrats;
 	}
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
+	public void setListe_contrats(List<Contrat> liste_contrats) {
+		this.liste_contrats = liste_contrats;
 	}
 
 

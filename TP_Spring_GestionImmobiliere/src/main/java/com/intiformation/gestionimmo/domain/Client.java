@@ -19,7 +19,7 @@ public class Client extends Personne implements Serializable{
 
 	//prop
 	@JsonIgnore
-	@OneToMany(mappedBy="client", cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="client", cascade= CascadeType.ALL)
 	private List<Visite> liste_visites;
 
 	@JsonIgnore

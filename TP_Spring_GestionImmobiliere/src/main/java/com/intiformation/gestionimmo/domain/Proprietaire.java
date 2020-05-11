@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,6 +44,9 @@ public class Proprietaire extends Personne implements Serializable{
 	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
 	private List<ContratLocation> liste_contratsLocation = new ArrayList<>();
 
+	@JsonIgnore
+	@OneToMany(mappedBy="proprietaire", cascade= CascadeType.ALL)
+	private List<Visite> liste_visites;
 	
 	
 	
@@ -79,7 +83,7 @@ public class Proprietaire extends Personne implements Serializable{
 	/* Méthodes */
 	@Override
 	public String toString() {
-		return "Proprietaire [" + super.toString() + ", tel_prive=" + tel_prive + ", tel_travail=" + tel_travail + ", liste_biens=" + liste_biens
+		return "Proprietaire [" + super.toString() + ", tel_prive=" + tel_prive + ", tel_travail=" + tel_travail + ", liste_visites=" + liste_visites + ", liste_biens=" + liste_biens
 				+ ", liste_contratsVente=" + liste_contratsVente + ", liste_contratsLocation=" + liste_contratsLocation
 				+ "]";
 	}
@@ -125,6 +129,16 @@ public class Proprietaire extends Personne implements Serializable{
 	public void setListe_contratsLocation(List<ContratLocation> liste_contratsLocation) {
 		this.liste_contratsLocation = liste_contratsLocation;
 	}
+
+	public List<Visite> getListe_visites() {
+		return liste_visites;
+	}
+
+	public void setListe_visites(List<Visite> liste_visites) {
+		this.liste_visites = liste_visites;
+	}
+	
+	
 	
 	
 }

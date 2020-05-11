@@ -84,6 +84,15 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private BienRepository bienRepository;
 	
+	@Autowired
+	private ContratRepository contratRepository;
+	
+	@Autowired
+	private ContratLocationRepository contratLocationRepository;
+	
+	@Autowired
+	private ContratVenteRepository contratVenteRepository;
+	
 	/**
 	 * Methode main : lance l'application
 	 * @param args
@@ -179,6 +188,15 @@ public class Application implements CommandLineRunner{
 		
 		//suppression de l'entité
 //		adresseBRepository.delete(adresseB1);
+		
+		
+		
+		
+		
+		
+
+		
+		
 		
 		
 		
@@ -721,10 +739,63 @@ public class Application implements CommandLineRunner{
 				
 		/*____________________________ suppression d'un bien ____________*/
 		//suppression de l'entité par son id
-		bienRepository.deleteById(3);
+//		bienRepository.deleteById(3);
 				
 		//suppression de l'entité
-		bienRepository.delete(bienn);
+//		bienRepository.delete(bienn);
+		
+		
+		
+		
+		
+		
+		
+		/*========================================================================*/
+		/*=========== Tests sur les Méthode de ContratRepository ============*/
+		/*========================================================================*/
+		//définir les params
+		bien = new Bien(true, "offre", 50000.00, "standard", null, "dateSoumission", "dateDisposition", null, null);
+		agent = new Agent("nom", "email", "motDePasse", true, null);
+		proprietaire = new Proprietaire("nom", "email", "motDePasse", true, null, null, "tel_prive", "tel_travail");
+		Client client = new Client("nom", "email", "motDePasse", true, null, null, null);
+		
+		// définir les contrats à ajouter  ## Pb avec l'adresse (Fetch) donc on test à null ##
+		Contrat contrat = new Contrat("date", null, null, null, null);
+		
+		contratRepository.save(contrat);
+				
+		/*____________________________ liste des contrats ___________________________*/
+		List<Contrat> listeContrats = contratRepository.findAll();
+			
+		System.out.println("Liste des contrats dans la bdd : ");
+		for (Contrat c : listeContrats) {
+			System.out.println("\t > " + c.getIdContrat() + " : " + c.getDate() );
+		}
+		
+				
+		/*____________________________ modif d'un contrat ____________*/
+		Contrat c1 = contratRepository.getContratById(1);
+//		System.out.println("MODIF CONTRAT :\n\t > " + c1.getIdContrat() + " :\t[bien] : " + c1.getBien() + " [agent] : " + c1.getAgent() + " [proprio] : " + c1.getProprietaire() + " [client] : " + c1.getClient());
+		System.out.println("\t > " + c1.getIdContrat() + " : " + c1.getDate() );
+		
+		c1.setDate("dateModifiée");
+//		System.out.println("\t > " + c1.getIdContrat() + " :\t[bien] : " + c1.getBien() + " [agent] : " + c1.getAgent() + " [proprio] : " + c1.getProprietaire() + " [client] : " + c1.getClient());
+		System.out.println("\t > " + c1.getIdContrat() + " : " + c1.getDate() );
+		contratRepository.save(c1);
+		
+		
+		/*____________________________ méthodes non crud sur contrat ____________*/
+		
+		
+		
+				
+		/*____________________________ suppression d'un contrat ____________*/
+		//suppression de l'entité par son id
+//		contratRepository.deleteById(2);
+				
+		//suppression de l'entité
+//		contratRepository.delete(p1);
+		
 		
 		
 		

@@ -17,7 +17,7 @@ public class Appartement extends Habitation implements Serializable{
 	}
 
 	public Appartement(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
-			String dateSoumission, String dateDisposition, int revenu, List<Client> listeVisiteurs, Contrat contrat,
+			String dateSoumission, String dateDisposition, int revenu, List<Visite> listeVisiteurs, Contrat contrat,
 			int superficie) {
 		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat,
 				superficie);

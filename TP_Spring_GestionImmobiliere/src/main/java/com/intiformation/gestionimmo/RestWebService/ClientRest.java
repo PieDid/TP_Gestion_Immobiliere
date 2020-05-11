@@ -44,7 +44,7 @@ public class ClientRest {
 	@RequestMapping(value="/client/{identifiant}", method=RequestMethod.GET)
 	public Client getClient(@PathVariable("identifiant") int pIdClient) {
 		
-		return clientRepo.getOne(pIdClient);
+		return clientRepo.getClientById(pIdClient);
 		
 	}//end get
 	

@@ -45,7 +45,7 @@ public class AdministrateurRest {
 	@RequestMapping(value="/administrateur/{identifiant}", method=RequestMethod.GET)
 	public Administrateur getAdmin(@PathVariable("identifiant") int pIdAdmin) {
 		
-		return adminRepo.getOne(pIdAdmin);
+		return adminRepo.getAdministrateurById(pIdAdmin);
 		
 	}//end get
 	

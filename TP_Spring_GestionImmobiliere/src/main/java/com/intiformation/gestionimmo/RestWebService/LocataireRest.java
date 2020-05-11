@@ -43,7 +43,7 @@ public class LocataireRest {
 	@RequestMapping(value="/locataire/{identifiant}", method=RequestMethod.GET)
 	public Locataire getLocataire(@PathVariable("identifiant") int pIdLocataire) {
 		
-		return locataireRepo.getOne(pIdLocataire);
+		return locataireRepo.getLocataireById(pIdLocataire);
 		
 	}//end get
 	

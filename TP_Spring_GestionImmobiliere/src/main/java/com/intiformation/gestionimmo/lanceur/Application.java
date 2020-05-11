@@ -81,6 +81,9 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private PersonneRepository personneRepository;
 	
+	@Autowired
+	private BienRepository bienRepository;
+	
 	/**
 	 * Methode main : lance l'application
 	 * @param args
@@ -219,6 +222,11 @@ public class Application implements CommandLineRunner{
 		liste_t = terrainRepository.getTerrainByPrixMax(20000.00);
 		for (Terrain a : liste_t) {
 			System.out.println("GET BY PrixMax\n\t > " + a.getId_bien() + " : \tOffre :" + a.getOffre() + ", " + a.getPrix() + "€ , Superficie : " + a.getSuperficie() + " Ares");
+		}
+		
+		liste_t = terrainRepository.getTerrainBySuperficie(1500);
+		for (Terrain a : liste_t) {
+			System.out.println("GET BY Superficie\n\t > " + a.getId_bien() + " : \tOffre :" + a.getOffre() + ", " + a.getPrix() + "€ , Superficie : " + a.getSuperficie() + " Ares");
 		}
 		
 				
@@ -642,6 +650,81 @@ public class Application implements CommandLineRunner{
 				
 		//suppression de l'entité
 		locataireRepository.delete(locatair);
+		
+		
+		
+		
+		
+		
+		
+		
+		/*========================================================================*/
+		/*========== Tests sur les Méthode de BienRepository ===========*/
+		/*========================================================================*/
+		// définir les adressePersonne pour locataires à ajouter
+		AdresseBien adresseP12 = new AdresseBien("rue_P12", "codePostal_P12", "ville_P12");
+		AdresseBien adresseP13 = new AdresseBien("rue_P13", "codePostal_P13", "ville_P13");
+		adresseBRepository.save(adresseP12);
+		adresseBRepository.save(adresseP13);
+		
+		// définir les biens à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
+		Bien bien = new Bien(true, "offre2", 25000.00, "standard", null, "dateSoumission", "dateDisposition", null, null);
+		Bien bien1 = new Bien(true, "offre3", 40000.00, "standard", null, "dateSoumission", "dateDisposition", null, null);
+				
+		bienRepository.save(bien);
+		bienRepository.save(bien1);
+				
+		/*____________________________ liste des biens ___________________________*/
+		List<Bien> listeBiens = bienRepository.findAll();
+			
+		System.out.println("Liste des biens dans la bdd : ");
+		for (Bien b : listeBiens) {
+			System.out.println("\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+				
+		/*____________________________ modif d'un bien ____________*/
+		Bien bienn = bienRepository.getBienById(4);
+		System.out.println("MODIF BIEN :\n\t > " + bienn.getId_bien() + " : tOffre :" + bienn.getOffre() + ", " + bienn.getPrix() + "€ , [Adresse] : " + bienn.getAdresseBien() + " | Disponibilité (statut) : " + bienn.isStatut());
+		
+		bienn.setPrix(37000.00);
+		System.out.println("\t > " + bienn.getId_bien() + " : Offre :" + bienn.getOffre() + ", " + bienn.getPrix() + "€ , [Adresse] : " + bienn.getAdresseBien() + " | Disponibilité (statut) : " + bienn.isStatut());
+		bienRepository.save(bienn);
+		
+		
+		/*____________________________ méthodes non crud sur bien ____________*/
+		List<Bien> liste_bien = bienRepository.getBienByDateDisposition("dateDisposition");
+		for (Bien b : liste_bien) {
+			System.out.println("GET BY DateDisposition :\n\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+		liste_bien = bienRepository.getBienByDateSoumission("dateSoumission");
+		for (Bien b : liste_bien) {
+			System.out.println("GET BY DateSoumission :\n\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+		liste_bien = bienRepository.getBienByOffre("offre2");
+		for (Bien b : liste_bien) {
+			System.out.println("GET BY Offre :\n\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+		liste_bien = bienRepository.getBienByStandard("standard");
+		for (Bien b : liste_bien) {
+			System.out.println("GET BY Standard :\n\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+		liste_bien = bienRepository.getBienByStatut(true);
+		for (Bien b : liste_bien) {
+			System.out.println("GET BY Statut :\n\t > " + b.getId_bien() + " : Offre :" + b.getOffre() + ", " + b.getPrix() + "€ , [Adresse] : " + b.getAdresseBien() + " | Disponibilité (statut) : " + b.isStatut());
+		}
+		
+				
+		/*____________________________ suppression d'un bien ____________*/
+		//suppression de l'entité par son id
+		bienRepository.deleteById(3);
+				
+		//suppression de l'entité
+		bienRepository.delete(bienn);
 		
 		
 		

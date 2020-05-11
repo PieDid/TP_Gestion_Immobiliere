@@ -48,7 +48,7 @@ public class CommerceRest {
 	@RequestMapping(value="/commerce/{id_bien}", method=RequestMethod.GET)
 	public Commerce getCommerce(@PathVariable("id_bien") int pIdCommerce) {
 		
-		return commerceRepo.getOne(pIdCommerce);
+		return commerceRepo.getCommerceById(pIdCommerce);
 		
 	}//end get
 	

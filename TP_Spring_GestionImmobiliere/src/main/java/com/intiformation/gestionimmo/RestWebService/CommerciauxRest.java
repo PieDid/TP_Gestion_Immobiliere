@@ -45,7 +45,7 @@ public class CommerciauxRest {
 	@RequestMapping(value="/commerciaux/{id_bien}", method=RequestMethod.GET)
 	public Commerciaux getCommerciaux(@PathVariable("id_bien") int pIdCommerciaux) {
 		
-		return commerciauxRepo.getOne(pIdCommerciaux);
+		return commerciauxRepo.getCommerciauxById(pIdCommerciaux);
 		
 	}//end get
 	

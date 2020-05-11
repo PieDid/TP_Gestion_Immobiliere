@@ -47,7 +47,7 @@ public class BienRest {
 	@RequestMapping(value="/bien/{id_bien}", method=RequestMethod.GET)
 	public Bien getbien(@PathVariable("id_bien") int pIdbien) {
 		
-		return bienRepo.getOne(pIdbien);
+		return bienRepo.getBienById(pIdbien);
 		
 	}//end get
 	

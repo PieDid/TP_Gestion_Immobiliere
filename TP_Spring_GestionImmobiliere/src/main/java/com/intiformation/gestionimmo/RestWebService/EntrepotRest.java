@@ -46,7 +46,7 @@ public class EntrepotRest {
 	@RequestMapping(value="/entrepot/{id_bien}", method=RequestMethod.GET)
 	public Entrepot getEntrepot(@PathVariable("id_bien") int pIdEntrepot) {
 		
-		return entrepotRepo.getOne(pIdEntrepot);
+		return entrepotRepo.getEntrepotById(pIdEntrepot);
 		
 	}//end get
 	

@@ -45,7 +45,7 @@ public class VisiteRest {
 	@RequestMapping(value="/visite/{id_visite}", method=RequestMethod.GET)
 	public Visite getVisite(@PathVariable("id_visite") int pIdVisite) {
 		
-		return visiteRepo.getOne(pIdVisite);
+		return visiteRepo.getVisiteById(pIdVisite);
 		
 	}//end get
 	

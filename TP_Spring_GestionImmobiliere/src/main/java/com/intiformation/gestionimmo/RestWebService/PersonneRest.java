@@ -43,7 +43,7 @@ public class PersonneRest {
 	@RequestMapping(value="/personne/{identifiant}", method=RequestMethod.GET)
 	public Personne getPersonne(@PathVariable("identifiant") int pIdPersonne) {
 		
-		return personneRepo.getOne(pIdPersonne);
+		return personneRepo.getPersonneById(pIdPersonne);
 		
 	}//end get
 	

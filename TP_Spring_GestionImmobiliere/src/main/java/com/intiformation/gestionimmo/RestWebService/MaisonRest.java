@@ -41,7 +41,7 @@ public class MaisonRest {
 	@RequestMapping(value="/maison/{id_maison}", method=RequestMethod.GET)
 	public Maison getmaison(@PathVariable("id_maison") int pIdmaison) {
 		
-		return maisonRepo.getOne(pIdmaison);
+		return maisonRepo.getMaisonById(pIdmaison);
 		
 	}//end get
 	

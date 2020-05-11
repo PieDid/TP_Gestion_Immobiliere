@@ -24,6 +24,9 @@ public interface BienRepository extends JpaRepository<Bien, Integer>{
 	/*___________________ Les méthodes de requêtes de spring data ___________________*/
 	// (dans les cas où les méthodes de bases ne suffiraient pas)
 	
+	@Query("SELECT b FROM bien b WHERE b.id_bien = ?1")
+	public Bien getBienById(int id_bien);
+	
 	@Query("SELECT b FROM bien b WHERE b.statut = ?1")
 	public List<Bien> getBienByStatut(boolean statut);
 	

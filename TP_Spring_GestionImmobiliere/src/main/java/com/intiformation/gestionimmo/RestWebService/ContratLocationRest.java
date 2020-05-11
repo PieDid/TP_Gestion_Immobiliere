@@ -31,7 +31,7 @@ public class ContratLocationRest {
 	
 	@RequestMapping(value="/contratLocation/{identifiant}", method=RequestMethod.GET)
 	public ContratLocation getContratLocation(@PathVariable("identifiant") int pIdContratLocation) {
-		return contratLocationRepository.getOne(pIdContratLocation);
+		return contratLocationRepository.getContratLocationById(pIdContratLocation);
 	}//end getContratLocation()
 	
 	@RequestMapping(value="/contratLocationAdd", method=RequestMethod.POST)

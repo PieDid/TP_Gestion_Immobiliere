@@ -31,9 +31,9 @@ public class ContratRest {
 		return contratRepository.findAll();
 	} // end  listeContrat()
 	
-	@RequestMapping(value="/contrat/id/{identifiant}", method=RequestMethod.GET)
+	@RequestMapping(value="/contrat/{identifiant}", method=RequestMethod.GET)
 	public Contrat getContrat(@PathVariable("identifiant") int pIdContrat) {
-		return contratRepository.getOne(pIdContrat);
+		return contratRepository.getContratById(pIdContrat);
 	}//end getContrat()
 	
 	@RequestMapping(value="/contratAdd", method=RequestMethod.POST)

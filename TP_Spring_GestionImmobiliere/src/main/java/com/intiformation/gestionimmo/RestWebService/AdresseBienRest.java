@@ -28,7 +28,7 @@ public class AdresseBienRest {
 	
 	@RequestMapping(value="/adresseBien/{identifiant}", method=RequestMethod.GET)
 	public AdresseBien getAdresseBien(@PathVariable("identifiant") int pIdAdresseBien) {
-		return adresseBienRepository.getOne(pIdAdresseBien);
+		return adresseBienRepository.getAdresseBienById(pIdAdresseBien);
 	}//end getAdresseBien()
 	
 	@RequestMapping(value="/adresseBienAdd", method=RequestMethod.POST)

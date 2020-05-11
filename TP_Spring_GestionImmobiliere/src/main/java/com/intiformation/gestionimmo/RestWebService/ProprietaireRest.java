@@ -43,7 +43,7 @@ public class ProprietaireRest {
 	@RequestMapping(value="/proprietaire/{identifiant}", method=RequestMethod.GET)
 	public Proprietaire getProprietaire(@PathVariable("identifiant") int pIdProprietaire) {
 		
-		return proprioRepo.getOne(pIdProprietaire);
+		return proprioRepo.getProprietaireById(pIdProprietaire);
 		
 	}//end get
 	

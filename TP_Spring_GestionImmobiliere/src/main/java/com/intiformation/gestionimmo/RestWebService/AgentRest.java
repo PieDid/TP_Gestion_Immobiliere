@@ -44,7 +44,7 @@ public class AgentRest {
 	@RequestMapping(value="/agent/{identifiant}", method=RequestMethod.GET)
 	public Agent getAgent(@PathVariable("identifiant") int pIdAgent) {
 		
-		return agentRepo.getOne(pIdAgent);
+		return agentRepo.getAgentById(pIdAgent);
 		
 	}//end get
 	

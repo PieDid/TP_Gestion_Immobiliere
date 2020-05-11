@@ -41,7 +41,7 @@ public class AppartementRest {
 	@RequestMapping(value="/appartement/{id_appartement}", method=RequestMethod.GET)
 	public Appartement getappartement(@PathVariable("id_appartement") int pIdappartement) {
 		
-		return appartementRepo.getOne(pIdappartement);
+		return appartementRepo.getAppartementById(pIdappartement);
 		
 	}//end get
 	

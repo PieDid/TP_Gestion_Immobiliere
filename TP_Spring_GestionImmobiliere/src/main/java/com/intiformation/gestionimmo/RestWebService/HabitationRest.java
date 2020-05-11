@@ -47,7 +47,7 @@ public class HabitationRest {
 	@RequestMapping(value="/habitation/{id_bien}", method=RequestMethod.GET)
 	public Habitation getbien(@PathVariable("id_bien") int pIdbien) {
 		
-		return habitationRepo.getOne(pIdbien);
+		return habitationRepo.getHabitationById(pIdbien);
 		
 	}//end get
 	

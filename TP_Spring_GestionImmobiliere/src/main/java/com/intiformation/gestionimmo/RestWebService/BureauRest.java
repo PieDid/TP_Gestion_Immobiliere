@@ -47,7 +47,7 @@ public class BureauRest {
 	@RequestMapping(value="/bureau/{id_bien}", method=RequestMethod.GET)
 	public Bureau getBureau(@PathVariable("id_bien") int pIdBureau) {
 		
-		return bureauRepo.getOne(pIdBureau);
+		return bureauRepo.getBureauById(pIdBureau);
 		
 	}//end get
 	

@@ -47,7 +47,7 @@ public class StudioRest {
 	@RequestMapping(value="/studio/{id_studio}", method=RequestMethod.GET)
 	public Studio getstudio(@PathVariable("id_studio") int pIdstudio) {
 		
-		return studioRepo.getOne(pIdstudio);
+		return studioRepo.getStudioById(pIdstudio);
 		
 	}//end get
 	

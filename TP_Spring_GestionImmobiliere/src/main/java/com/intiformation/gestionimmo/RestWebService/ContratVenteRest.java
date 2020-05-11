@@ -31,7 +31,7 @@ public class ContratVenteRest {
 	
 	@RequestMapping(value="/contratVente/{identifiant}", method=RequestMethod.GET)
 	public ContratVente getContratVente(@PathVariable("identifiant") int pIdContratVente) {
-		return contratVenteRepository.getOne(pIdContratVente);
+		return contratVenteRepository.getContratVenteById(pIdContratVente);
 	}//end getContratVente()
 	
 	@RequestMapping(value="/contratVenteAdd", method=RequestMethod.POST)

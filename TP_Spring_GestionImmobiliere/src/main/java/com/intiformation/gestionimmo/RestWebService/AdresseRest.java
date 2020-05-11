@@ -31,7 +31,7 @@ public class AdresseRest {
 
 	@RequestMapping(value = "/adresse/{identifiant}", method = RequestMethod.GET)
 	public Adresse getAdresse(@PathVariable("identifiant") int pIdAdresse) {
-		return adresseRepository.getOne(pIdAdresse);
+		return adresseRepository.getAdresseById(pIdAdresse);
 	}// end getAdresse()
 
 	@RequestMapping(value = "/adresseAdd", method = RequestMethod.POST)

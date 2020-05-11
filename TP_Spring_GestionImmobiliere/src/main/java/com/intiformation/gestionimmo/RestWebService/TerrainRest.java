@@ -43,7 +43,7 @@ public class TerrainRest {
 	@RequestMapping(value="/terrain/{identifiant}", method=RequestMethod.GET)
 	public Terrain getTerrain(@PathVariable("identifiant") int pIdTerrain) {
 		
-		return terrainRepo.getOne(pIdTerrain);
+		return terrainRepo.getTerrainById(pIdTerrain);
 		
 	}//end get
 	
@@ -78,6 +78,13 @@ public class TerrainRest {
 		return terrainRepo.getTerrainByOffre(pOffre);
 	
 	}//end getAllByOffre
+	
+	
+	@RequestMapping(value="/terrainList/{superficie}", method=RequestMethod.GET)
+	public List<Terrain> listeTerrainBySuperficie(@PathVariable("superficie") int pSuperficie) {
+		return terrainRepo.getTerrainBySuperficie(pSuperficie);
+	
+	}//end getAllBySuperficie
 	
 
 }

@@ -32,4 +32,7 @@ public interface TerrainRepository extends JpaRepository<Terrain, Integer> {
 	@Query("SELECT t FROM terrain t WHERE t.offre = ?1")
 	public List<Terrain> getTerrainByOffre (String offre);
 	
+	@Query("SELECT t FROM terrain t WHERE t.superficie >= ?1")
+	public List<Terrain> getTerrainBySuperficie (int superficie);
+	
 }

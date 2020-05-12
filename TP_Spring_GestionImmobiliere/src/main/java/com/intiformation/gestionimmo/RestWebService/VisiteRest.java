@@ -93,7 +93,7 @@ public class VisiteRest {
 	}
 	
 	@RequestMapping(value="/visiteList/client/{idClient}", method=RequestMethod.GET)
-	public List<Visite> getVisiteByClient(@PathVariable("client") int idClient) {
+	public List<Visite> getVisiteByClient(@PathVariable("idClient") int idClient) {
 		
 		return visiteRepo.getVisiteByClient(idClient);
 		

@@ -35,7 +35,7 @@ public interface VisiteRepository extends JpaRepository<Visite, Integer> {
 	@Query("SELECT v FROM visite v WHERE v.client.identifiant = ?1")
 	public List<Visite> getVisiteByClient(int idClient);
 	
-	@Query("SELECT v FROM visite v WHERE v.proprietaire. = ?1")
+	@Query("SELECT v FROM visite v WHERE v.proprietaire.identifiant = ?1")
 	public List<Visite> getVisiteByProprietaire(int idProprietaire);
 	
 

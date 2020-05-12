@@ -66,20 +66,20 @@ public class CommerciauxRest {
 		
 	}//end delete
 	
-	@RequestMapping(value="/commerciauxList/{prixMax}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerciauxList/prix/{prixMax}", method=RequestMethod.GET)
 	public List<Commerciaux> listeCommerciauxByPrixMax(@PathVariable("prixMax") int pPrixMax) {
 		return commerciauxRepo.getCommerciauxByPrixMax(pPrixMax);
 	
 	}//end getAllByPrixMax
 	
 	
-	@RequestMapping(value="/commerciauxList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerciauxList/offre/{offre}", method=RequestMethod.GET)
 	public List<Commerciaux> listeCommerciauxByOffre(@PathVariable("offre") String pOffre) {
 		return commerciauxRepo.getCommerciauxByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
-	@RequestMapping(value="/commerciauxList/{superficie}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerciauxList/superficie/{superficie}", method=RequestMethod.GET)
 	public List<Commerciaux> listeCommerciauxBySuperficie(@PathVariable("superficie") int superficie) {
 		return commerciauxRepo.getCommerciauxBySuperficie(superficie);
 	

@@ -66,21 +66,21 @@ public class TerrainRest {
 	}//end delete
 	
 	
-	@RequestMapping(value="/terrainList/{prixMax}", method=RequestMethod.GET)
+	@RequestMapping(value="/terrainList/prix/{prixMax}", method=RequestMethod.GET)
 	public List<Terrain> listeTerrainByPrixMax(@PathVariable("prixMax") int pPrixMax) {
 		return terrainRepo.getTerrainByPrixMax(pPrixMax);
 	
 	}//end getAllByPrixMax
 	
 	
-	@RequestMapping(value="/terrainList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/terrainList/offre/{offre}", method=RequestMethod.GET)
 	public List<Terrain> listeTerrainByOffre(@PathVariable("offre") String pOffre) {
 		return terrainRepo.getTerrainByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
 	
-	@RequestMapping(value="/terrainList/{superficie}", method=RequestMethod.GET)
+	@RequestMapping(value="/terrainList/superficie/{superficie}", method=RequestMethod.GET)
 	public List<Terrain> listeTerrainBySuperficie(@PathVariable("superficie") int pSuperficie) {
 		return terrainRepo.getTerrainBySuperficie(pSuperficie);
 	

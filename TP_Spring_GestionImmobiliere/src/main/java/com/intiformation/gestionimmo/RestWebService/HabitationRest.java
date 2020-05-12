@@ -76,7 +76,7 @@ public class HabitationRest {
 	
 	}//end listehabitationByOffre
 	
-	@RequestMapping(value="/habitationList/prix /{prix }", method=RequestMethod.GET)
+	@RequestMapping(value="/habitationList/prix/{prix}", method=RequestMethod.GET)
 	public List<Habitation> listehabitationByPrix(@PathVariable("prix ") double pPrix ) {
 		return habitationRepo.getHabitationByPrixMax(pPrix);
 	

@@ -68,21 +68,21 @@ public class CommerceRest {
 		
 	}//end delete
 	
-	@RequestMapping(value="/commerceList/{prixMax}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerceList/prix/{prixMax}", method=RequestMethod.GET)
 	public List<Commerce> listeCommerceByPrixMax(@PathVariable("prixMax") int pPrixMax) {
 		return commerceRepo.getCommerceByPrixMax(pPrixMax);
 	
 	}//end getAllByPrixMax
 	
 	
-	@RequestMapping(value="/commerceList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerceList/offre/{offre}", method=RequestMethod.GET)
 	public List<Commerce> listeCommerceByOffre(@PathVariable("offre") String pOffre) {
 		return commerceRepo.getCommerceByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
 	
-	@RequestMapping(value="/commerceList/{superficie}", method=RequestMethod.GET)
+	@RequestMapping(value="/commerceList/superficie/{superficie}", method=RequestMethod.GET)
 	public List<Commerce> listeCommerceBySuperficie(@PathVariable("superficie") int superficie) {
 		return commerceRepo.getCommerceBySuperficie (superficie);
 	

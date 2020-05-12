@@ -26,8 +26,8 @@ public class AdressePersonneRest {
 		return adressePersonneRepository.findAll();
 	} // end  listeAdressePersonne()
 	
-	@RequestMapping(value="/adressePersonne/{identifiant}", method=RequestMethod.GET)
-	public AdressePersonne getAdressePersonne(@PathVariable("identifiant") int pIdAdressePersonne) {
+	@RequestMapping(value="/adressePersonne/{idAdresse}", method=RequestMethod.GET)
+	public AdressePersonne getAdressePersonne(@PathVariable("idAdresse") int pIdAdressePersonne) {
 		return adressePersonneRepository.getAdressePersonneById(pIdAdressePersonne);
 	}//end getAdressePersonne()
 	
@@ -36,14 +36,14 @@ public class AdressePersonneRest {
 		adressePersonneRepository.save(pAdressePersonne);
 	}//end saveAdressePersonne()
 	
-	@RequestMapping(value="/adressePersonneUpdate/{identifiant}", method=RequestMethod.PUT)
-	public void updateVenteContrat (@PathVariable("identifiant") int pIdAdressePersonne, @RequestBody AdressePersonne pAdressePersonne) {
+	@RequestMapping(value="/adressePersonneUpdate/{idAdresse}", method=RequestMethod.PUT)
+	public void updateVenteContrat (@PathVariable("idAdresse") int pIdAdressePersonne, @RequestBody AdressePersonne pAdressePersonne) {
 		adressePersonneRepository.saveAndFlush(pAdressePersonne);
 	}//end updateAdressePersonne()
 	
 	
-	@RequestMapping(value="/adressePersonneDelete/{identifiant}", method=RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteAdressePersonne(@PathVariable("identifiant") int pIdAdressePersonne) {
+	@RequestMapping(value="/adressePersonneDelete/{idAdresse}", method=RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteAdressePersonne(@PathVariable("idAdresse") int pIdAdressePersonne) {
 		adressePersonneRepository.deleteById(pIdAdressePersonne);
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 	}//end deleteAdressePersonne()

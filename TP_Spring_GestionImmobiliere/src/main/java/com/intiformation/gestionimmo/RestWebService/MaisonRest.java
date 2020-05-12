@@ -64,14 +64,14 @@ public class MaisonRest {
 	
 	
 	
-	@RequestMapping(value="/maisonList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/maisonList/offre/{offre}", method=RequestMethod.GET)
 	public List<Maison> listemaisonByOffre(@PathVariable("offre") String pOffre) {
 		return maisonRepo.getMaisonByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
-	@RequestMapping(value="/maisonList/prix /{prix }", method=RequestMethod.GET)
-	public List<Maison> listemaisonByPrix(@PathVariable("prix ") double pPrix ) {
+	@RequestMapping(value="/maisonList/prix/{prix}", method=RequestMethod.GET)
+	public List<Maison> listemaisonByPrix(@PathVariable("prix") double pPrix ) {
 		return maisonRepo.getMaisonByPrixMax(pPrix);
 	
 	}//end listemaisonByPrix

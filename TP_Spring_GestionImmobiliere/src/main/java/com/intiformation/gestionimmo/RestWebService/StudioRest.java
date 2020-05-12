@@ -69,14 +69,14 @@ public class StudioRest {
 	}//end delete
 	
 	
-	@RequestMapping(value="/studioList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/studioList/offre/{offre}", method=RequestMethod.GET)
 	public List<Studio> listestudioByOffre(@PathVariable("offre") String pOffre) {
 		return studioRepo.getStudioByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
-	@RequestMapping(value="/studioList/prix /{prix }", method=RequestMethod.GET)
-	public List<Studio> listestudioByPrix(@PathVariable("prix ") double pPrix ) {
+	@RequestMapping(value="/studioList/prix/{prix}", method=RequestMethod.GET)
+	public List<Studio> listestudioByPrix(@PathVariable("prix") double pPrix ) {
 		return studioRepo.getStudioByPrixMax(pPrix);
 	
 	}//end listestudioByPrix

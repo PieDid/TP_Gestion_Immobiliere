@@ -68,5 +68,40 @@ public class VisiteRest {
 	}//end delete
 	
 	
+	@RequestMapping(value="/visiteList/date/{date}", method=RequestMethod.GET)
+	public List<Visite> getVisiteByDate(@PathVariable("date") String date) {
+		
+		return visiteRepo.getVisiteByDate(date);
+		
+	}
+	
+	
+	@RequestMapping(value="/visiteList/bien/{idBien}", method=RequestMethod.GET)
+	public List<Visite> getVisiteByBien(@PathVariable("idBien") int idBien) {
+		
+		return visiteRepo.getVisiteByBien(idBien);
+		
+	}
+	
+	@RequestMapping(value="/visiteList/agent/{idAgent}", method=RequestMethod.GET)
+	public List<Visite> getVisiteByAgent(@PathVariable("idAgent") int idAgent) {
+		
+		return visiteRepo.getVisiteByAgent(idAgent);
+		
+	}
+	
+	@RequestMapping(value="/visiteList/client/{idClient}", method=RequestMethod.GET)
+	public List<Visite> getVisiteByClient(@PathVariable("client") int idClient) {
+		
+		return visiteRepo.getVisiteByClient(idClient);
+		
+	}
+	
+	@RequestMapping(value="/visiteList/proprietaire/{idProprietaire}", method=RequestMethod.GET)
+	public List<Visite> getVisiteByProprietaire(@PathVariable("idProprietaire") int idProprietaire) {
+		
+		return visiteRepo.getVisiteByProprietaire(idProprietaire);
+		
+	}
 
 }

@@ -29,8 +29,8 @@ public class AdresseRest {
 		return adresseRepository.findAll();
 	} // end listeAdresse()
 
-	@RequestMapping(value = "/adresse/{identifiant}", method = RequestMethod.GET)
-	public Adresse getAdresse(@PathVariable("identifiant") int pIdAdresse) {
+	@RequestMapping(value = "/adresse/{idAdresse}", method = RequestMethod.GET)
+	public Adresse getAdresse(@PathVariable("idAdresse") int pIdAdresse) {
 		return adresseRepository.getAdresseById(pIdAdresse);
 	}// end getAdresse()
 
@@ -39,13 +39,13 @@ public class AdresseRest {
 		adresseRepository.save(pAdresse);
 	}// end saveAdresse()
 
-	@RequestMapping(value = "/adresseUpdate/{identifiant}", method = RequestMethod.PUT)
-	public void updateAdresse(@PathVariable("identifiant") int pIdAdresse, @RequestBody Adresse pAdresse) {
+	@RequestMapping(value = "/adresseUpdate/{idAdresse}", method = RequestMethod.PUT)
+	public void updateAdresse(@PathVariable("idAdresse") int pIdAdresse, @RequestBody Adresse pAdresse) {
 		adresseRepository.saveAndFlush(pAdresse);
 	}// end updateAdresse()
 
-	@RequestMapping(value = "/adresseDelete/{identifiant}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteAdresse(@PathVariable("identifiant") int pIdAdresse) {
+	@RequestMapping(value = "/adresseDelete/{idAdresse}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteAdresse(@PathVariable("idAdresse") int pIdAdresse) {
 		adresseRepository.deleteById(pIdAdresse);
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 	}// end deleteAdresse()

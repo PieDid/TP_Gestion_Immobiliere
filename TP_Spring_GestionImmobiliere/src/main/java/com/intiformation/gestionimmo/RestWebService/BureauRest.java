@@ -69,20 +69,20 @@ public class BureauRest {
 	}//end delete
 	
 	
-	@RequestMapping(value="/bureauList/{prixMax}", method=RequestMethod.GET)
+	@RequestMapping(value="/bureauList/prix/{prixMax}", method=RequestMethod.GET)
 	public List<Bureau> listeBureauByPrixMax(@PathVariable("prixMax") int pPrixMax) {
 		return bureauRepo.getBureauByPrixMax(pPrixMax);
 	
 	}//end getAllByPrixMax
 	
 	
-	@RequestMapping(value="/bureauList/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/bureauList/offre/{offre}", method=RequestMethod.GET)
 	public List<Bureau> listeBureauByOffre(@PathVariable("offre") String pOffre) {
 		return bureauRepo.getBureauByOffre(pOffre);
 	
 	}//end getAllByOffre
 	
-	@RequestMapping(value="/bureauList/{superficie}", method=RequestMethod.GET)
+	@RequestMapping(value="/bureauList/superficie/{superficie}", method=RequestMethod.GET)
 	public List<Bureau> listeBureauBySuperficie(@PathVariable("superficie") int superficie) {
 		return bureauRepo.getBureauBySuperficie(superficie);
 	

@@ -26,8 +26,8 @@ public class AdresseBienRest {
 		return adresseBienRepository.findAll();
 	} // end  listeAdresseBien()
 	
-	@RequestMapping(value="/adresseBien/{identifiant}", method=RequestMethod.GET)
-	public AdresseBien getAdresseBien(@PathVariable("identifiant") int pIdAdresseBien) {
+	@RequestMapping(value="/adresseBien/{idAdresse}", method=RequestMethod.GET)
+	public AdresseBien getAdresseBien(@PathVariable("idAdresse") int pIdAdresseBien) {
 		return adresseBienRepository.getAdresseBienById(pIdAdresseBien);
 	}//end getAdresseBien()
 	
@@ -36,14 +36,14 @@ public class AdresseBienRest {
 		adresseBienRepository.save(pAdresseBien);
 	}//end saveAdresseBien()
 	
-	@RequestMapping(value="/adresseBienUpdate/{identifiant}", method=RequestMethod.PUT)
-	public void updateVenteContrat (@PathVariable("identifiant") int pIdAdresseBien, @RequestBody AdresseBien pAdresseBien) {
+	@RequestMapping(value="/adresseBienUpdate/{idAdresse}", method=RequestMethod.PUT)
+	public void updateVenteContrat (@PathVariable("idAdresse") int pIdAdresseBien, @RequestBody AdresseBien pAdresseBien) {
 		adresseBienRepository.saveAndFlush(pAdresseBien);
 	}//end updateAdresseBien()
 	
 	
-	@RequestMapping(value="/adresseBienDelete/{identifiant}", method=RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteAdresseBien(@PathVariable("identifiant") int pIdAdresseBien) {
+	@RequestMapping(value="/adresseBienDelete/{idAdresse}", method=RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteAdresseBien(@PathVariable("idAdresse") int pIdAdresseBien) {
 		adresseBienRepository.deleteById(pIdAdresseBien);
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 	}//end deleteAdresseBien()

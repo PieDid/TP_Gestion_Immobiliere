@@ -25,5 +25,18 @@ public interface VisiteRepository extends JpaRepository<Visite, Integer> {
 	
 	@Query("SELECT v FROM visite v WHERE v.date = ?1")
 	public List<Visite> getVisiteByDate(String date);
+	
+	@Query("SELECT v FROM visite v WHERE v.bien.id_bien = ?1")
+	public List<Visite> getVisiteByBien(int idBien);
+	
+	@Query("SELECT v FROM visite v WHERE v.agent.identifiant = ?1")
+	public List<Visite> getVisiteByAgent(int idAgent);
+	
+	@Query("SELECT v FROM visite v WHERE v.client.identifiant = ?1")
+	public List<Visite> getVisiteByClient(int idClient);
+	
+	@Query("SELECT v FROM visite v WHERE v.proprietaire. = ?1")
+	public List<Visite> getVisiteByProprietaire(int idProprietaire);
+	
 
 }

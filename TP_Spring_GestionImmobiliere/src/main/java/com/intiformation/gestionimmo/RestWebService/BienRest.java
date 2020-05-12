@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestionimmo.domain.Bien;
-import com.intiformation.gestionimmo.domain.Commerciaux;
 import com.intiformation.gestionimmo.repository.BienRepository;
 
 @RestController
@@ -70,7 +69,7 @@ public class BienRest {
 	}//end delete
 	
 	
-	@RequestMapping(value="/bienList/offre/{offre}", method=RequestMethod.GET)
+	@RequestMapping(value="/bien/offre/{offre}", method=RequestMethod.GET)
 	public List<Bien> listebienByOffre(@PathVariable("offre") String pOffre) {
 		return bienRepo.getBienByOffre(pOffre);
 	

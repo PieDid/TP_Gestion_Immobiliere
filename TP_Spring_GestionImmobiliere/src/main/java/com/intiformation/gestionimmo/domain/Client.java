@@ -11,10 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="client")
 @DiscriminatorValue("ROLE_CLIENT")
+@Proxy(lazy = false)
 public class Client extends Personne implements Serializable{
 
 	//prop
@@ -36,6 +39,12 @@ public class Client extends Personne implements Serializable{
 	}
 	
 	public Client(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Visite> liste_visites, List<Contrat> liste_contrats) {
+		super(nom, email, motDePasse, statut, adresseP);
+		this.liste_visites = liste_visites;
+		this.liste_contrats = liste_contrats;
+	}
+	
+	public Client(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Visite> liste_visites, List<Contrat> liste_contrats) {
 		super(nom, email, motDePasse, statut, adresseP);
 		this.liste_visites = liste_visites;
 		this.liste_contrats = liste_contrats;

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestionimmo.domain.Commerce;
-import com.intiformation.gestionimmo.domain.Commerciaux;
-import com.intiformation.gestionimmo.domain.Entrepot;
 import com.intiformation.gestionimmo.repository.CommerceRepository;
 
 
@@ -90,10 +88,6 @@ public class CommerceRest {
 	
 	}//end getAllBySuperficie
 	
-	@RequestMapping(value="/commerceList/{nbPieces}", method=RequestMethod.GET)
-	public List<Commerce> listeCommerceByPieces(@PathVariable("nbPieces") int nbPieces) {
-		return commerceRepo.getCommerceByPieces(nbPieces);
-	
-	}//end getAllByNbPieces
+
 	
 }//end class

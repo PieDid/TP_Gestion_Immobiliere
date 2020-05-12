@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity(name="appartement")
 @DiscriminatorValue("Appartement")
+@Proxy(lazy = false)
 public class Appartement extends Habitation implements Serializable{
 
 	/*    ctor     */
@@ -18,12 +21,17 @@ public class Appartement extends Habitation implements Serializable{
 
 	public Appartement(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
 			String dateSoumission, String dateDisposition, int revenu, List<Visite> listeVisiteurs, Contrat contrat,
-			int superficie) {
+			int superficie, int nbPieces) {
 		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs, contrat,
-				superficie);
-		// TODO Auto-generated constructor stub
+				superficie, nbPieces);
 	}
 	
+	public Appartement(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
+			String dateSoumission, String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat,
+			int superficie, int nbPieces) {
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat,
+				superficie, nbPieces);
+	}
 	
 	
 	

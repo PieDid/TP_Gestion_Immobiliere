@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.JoinColumn;
@@ -21,6 +23,7 @@ import javax.persistence.JoinColumn;
  */
 @Entity(name = "visite")
 @Table(name = "visites")
+@Proxy(lazy = false)
 public class Visite implements Serializable{
 	
 	/* Propriétés */

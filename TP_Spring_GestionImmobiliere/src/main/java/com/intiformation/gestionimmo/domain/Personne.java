@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.intiformation.gestionimmo.domain.Adresse;
 
@@ -26,6 +28,7 @@ import com.intiformation.gestionimmo.domain.Adresse;
 @Table(name="personnes")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "ROLE", discriminatorType = DiscriminatorType.STRING)
+@Proxy(lazy = false)
 public class Personne implements Serializable{
 
 	/*_________________ props ________________*/
@@ -45,6 +48,9 @@ public class Personne implements Serializable{
 	
 	@Column(name="statut")
 	private boolean statut;
+	
+	@Column(name="photo")
+	private String photo;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -95,9 +101,19 @@ public class Personne implements Serializable{
 		this.statut = statut;
 		this.adresseP = adresseP;
 	}
-
-
 	
+	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut, String photo,
+			AdressePersonne adresseP) {
+		super();
+		this.identifiant = identifiant;
+		this.nom = nom;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
+		this.photo = photo;
+		this.adresseP = adresseP;
+	}
+
 	@Override
 	public String toString() {
 		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="

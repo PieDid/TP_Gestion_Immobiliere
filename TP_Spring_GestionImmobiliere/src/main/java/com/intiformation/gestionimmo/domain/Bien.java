@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity(name="bien")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Proxy(lazy = false)
 public class Bien implements Serializable{
 	/*_________________ props ________________*/
 	
@@ -47,6 +50,9 @@ public class Bien implements Serializable{
 	
 	@Column(name="revenu")
 	private int revenu;
+	
+	@Column(name="photos")
+	private List<String> listePhoto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "bien", cascade = CascadeType.ALL)
@@ -93,6 +99,22 @@ public class Bien implements Serializable{
 		this.dateSoumission = dateSoumission;
 		this.dateDisposition = dateDisposition;
 		this.revenu = revenu;
+		this.listeVisite = listeVisite;
+		this.contrat = contrat;
+	}
+	
+	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
+			int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat) {
+		super();
+		this.statut = statut;
+		this.offre = offre;
+		this.prix = prix;
+		this.standard = standard;
+		this.adresseBien = adresseBien;
+		this.dateSoumission = dateSoumission;
+		this.dateDisposition = dateDisposition;
+		this.revenu = revenu;
+		this.listePhoto = listePhoto;
 		this.listeVisite = listeVisite;
 		this.contrat = contrat;
 	}

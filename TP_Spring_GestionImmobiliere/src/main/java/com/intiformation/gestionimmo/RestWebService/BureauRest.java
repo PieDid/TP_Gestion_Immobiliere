@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.intiformation.gestionimmo.domain.Bureau;
-import com.intiformation.gestionimmo.domain.Entrepot;
 import com.intiformation.gestionimmo.repository.BureauRepository;
 
 @Repository
@@ -87,12 +86,8 @@ public class BureauRest {
 	public List<Bureau> listeBureauBySuperficie(@PathVariable("superficie") int superficie) {
 		return bureauRepo.getBureauBySuperficie(superficie);
 	
-	}//end getAllByPrixMax
+	}//end getAllBySuperficie
 	
-	@RequestMapping(value="/bureauList/{nbPieces}", method=RequestMethod.GET)
-	public List<Bureau> listeBureauByPieces(@PathVariable("nbPieces") int nbPieces) {
-		return bureauRepo.getBureauByPieces(nbPieces);
-	
-	}//end getAllByPrixMax
+
 	
 }//end class

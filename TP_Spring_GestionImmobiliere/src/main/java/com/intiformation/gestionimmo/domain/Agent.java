@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -18,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity(name="agent")
 @DiscriminatorValue("ROLE_AGENT")
+@Proxy(lazy = false)
 public class Agent extends Personne implements Serializable{
 
 	
@@ -48,6 +51,11 @@ public class Agent extends Personne implements Serializable{
 		this.liste_visites = liste_visites;
 	}
 
+	public Agent(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Contrat> liste_contrats, List<Visite> liste_visites) {
+		super(nom, email, motDePasse, statut, adresseP);
+		this.liste_contrats = liste_contrats;
+		this.liste_visites = liste_visites;
+	}
 	
 	
 

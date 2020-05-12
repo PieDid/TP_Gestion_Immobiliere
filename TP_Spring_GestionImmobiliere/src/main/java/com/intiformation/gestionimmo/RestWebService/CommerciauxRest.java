@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestionimmo.domain.Commerciaux;
-import com.intiformation.gestionimmo.domain.Entrepot;
 import com.intiformation.gestionimmo.repository.CommerciauxRepository;
 
 @RestController
@@ -86,10 +85,6 @@ public class CommerciauxRest {
 	
 	}//end getAllBySuperficie
 	
-	@RequestMapping(value="/commerciauxList/{nbPieces}", method=RequestMethod.GET)
-	public List<Commerciaux> listeCommerciauxByPieces(@PathVariable("nbPieces") int nbPieces) {
-		return commerciauxRepo.getCommerciauxByPieces(nbPieces);
-	
-	}//end getAllByPieces
+
 	
 }//end class

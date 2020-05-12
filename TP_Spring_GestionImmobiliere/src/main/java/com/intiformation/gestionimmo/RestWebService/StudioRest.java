@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intiformation.gestionimmo.domain.Habitation;
 import com.intiformation.gestionimmo.domain.Studio;
 import com.intiformation.gestionimmo.repository.StudioRepository;
 
@@ -99,6 +98,12 @@ public class StudioRest {
 		return studioRepo.getStudioBySuperficie(pSuperficie);
 	
 	}//end listestudioBySuperficie
+	
+	@RequestMapping(value="/studioList/pieces/{nbPieces}", method=RequestMethod.GET)
+	public List<Studio> listeStudioByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return studioRepo.getStudioByPieces(nbPieces);
+	
+	}//end getAllByPieces
 	
 	
 //	@RequestMapping(value="/studioList/visite/{idVisite}", method=RequestMethod.GET)

@@ -87,10 +87,6 @@ public class EntrepotRest {
 	
 	}//end getAllByPrixMax
 	
-	@RequestMapping(value="/entrepotList/{nbPieces}", method=RequestMethod.GET)
-	public List<Entrepot> listeEntrepotByPieces(@PathVariable("nbPieces") int nbPieces) {
-		return entrepotRepo.getEntrepotByPieces(nbPieces);
-	
-	}//end getAllByPrixMax
+
 	
 }//end class

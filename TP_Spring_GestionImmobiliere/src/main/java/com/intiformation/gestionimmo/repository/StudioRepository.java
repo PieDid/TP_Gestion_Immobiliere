@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.intiformation.gestionimmo.domain.Bien;
-import com.intiformation.gestionimmo.domain.Commerciaux;
 import com.intiformation.gestionimmo.domain.Studio;
 
 public interface StudioRepository extends JpaRepository<Studio, Integer> {
@@ -60,5 +58,8 @@ public interface StudioRepository extends JpaRepository<Studio, Integer> {
 	
 	@Query("SELECT h FROM studio h WHERE h.superficie >= ?1")
 	public List<Studio> getStudioBySuperficie(int superficie);
+	
+	@Query("SELECT h FROM studio h WHERE h.nbPieces = ?1")
+	public List<Studio> getStudioByPieces (int nbPieces);
 	
 }

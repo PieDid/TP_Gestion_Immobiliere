@@ -100,6 +100,12 @@ public class HabitationRest {
 	
 	}//end listehabitationBySuperficie
 	
+	@RequestMapping(value="/habitationList/pieces/{nbPieces}", method=RequestMethod.GET)
+	public List<Habitation> listeHabitationByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return habitationRepo.getHabitationByPieces(nbPieces);
+	
+	}//end getAllByPieces
+	
 	
 //	@RequestMapping(value="/habitationList/visite/{idVisite}", method=RequestMethod.GET)
 //	public List<Habitation> listehabitationByVisite(@PathVariable("idVisite") int pIdVisite) {

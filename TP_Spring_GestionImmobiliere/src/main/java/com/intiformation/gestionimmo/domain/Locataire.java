@@ -9,10 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="locataire")
 @DiscriminatorValue("ROLE_LOC")
+@Proxy(lazy = false)
 public class Locataire extends Personne implements Serializable{
 
 	@JsonIgnore
@@ -35,7 +38,12 @@ public class Locataire extends Personne implements Serializable{
 	}
 
 
+	public Locataire(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, ContratLocation contratLocation) {
+		super(nom, email, motDePasse, statut, adresseP);
+		this.contratLocation = contratLocation;
+	}
 
+	
 
 	/* Méthodes */
 	@Override

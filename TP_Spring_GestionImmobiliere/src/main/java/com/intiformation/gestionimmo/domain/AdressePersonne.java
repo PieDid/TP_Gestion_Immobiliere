@@ -6,10 +6,13 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="adressePersonne")
 @DiscriminatorValue("adressePersonne")
+@Proxy(lazy = false)
 public class AdressePersonne extends Adresse implements Serializable{
 
 	@JsonIgnore

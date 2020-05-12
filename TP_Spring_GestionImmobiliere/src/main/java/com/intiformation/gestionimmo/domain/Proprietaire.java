@@ -17,11 +17,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.intiformation.gestionimmo.domain.Adresse;
 
 @Entity(name="proprietaire")
 @DiscriminatorValue("ROLE_PROP")
+@Proxy(lazy = false)
 public class Proprietaire extends Personne implements Serializable{
 
 
@@ -69,6 +72,16 @@ public class Proprietaire extends Personne implements Serializable{
 	}
 
 	public Proprietaire(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Visite> liste_visites, String tel_prive, String tel_travail, List<Bien> liste_biens,
+			List<ContratVente> liste_contratsVente, List<ContratLocation> liste_contratsLocation) {
+		super(nom, email, motDePasse, statut, adresseP);
+		this.tel_prive = tel_prive;
+		this.tel_travail = tel_travail;
+		this.liste_biens = liste_biens;
+		this.liste_contratsVente = liste_contratsVente;
+		this.liste_contratsLocation = liste_contratsLocation;
+	}
+
+	public Proprietaire(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Visite> liste_visites, String tel_prive, String tel_travail, List<Bien> liste_biens,
 			List<ContratVente> liste_contratsVente, List<ContratLocation> liste_contratsLocation) {
 		super(nom, email, motDePasse, statut, adresseP);
 		this.tel_prive = tel_prive;

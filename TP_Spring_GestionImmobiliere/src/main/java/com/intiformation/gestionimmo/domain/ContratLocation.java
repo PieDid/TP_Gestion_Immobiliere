@@ -7,10 +7,13 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="contratLocation")
 @DiscriminatorValue("Location")
+@Proxy(lazy = false)
 public class ContratLocation extends Contrat implements Serializable{
 
 	/*_________________ props ________________*/

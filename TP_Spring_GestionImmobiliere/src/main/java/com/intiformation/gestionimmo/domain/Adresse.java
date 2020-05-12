@@ -13,10 +13,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity(name = "adresse")
 @Table(name = "adresses")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_adresse", discriminatorType = DiscriminatorType.STRING)
+@Proxy(lazy = false)
 public class Adresse implements Serializable {
 
 	/* _________________ props ________________ */

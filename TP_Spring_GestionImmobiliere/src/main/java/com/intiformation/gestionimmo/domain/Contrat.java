@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="contrats")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_contrat", discriminatorType=DiscriminatorType.STRING)
+@Proxy(lazy = false)
 public class Contrat implements Serializable{
 
 	/*_________________ props ________________*/

@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.intiformation.gestionimmo.domain.Appartement;
-import com.intiformation.gestionimmo.domain.Bien;
-import com.intiformation.gestionimmo.domain.Commerciaux;
 
 public interface AppartementRepository extends JpaRepository<Appartement, Integer>{
 
@@ -60,4 +58,7 @@ public interface AppartementRepository extends JpaRepository<Appartement, Intege
 	
 	@Query("SELECT h FROM appartement h WHERE h.superficie >= ?1")
 	public List<Appartement> getAppartementBySuperficie(int superficie);
+	
+	@Query("SELECT h FROM appartement h WHERE h.nbPieces = ?1")
+	public List<Appartement> getAppartementByPieces (int nbPieces);
 }

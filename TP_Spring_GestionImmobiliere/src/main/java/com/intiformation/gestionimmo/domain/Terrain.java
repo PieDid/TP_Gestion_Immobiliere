@@ -6,7 +6,10 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity(name="terrain")
+@Proxy(lazy = false)
 public class Terrain extends Bien implements Serializable{
 
 	/*_________________ props ________________*/
@@ -18,14 +21,24 @@ public class Terrain extends Bien implements Serializable{
 		super();
 	}
 
-	/*_______________ ctor _______________*/
+	
 	public Terrain(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
 			String dateDisposition, List<Visite> listeVisiteurs, Contrat contrat, int superficie) {
 		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, listeVisiteurs, contrat);
 		this.superficie = superficie;
 	}
+	
 
 	
+	public Terrain(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
+			String dateSoumission, String dateDisposition, int revenu, List<String> listePhoto,
+			List<Visite> listeVisiteurs, Contrat contrat, int superficie) {
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs,
+				contrat);
+		this.superficie = superficie;
+	}
+
+
 	/*_______________ getters|setters _______________*/
 	public int getSuperficie() {
 		return superficie;

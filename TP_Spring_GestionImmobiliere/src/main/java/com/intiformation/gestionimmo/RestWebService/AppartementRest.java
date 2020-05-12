@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.intiformation.gestionimmo.domain.Appartement;
-import com.intiformation.gestionimmo.domain.Habitation;
 import com.intiformation.gestionimmo.repository.AppartementRepository;
 
 
@@ -93,6 +92,12 @@ public class AppartementRest {
 		return appartementRepo.getAppartementBySuperficie(pSuperficie);
 	
 	}//end listeappartementBySuperficie
+	
+	@RequestMapping(value="/appartementList/pieces/{nbPieces}", method=RequestMethod.GET)
+	public List<Appartement> listeAppartementByPieces(@PathVariable("nbPieces") int nbPieces) {
+		return appartementRepo.getAppartementByPieces(nbPieces);
+	
+	}//end getAllByPieces
 	
 	
 //	@RequestMapping(value="/appartementList/visite/{idVisite}", method=RequestMethod.GET)

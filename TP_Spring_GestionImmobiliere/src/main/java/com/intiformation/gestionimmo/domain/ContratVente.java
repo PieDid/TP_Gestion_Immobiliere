@@ -6,8 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity(name="contratVente")
 @DiscriminatorValue("Vente")
+@Proxy(lazy = false)
 public class ContratVente extends Contrat implements Serializable{
 
 	/*_________________ props ________________*/

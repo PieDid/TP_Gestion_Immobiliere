@@ -31,9 +31,9 @@ public class Terrain extends Bien implements Serializable{
 
 	
 	public Terrain(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
-			String dateSoumission, String dateDisposition, int revenu, List<String> listePhoto,
+			String dateSoumission, String dateDisposition, int revenu,
 			List<Visite> listeVisiteurs, Contrat contrat, int superficie) {
-		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs,
+		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listeVisiteurs,
 				contrat);
 		this.superficie = superficie;
 	}

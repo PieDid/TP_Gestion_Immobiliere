@@ -102,6 +102,17 @@ public class Personne implements Serializable{
 		this.adresseP = adresseP;
 	}
 	
+	public Personne(String nom, String email, String motDePasse, boolean statut, String photo,
+			AdressePersonne adresseP) {
+		super();
+		this.nom = nom;
+		this.email = email;
+		this.motDePasse = motDePasse;
+		this.statut = statut;
+		this.photo = photo;
+		this.adresseP = adresseP;
+	}
+	
 	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut, String photo,
 			AdressePersonne adresseP) {
 		super();
@@ -117,7 +128,7 @@ public class Personne implements Serializable{
 	@Override
 	public String toString() {
 		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="
-				+ motDePasse + ", statut=" + statut + ", adresseP=" + adresseP + "]";
+				+ motDePasse + ", statut=" + statut + ", photo=" + photo + ", adresseP=" + adresseP + "]";
 	}
 	
 	
@@ -170,6 +181,16 @@ public class Personne implements Serializable{
 	public void setStatut(boolean statut) {
 		this.statut = statut;
 	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
+	
 	
 	
 }

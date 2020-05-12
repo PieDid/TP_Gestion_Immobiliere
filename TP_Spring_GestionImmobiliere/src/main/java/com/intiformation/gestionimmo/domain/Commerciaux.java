@@ -33,11 +33,11 @@ public class Commerciaux extends Bien implements Serializable{
 		this.superficie = superficie;
 	}
 	
-	public Commerciaux(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
-			String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat, int superficie) {
-		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat);
-		this.superficie = superficie;
-	}
+//	public Commerciaux(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
+//			String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat, int superficie) {
+//		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat);
+//		this.superficie = superficie;
+//	}
 
 
 	/* Setters et Getters */

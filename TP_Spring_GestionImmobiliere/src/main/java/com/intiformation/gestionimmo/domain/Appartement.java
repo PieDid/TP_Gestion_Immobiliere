@@ -26,12 +26,12 @@ public class Appartement extends Habitation implements Serializable{
 				superficie, nbPieces);
 	}
 	
-	public Appartement(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
-			String dateSoumission, String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat,
-			int superficie, int nbPieces) {
-		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat,
-				superficie, nbPieces);
-	}
+//	public Appartement(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien,
+//			String dateSoumission, String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat,
+//			int superficie, int nbPieces) {
+//		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat,
+//				superficie, nbPieces);
+//	}
 	
 	
 	

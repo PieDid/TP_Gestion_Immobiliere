@@ -1,6 +1,7 @@
 package com.intiformation.gestionimmo.lanceur;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
@@ -209,7 +210,7 @@ public class Application implements CommandLineRunner{
 		// définir les terrains à ajouter
 		Terrain terrain = new Terrain(true, "offre", 15000.00, "standard", null, "10/10/2020", "10/10/2020", null, null, 1230);
 		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "standard1", null, "15/11/2020", "15/11/2020", null, null, 2000);
-				
+		
 		terrainRepository.save(terrain);
 		terrainRepository.save(terrain1);
 				
@@ -268,7 +269,7 @@ public class Application implements CommandLineRunner{
 		/*========================================================================*/
 		/*____________________________ ajout d'un Client ___________________________*/
 		// définir le Client à ajouter
-		Client client1 = new Client("nom", "email", "motDePasse", true, null, null, null);
+		Client client1 = new Client("nom", "email", "motDePasse", true, "Andre_Fernandes.png", null, null, null);
 
 		
 		//ajout du client via la méthode save()
@@ -332,6 +333,7 @@ public class Application implements CommandLineRunner{
 		Client clientUp = clientRepository.getClientById(1);
 		
 		clientUp.setNom("Geoffrey Turgeon");
+		clientUp.setPhoto("Andre_Fernandes.png");
 		
 		clientRepository.save(clientUp);
 		
@@ -757,7 +759,7 @@ public class Application implements CommandLineRunner{
 		bien = new Bien(true, "offre", 50000.00, "standard", null, "dateSoumission", "dateDisposition", null, null);
 		agent = new Agent("nom", "email", "motDePasse", true, null);
 		proprietaire = new Proprietaire("nom", "email", "motDePasse", true, null, null, "tel_prive", "tel_travail");
-		Client client = new Client("nom", "email", "motDePasse", true, null, null, null);
+		Client client = new Client("nom", "email", "motDePasse", true, "Andre_Fernandes.png", null, null, null);
 		
 		// définir les contrats à ajouter  ## Pb avec l'adresse (Fetch) donc on test à null ##
 		Contrat contrat = new Contrat("date", null, null, null, null);

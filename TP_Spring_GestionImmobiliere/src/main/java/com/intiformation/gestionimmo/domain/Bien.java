@@ -51,8 +51,8 @@ public class Bien implements Serializable{
 	@Column(name="revenu")
 	private int revenu;
 	
-	@Column(name="photos")
-	private List<String> listePhoto;
+//	@Column(name="photos")
+//	private List<String> listePhoto;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "bien", cascade = CascadeType.ALL)
@@ -67,6 +67,12 @@ public class Bien implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "proprietaire_id" , referencedColumnName = "id_personne")
 	private Proprietaire proprietaire;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="bien", cascade= CascadeType.ALL)
+	private List<Photo> liste_photos;
+	
+	
 	/*_________________ ctors ________________*/
 	
 
@@ -84,6 +90,7 @@ public class Bien implements Serializable{
 		this.adresseBien = adresseBien;
 		this.dateSoumission = dateSoumission;
 		this.dateDisposition = dateDisposition;
+//		this.listePhoto = listePhoto;
 		this.listeVisite = listeVisite;
 		this.contrat = contrat;
 	}
@@ -103,21 +110,21 @@ public class Bien implements Serializable{
 		this.contrat = contrat;
 	}
 	
-	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
-			int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat) {
-		super();
-		this.statut = statut;
-		this.offre = offre;
-		this.prix = prix;
-		this.standard = standard;
-		this.adresseBien = adresseBien;
-		this.dateSoumission = dateSoumission;
-		this.dateDisposition = dateDisposition;
-		this.revenu = revenu;
-		this.listePhoto = listePhoto;
-		this.listeVisite = listeVisite;
-		this.contrat = contrat;
-	}
+//	public Bien(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission, String dateDisposition,
+//			int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat) {
+//		super();
+//		this.statut = statut;
+//		this.offre = offre;
+//		this.prix = prix;
+//		this.standard = standard;
+//		this.adresseBien = adresseBien;
+//		this.dateSoumission = dateSoumission;
+//		this.dateDisposition = dateDisposition;
+//		this.revenu = revenu;
+//		this.listePhoto = listePhoto;
+//		this.listeVisite = listeVisite;
+//		this.contrat = contrat;
+//	}
 
 	/*_________________ meths ________________*/
 	
@@ -209,6 +216,14 @@ public class Bien implements Serializable{
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
+	
+//	public List<String> getListePhoto() {
+//		return listePhoto;
+//	}
+//
+//	public void setListePhoto(List<String> listePhoto) {
+//		this.listePhoto = listePhoto;
+//	}
 
 	@Override
 	public String toString() {

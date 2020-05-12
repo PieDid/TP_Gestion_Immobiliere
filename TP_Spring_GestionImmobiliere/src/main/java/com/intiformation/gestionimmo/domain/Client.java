@@ -45,7 +45,7 @@ public class Client extends Personne implements Serializable{
 	}
 	
 	public Client(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Visite> liste_visites, List<Contrat> liste_contrats) {
-		super(nom, email, motDePasse, statut, adresseP);
+		super(nom, email, motDePasse, statut, photo, adresseP);
 		this.liste_visites = liste_visites;
 		this.liste_contrats = liste_contrats;
 	}

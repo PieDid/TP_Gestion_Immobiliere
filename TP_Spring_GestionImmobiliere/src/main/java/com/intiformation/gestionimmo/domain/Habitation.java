@@ -34,12 +34,12 @@ public class Habitation extends Bien implements Serializable{
 		this.nbPieces = nbPieces;
 	}
 	
-	public Habitation(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
-			String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat, int superficie, int nbPieces) {
-		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat);
-		this.superficie = superficie;
-		this.nbPieces = nbPieces;
-	}
+//	public Habitation(boolean statut, String offre, double prix, String standard, AdresseBien adresseBien, String dateSoumission,
+//			String dateDisposition, int revenu, List<String> listePhoto, List<Visite> listeVisiteurs, Contrat contrat, int superficie, int nbPieces) {
+//		super(statut, offre, prix, standard, adresseBien, dateSoumission, dateDisposition, revenu, listePhoto, listeVisiteurs, contrat);
+//		this.superficie = superficie;
+//		this.nbPieces = nbPieces;
+//	}
 	
 	/*_________________ meths ________________*/
 

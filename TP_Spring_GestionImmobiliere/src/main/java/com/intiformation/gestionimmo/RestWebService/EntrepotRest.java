@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class EntrepotRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/entrepotAdd", method=RequestMethod.POST)
 	public void saveEntrepot(@RequestBody Entrepot entrepot) {
 		
@@ -52,7 +53,7 @@ public class EntrepotRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/entrepotUpdate/{id_bien}", method=RequestMethod.PUT)
 	public void upEntrepot (@PathVariable("id_bien") int pIdEntrepot, @RequestBody Entrepot entrepot) {
 		
@@ -60,7 +61,7 @@ public class EntrepotRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/entrepotDelete/{id_bien}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteEntrepot(@PathVariable("id_bien") int pIdEntrepot) {
 		

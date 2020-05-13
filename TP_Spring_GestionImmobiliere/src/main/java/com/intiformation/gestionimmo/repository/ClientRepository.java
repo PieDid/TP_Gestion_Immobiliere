@@ -3,18 +3,22 @@ package com.intiformation.gestionimmo.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestionimmo.domain.Client;
 import com.intiformation.gestionimmo.domain.Personne;
+import com.intiformation.gestionimmo.security.tool.Encodage;
 
 //@Component("clientRepository")
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer>{
+	
 	
 
 	/*___________ Les méthodes de bases de JpaRepository (opérations CRUD) ___________*/
@@ -26,6 +30,9 @@ public interface ClientRepository extends JpaRepository<Client, Integer>{
 	 * 				-> getOne() + save() => update
 	 * 				-> count()
 	 */
+	
+
+	
 //	public List<Client> findAll();
 //	
 //	@SuppressWarnings({ "unchecked", "hiding" })
@@ -40,7 +47,7 @@ public interface ClientRepository extends JpaRepository<Client, Integer>{
 	// Les requêtes avec @Query 
 	@Query("SELECT c FROM client c WHERE c.identifiant = ?1")
 	public Client getClientById(int id);
-	
+
 	@Query("SELECT c FROM client c WHERE c.nom = ?1")
 	public List<Client> getClientByNom(String nom);
 	

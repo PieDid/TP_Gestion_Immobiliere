@@ -2,9 +2,11 @@ package com.intiformation.gestionimmo.lanceur;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -31,21 +33,25 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.intiformation.gestionimmo.RestWebService.AdministrateurRest;
+import com.intiformation.gestionimmo.RestWebService.AgentRest;
+import com.intiformation.gestionimmo.RestWebService.ClientRest;
+import com.intiformation.gestionimmo.RestWebService.LocataireRest;
+import com.intiformation.gestionimmo.RestWebService.ProprietaireRest;
 import com.intiformation.gestionimmo.domain.*;
 import com.intiformation.gestionimmo.repository.*;
 
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude= {DataSourceAutoConfiguration.class, 
-								   DataSourceTransactionManagerAutoConfiguration.class, 
-								   HibernateJpaAutoConfiguration.class})
 @ComponentScan(basePackages = {"com.intiformation.gestionimmo"})
 //@ComponentScan({"com.intiformation.gestionimmo"})
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//@EntityScan(basePackages = {"com.intiformation.gestionimmo.entity"}) 
 @EnableJpaRepositories("com.intiformation.gestionimmo.repository")
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+//@EntityScan : détection des classes entités par spring boot 
+@EntityScan(basePackages= {"com.intiformation.gestionimmo.domain"})
 public class Application implements CommandLineRunner{
 
 	@Autowired
@@ -94,6 +100,13 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private ContratVenteRepository contratVenteRepository;
 	
+	@Autowired
+	PasswordEncoder encoder;
+	
+	@Autowired
+	RoleRepository roleRepository;
+	
+	
 	/**
 	 * Methode main : lance l'application
 	 * @param args
@@ -101,7 +114,7 @@ public class Application implements CommandLineRunner{
 	public static void main(String[] args) {
 		ApplicationContext conteneurIoCSpring = SpringApplication.run(Application.class, args);
 		System.out.println("... Lancement de l'application ...");
-	}
+	}//end main
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	/**
@@ -123,6 +136,23 @@ public class Application implements CommandLineRunner{
 		/*========================================================================*/
 		/*============== Méthode de bases de la DAO (*Repository) =============*/
 		/*========================================================================*/
+		
+		/*========================================================================*/
+		/*============== Ajout des role dans la table roles =============*/
+		/*========================================================================*/
+
+		Role roleClient = new Role(ERole.ROLE_CLIENT);
+		Role roleProp = new Role(ERole.ROLE_PROP);
+		Role roleAgent = new Role(ERole.ROLE_AGENT);
+		Role roleAdmin = new Role(ERole.ROLE_ADMIN);
+		Role roleLoc = new Role(ERole.ROLE_LOC);
+		
+		roleRepository.save(roleClient);
+		roleRepository.save(roleProp);
+		roleRepository.save(roleAgent);
+		roleRepository.save(roleAdmin);
+		roleRepository.save(roleLoc);
+		
 		/*========================================================================*/
 		/*============== Tests sur les Méthode de AdresseRepository =============*/
 		/*========================================================================*/
@@ -191,19 +221,6 @@ public class Application implements CommandLineRunner{
 //		adresseBRepository.delete(adresseB1);
 		
 		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
 		/*========================================================================*/
 		/*============== Tests sur les Méthode de TerrainRepository ===============*/
 		/*========================================================================*/
@@ -256,14 +273,7 @@ public class Application implements CommandLineRunner{
 		//suppression de l'entité
 //		terrainRepository.delete(t);
 		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		/*========================================================================*/
 		/*============== Tests sur les Méthode de ClientRepository ===============*/
 		/*========================================================================*/
@@ -273,6 +283,14 @@ public class Application implements CommandLineRunner{
 
 		
 		//ajout du client via la méthode save()
+		// Encodage
+		client1.setMotDePasse(encoder.encode(client1.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles = new HashSet<>();
+		Role clientRole = roleRepository.findByName(ERole.ROLE_CLIENT)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles.add(clientRole);
+		client1.setRoles(roles);
 		clientRepository.save(client1);
 		
 		
@@ -335,6 +353,7 @@ public class Application implements CommandLineRunner{
 		clientUp.setNom("Geoffrey Turgeon");
 		clientUp.setPhoto("Andre_Fernandes.png");
 		
+		clientUp.setMotDePasse(encoder.encode(clientUp.getMotDePasse()));
 		clientRepository.save(clientUp);
 		
 		
@@ -375,10 +394,7 @@ public class Application implements CommandLineRunner{
 //		clientRepository.delete(userUp);
 		
 		
-		
-		
-		
-		
+	
 		/*========================================================================*/
 		/*=========== Tests sur les Méthode de ProprietaireRepository ============*/
 		/*========================================================================*/
@@ -391,8 +407,25 @@ public class Application implements CommandLineRunner{
 		// définir les proprietaires à ajouter  ## Pb avec l'adresse (Fetch) donc on test à null ##
 		Proprietaire proprietaire = new Proprietaire("nom", "email", "motDePasse", true, null, null, "0600220022", "0700220022");
 		Proprietaire proprietaire1 = new Proprietaire("nom1", "email1", "motDePasse1", true, null, null, "0600220022", "0700220022");
-				
+		
+		// Encodage
+		proprietaire.setMotDePasse(encoder.encode(proprietaire.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles3 = new HashSet<>();
+		Role propRole = roleRepository.findByName(ERole.ROLE_PROP)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles3.add(propRole);
+		proprietaire.setRoles(roles3);
 		proprietaireRepository.save(proprietaire);
+		
+		// Encodage
+		proprietaire1.setMotDePasse(encoder.encode(proprietaire1.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles4 = new HashSet<>();
+		Role propRole1 = roleRepository.findByName(ERole.ROLE_PROP)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles4.add(propRole1);
+		proprietaire1.setRoles(roles4);		
 		proprietaireRepository.save(proprietaire1);
 				
 		/*____________________________ liste des proprietaires ___________________________*/
@@ -410,6 +443,8 @@ public class Application implements CommandLineRunner{
 		
 		p1.setNom("nomModifié");
 		System.out.println("\t > " + p1.getIdentifiant() + " : " + p1.getNom() + ", [Adresse] : " + p1.getAdresseP());
+		// Encodage
+		p1.setMotDePasse(encoder.encode(p1.getMotDePasse()));
 		proprietaireRepository.save(p1);
 		
 		
@@ -434,12 +469,6 @@ public class Application implements CommandLineRunner{
 		
 		
 		
-		
-		
-		
-		
-		
-		
 		/*========================================================================*/
 		/*============== Tests sur les Méthode de AgentRepository ================*/
 		/*========================================================================*/
@@ -453,7 +482,24 @@ public class Application implements CommandLineRunner{
 		Agent agent = new Agent("nomAgent", "email", "motDePasse", true, null, null, null);
 		Agent agent1 = new Agent("nomAgent1", "email1", "motDePasse1", true, null);
 				
+		// Encodage
+		agent.setMotDePasse(encoder.encode(agent.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles1 = new HashSet<>();
+		Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles1.add(agentRole);
+		agent.setRoles(roles1);
 		agentRepository.save(agent);
+		
+		// Encodage
+		agent1.setMotDePasse(encoder.encode(agent1.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles2 = new HashSet<>();
+		Role agentRole1 = roleRepository.findByName(ERole.ROLE_AGENT)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles2.add(agentRole1);
+		agent1.setRoles(roles2);
 		agentRepository.save(agent1);
 				
 		/*____________________________ liste des agents ___________________________*/
@@ -471,6 +517,8 @@ public class Application implements CommandLineRunner{
 		
 		ag.setNom("nomAgentModifié");
 		System.out.println("\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
+		// Encodage
+		ag.setMotDePasse(encoder.encode(ag.getMotDePasse()));
 		agentRepository.save(ag);
 		
 		
@@ -495,10 +543,6 @@ public class Application implements CommandLineRunner{
 		
 		
 		
-		
-		
-		
-		
 		/*========================================================================*/
 		/*========== Tests sur les Méthode de AdministrateurRepository ===========*/
 		/*========================================================================*/
@@ -512,7 +556,24 @@ public class Application implements CommandLineRunner{
 		Administrateur administrateur = new Administrateur("nomAdmin", "email", "motDePasse", true, null);
 		Administrateur administrateur1 = new Administrateur("nomAdmin1", "email1", "motDePasse1", true, null);
 				
+		// Encodage
+		administrateur.setMotDePasse(encoder.encode(administrateur.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles5 = new HashSet<>();
+		Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles5.add(adminRole);
+		administrateur.setRoles(roles5);
 		administrateurRepository.save(administrateur);
+		
+		// Encodage
+		administrateur1.setMotDePasse(encoder.encode(administrateur1.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles6 = new HashSet<>();
+		Role adminRole1 = roleRepository.findByName(ERole.ROLE_ADMIN)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles6.add(adminRole1);
+		administrateur1.setRoles(roles6);
 		administrateurRepository.save(administrateur1);
 				
 		/*____________________________ liste des aministrateurs ___________________________*/
@@ -530,6 +591,8 @@ public class Application implements CommandLineRunner{
 		
 		admin.setNom("nomAdmin_modifié");
 		System.out.println("\t > " + admin.getIdentifiant() + " : " + admin.getNom() + ", " + admin.getAdresseP());
+		// Encodage
+		admin.setMotDePasse(encoder.encode(admin.getMotDePasse()));
 		administrateurRepository.save(admin);
 		
 		
@@ -551,10 +614,6 @@ public class Application implements CommandLineRunner{
 				
 		//suppression de l'entité
 //		administrateurRepository.delete(admin);
-		
-		
-		
-		
 		
 		
 		
@@ -613,11 +672,6 @@ public class Application implements CommandLineRunner{
 		
 		
 		
-		
-		
-		
-		
-		
 		/*========================================================================*/
 		/*========== Tests sur les Méthode de LocataireRepository ===========*/
 		/*========================================================================*/
@@ -630,8 +684,25 @@ public class Application implements CommandLineRunner{
 		// définir les locataires à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
 		Locataire locataire = new Locataire("nomLocataire", "email", "motDePasse", true, null, null);
 		Locataire locataire1 = new Locataire("nomLocataire1", "email1", "motDePasse1", true, null, null);
-				
+		
+		// Encodage
+		locataire.setMotDePasse(encoder.encode(locataire.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles7 = new HashSet<>();
+		Role locRole = roleRepository.findByName(ERole.ROLE_LOC)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles7.add(locRole);
+		locataire.setRoles(roles7);
 		locataireRepository.save(locataire);
+		
+		// Encodage
+		locataire1.setMotDePasse(encoder.encode(locataire1.getMotDePasse()));
+		//Ajout du rôle
+		Set<Role> roles8 = new HashSet<>();
+		Role locRole1 = roleRepository.findByName(ERole.ROLE_LOC)
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		roles8.add(locRole1);
+		locataire1.setRoles(roles8);
 		locataireRepository.save(locataire1);
 				
 		/*____________________________ liste des locataires ___________________________*/
@@ -649,6 +720,8 @@ public class Application implements CommandLineRunner{
 		
 		locatair.setNom("nomAdmin_modifié");
 		System.out.println("\t > " + locatair.getIdentifiant() + " : " + locatair.getNom() + ", " + locatair.getAdresseP());
+		// Encodage
+		locatair.setMotDePasse(encoder.encode(locatair.getMotDePasse()));
 		locataireRepository.save(locatair);
 		
 		
@@ -670,11 +743,6 @@ public class Application implements CommandLineRunner{
 				
 		//suppression de l'entité
 		locataireRepository.delete(locatair);
-		
-		
-		
-		
-		
 		
 		
 		
@@ -748,10 +816,6 @@ public class Application implements CommandLineRunner{
 		
 		
 		
-		
-		
-		
-		
 		/*========================================================================*/
 		/*=========== Tests sur les Méthode de ContratRepository ============*/
 		/*========================================================================*/
@@ -798,99 +862,8 @@ public class Application implements CommandLineRunner{
 		//suppression de l'entité
 //		contratRepository.delete(p1);
 		
-		
-		
-		
-		
-	}
-//////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	
-	/**
-	 * creation du bean de la dataSource
-	 * @return la datasource de type javax.sql.DataSource
-	 * @return
-	 */
-	@Bean(name="dataSourceBean")
-	public DataSource getDataSource() {
-		
-		// utilisation de l'implémentation de la DS de Spring DriverManagerDataSource
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		
-		// config de la datasource avec les props de application.properties
-		dataSource.setDriverClassName(appEnvironment.getProperty("spring.datasource.driver-class-name"));
-		dataSource.setUrl(appEnvironment.getProperty("spring.datasource.url"));
-		dataSource.setUsername(appEnvironment.getProperty("spring.datasource.username"));
-		dataSource.setPassword(appEnvironment.getProperty("spring.datasource.password"));
-		
-		System.out.println("## bean de la datasource : " + dataSource);
-		
-		// renvoi de la datasource
-		return dataSource;
-		
-	} // end getDataSource()
-	
-	/**
-	 * création du bean de la sessionFactory. <br/>
-	 * Injection du bean de la datasource dans la sessionFactory
-	 * @param pDataSource : la dataSource à injecter
-	 * @return : une sessionFactory d'hibernate org.hibernate.SessionFactory
-	 * @throws IOException 
-	 */
-	@Autowired // injection du bean de la dataSource dans le param pDataSource
-	@Bean(name="entityManagerFactory")
-	public SessionFactory getSessionFactory(DataSource pDataSource) throws IOException {
-		
-		// 1. definition des propriétés d'hibernate de la sessionFactory
-		//-> récup des propriétés du fichier application.properties
-		Properties properties = new Properties();
-		//properties.put(<prop natives d'hibernate>,<valeurs définies dans application.properties>) 		
-		properties.put("hibernate.dialect", appEnvironment.getProperty("spring.jpa.properties.hibernate.dialect"));
-		properties.put("hibernate.show_sql", appEnvironment.getProperty("spring.jpa.show-sql"));
-		properties.put("hibernate.hbm2ddl.auto", appEnvironment.getProperty("spring.jpa.hibernate.ddl-auto"));
-		
-		// 2. définition de la sessionFactory : utilisation de l'implémentation de Spring 'LocalSessionFactoryBean'
-		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-		
-		// 3. config de la session factory
-		
-		// 3.1. packages contenant les classes entités
-		sessionFactoryBean.setPackagesToScan(new String[] {"com.intiformation.gestionimmo.domain"});
-		
-		// 3.2. injection de la datasource
-		sessionFactoryBean.setDataSource(pDataSource);
-		
-		// 3.3. définition des propriétés hibernate
-		sessionFactoryBean.setHibernateProperties(properties);
-		
-		// 3.4. validation de la config globale du bean de la sessionFactory
-		sessionFactoryBean.afterPropertiesSet();
-		
-		// 3.5. récup de l'objet de la sessionFactory
-		SessionFactory sessionFactory = sessionFactoryBean.getObject();
-		
-		System.out.println("## ------> session Factory : " + sessionFactory);
-		
-		return sessionFactory;
-		
-	} // end getSessionFactory()
-	
-	/**
-	 * création du bean du gestionnaire des transactions. <br/>
-	 * injection du bean de la session Factory
-	 * @return
-	 */
-	@Autowired // pour injecter le bean de la sessionFactory dans le paramètre pSessionFactory
-	@Bean(name="transactionManager")
-	public HibernateTransactionManager getTransactionManager(SessionFactory pSessionFactory) {
-		
-		// création du bean du tx manager
-		HibernateTransactionManager txManager = new HibernateTransactionManager(pSessionFactory);
-		
-		System.out.println("## ------> tx manager : " +txManager);
-		
-		// renvoi du tx manager
-		return txManager;
-		
-	} // end getTransactionManager()
 
-}
+	}//end method run 
+
+
+}//end class

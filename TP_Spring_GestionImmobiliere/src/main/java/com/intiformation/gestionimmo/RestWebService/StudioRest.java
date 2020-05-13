@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +36,7 @@ public class StudioRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/studioAdd", method=RequestMethod.POST)
 	public void savestudio(@RequestBody Studio studio) {
 		
@@ -51,7 +52,7 @@ public class StudioRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/studioUpdate/{id_studio}", method=RequestMethod.PUT)
 	public void upstudio(@PathVariable("id_studio") int pIdstudio, @RequestBody Studio studio) {
 		
@@ -59,7 +60,7 @@ public class StudioRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/studioDelete/{id_studio}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deletestudio(@PathVariable("id_studio") int pIdstudio) {
 		

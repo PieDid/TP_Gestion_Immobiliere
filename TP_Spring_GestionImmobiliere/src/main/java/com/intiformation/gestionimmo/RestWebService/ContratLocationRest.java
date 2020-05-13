@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +40,7 @@ public class ContratLocationRest {
 		return contratLocationRepository.getContratLocationById(pIdContratLocation);
 	}//end getContratLocation()
 	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT')")
 	@RequestMapping(value="/contratLocationAdd", method=RequestMethod.POST)
 	public void saveContratLocation(@RequestBody ContratLocation pContratLocation) {
 		contratLocationRepository.save(pContratLocation);
@@ -49,7 +51,7 @@ public class ContratLocationRest {
 		contratLocationRepository.saveAndFlush(pContratLocation);
 	}//end updateContratLocation()
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT')")
 	@RequestMapping(value="/contratLocationDelete/{identifiant}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteContratLocation(@PathVariable("identifiant") int pIdContratLocation) {
 		contratLocationRepository.deleteById(pIdContratLocation);

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class BienRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/bienAdd", method=RequestMethod.POST)
 	public void savebien(@RequestBody Bien bien) {
 		
@@ -52,7 +53,7 @@ public class BienRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/bienUpdate/{id_bien}", method=RequestMethod.PUT)
 	public void upbien (@PathVariable("id_bien") int pIdbien, @RequestBody Bien bien) {
 		
@@ -60,7 +61,7 @@ public class BienRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/bienDelete/{id_bien}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deletebien(@PathVariable("id_bien") int pIdbien) {
 		

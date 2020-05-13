@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import com.intiformation.gestionimmo.repository.AppartementRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/appartement-rest")
+@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 public class AppartementRest {
 
 
@@ -32,7 +34,7 @@ public class AppartementRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/appartementAdd", method=RequestMethod.POST)
 	public void saveappartement(@RequestBody Appartement appartement) {
 		
@@ -48,7 +50,7 @@ public class AppartementRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/appartementUpdate/{id_appartement}", method=RequestMethod.PUT)
 	public void upappartement(@PathVariable("id_appartement") int pIdappartement, @RequestBody Appartement appartement) {
 		
@@ -56,7 +58,7 @@ public class AppartementRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/appartementDelete/{id_appartement}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteappartement(@PathVariable("id_appartement") int pIdappartement) {
 		

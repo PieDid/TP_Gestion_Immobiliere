@@ -1,7 +1,9 @@
 package com.intiformation.gestionimmo.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
@@ -36,18 +38,21 @@ public class Client extends Personne implements Serializable{
 	//ctor
 	public Client() {
 		super();
+		
 	}
 	
 	public Client(String nom, String email, String motDePasse, boolean statut, AdressePersonne adresseP, List<Visite> liste_visites, List<Contrat> liste_contrats) {
 		super(nom, email, motDePasse, statut, adresseP);
 		this.liste_visites = liste_visites;
 		this.liste_contrats = liste_contrats;
+		
 	}
 	
 	public Client(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Visite> liste_visites, List<Contrat> liste_contrats) {
 		super(nom, email, motDePasse, statut, photo, adresseP);
 		this.liste_visites = liste_visites;
 		this.liste_contrats = liste_contrats;
+		
 	}
 
 

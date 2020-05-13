@@ -2,22 +2,28 @@ package com.intiformation.gestionimmo.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Proxy;
 
@@ -56,6 +62,13 @@ public class Personne implements Serializable{
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresse") 
 	private AdressePersonne adresseP;
+	
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "personne_roles", 
+				joinColumns = @JoinColumn(name = "personne_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 
 	
 	/*_________________ ctors ________________*/
@@ -71,6 +84,13 @@ public class Personne implements Serializable{
 		this.statut = statut;
 	}
 
+	
+	public Personne(String nom, String email, String motDePasse) {
+		super();
+		this.nom = nom;
+		this.email = email;
+		this.motDePasse = motDePasse;
+	}
 
 	public Personne(int identifiant, String nom, String email, String motDePasse, boolean statut) {
 		super();
@@ -188,6 +208,14 @@ public class Personne implements Serializable{
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 	
 	

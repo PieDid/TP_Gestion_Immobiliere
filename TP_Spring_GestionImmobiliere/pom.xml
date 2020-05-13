@@ -104,6 +104,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- dépendances pour JWT  -->
+		<dependency>
+			  <groupId>io.jsonwebtoken</groupId>
+			  <artifactId>jjwt</artifactId>
+			  <version>0.9.1</version>
+		</dependency>
 	</dependencies>
 
 

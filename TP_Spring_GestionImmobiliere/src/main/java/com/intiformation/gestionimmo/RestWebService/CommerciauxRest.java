@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,7 @@ public class CommerciauxRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/commerciauxAdd", method=RequestMethod.POST)
 	public void saveCommerciaux(@RequestBody Commerciaux commerciaux) {
 		
@@ -50,7 +51,7 @@ public class CommerciauxRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/commerciauxUpdate/{id_bien}", method=RequestMethod.PUT)
 	public void upCommerciaux (@PathVariable("id_bien") int pIdCommerciaux, @RequestBody Commerciaux commerciaux) {
 		
@@ -58,7 +59,7 @@ public class CommerciauxRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/commerciauxDelete/{id_bien}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteCommerciaux(@PathVariable("id_bien") int pIdCommerciaux) {
 		

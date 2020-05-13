@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,8 +36,7 @@ public class CommerceRest {
 		
 	}//end find-all
 	
-	
-	@RequestMapping(value="/commerceAdd", method=RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/commerceAdd", method=RequestMethod.POST)
 	public void saveCommerce(@RequestBody Commerce commerce) {
 		
 		commerceRepo.save(commerce);
@@ -51,7 +51,7 @@ public class CommerceRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/commerceUpdate/{id_bien}", method=RequestMethod.PUT)
 	public void upCommerce (@PathVariable("id_bien") int pIdCommerce, @RequestBody Commerce commerce) {
 		
@@ -59,7 +59,7 @@ public class CommerceRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/commerceDelete/{id_bien}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteCommerce(@PathVariable("id_bien") int pIdCommerce) {
 		

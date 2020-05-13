@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,8 +35,7 @@ public class TerrainRest {
 	
 	}//end getall	
 	
-	
-	@RequestMapping(value="/terrainAdd", method=RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainAdd", method=RequestMethod.POST)
 	public void saveTerrain(@RequestBody Terrain terrain) {
 		
 		terrainRepo.save(terrain);
@@ -49,16 +49,14 @@ public class TerrainRest {
 		
 	}//end get
 	
-	
-	@RequestMapping(value="/terrainUpdate/{identifiant}", method=RequestMethod.PUT)
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upTerrain (@PathVariable("identifiant") int pIdTerrain, @RequestBody Terrain pTerrain) {
 		
 		terrainRepo.saveAndFlush(pTerrain);
 		
 	}//end update
 	
-	
-	@RequestMapping(value="/terrainDelete/{identifiant}", method=RequestMethod.DELETE)
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainDelete/{identifiant}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> delTerrain(@PathVariable("identifiant") int pIdTerrain) {
 		
 		terrainRepo.deleteById(pIdTerrain);

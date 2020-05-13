@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class HabitationRest {
 		
 	}//end find-all
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/habitationAdd", method=RequestMethod.POST)
 	public void savebien(@RequestBody Habitation habitation) {
 		
@@ -52,7 +53,7 @@ public class HabitationRest {
 		
 	}//end get
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/habitationUpdate/{id_bien}", method=RequestMethod.PUT)
 	public void uphabitation(@PathVariable("id_bien") int pIdbien, @RequestBody Habitation bien) {
 		
@@ -60,7 +61,7 @@ public class HabitationRest {
 		
 	}//end update
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
 	@RequestMapping(value="/habitationDelete/{id_bien}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deletebien(@PathVariable("id_bien") int pIdbien) {
 		

@@ -25,7 +25,7 @@ import com.intiformation.gestionimmo.domain.Role;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/administrateur-rest")
-@PreAuthorize("hasRole('ADMIN')")
+//@PreAuthorize("hasRole('ADMIN')")
 public class AdministrateurRest {
 	
 	@Autowired

@@ -25,7 +25,7 @@ import com.intiformation.gestionimmo.repository.RoleRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/agent-rest")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AgentRest {
 
 	

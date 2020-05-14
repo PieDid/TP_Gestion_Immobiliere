@@ -35,7 +35,8 @@ public class TerrainRest {
 	
 	}//end getall	
 	
-	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainAdd", method=RequestMethod.POST)
+//	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	
+	@RequestMapping(value="/terrainAdd", method=RequestMethod.POST)
 	public void saveTerrain(@RequestBody Terrain terrain) {
 		
 		terrainRepo.save(terrain);
@@ -49,14 +50,16 @@ public class TerrainRest {
 		
 	}//end get
 	
-	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainUpdate/{identifiant}", method=RequestMethod.PUT)
+//	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")
+	@RequestMapping(value="/terrainUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upTerrain (@PathVariable("identifiant") int pIdTerrain, @RequestBody Terrain pTerrain) {
 		
 		terrainRepo.saveAndFlush(pTerrain);
 		
 	}//end update
 	
-	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	@RequestMapping(value="/terrainDelete/{identifiant}", method=RequestMethod.DELETE)
+//	@PreAuthorize("hasAnyRole('ADMIN','AGENT','LOC','PROP')")	
+	@RequestMapping(value="/terrainDelete/{identifiant}", method=RequestMethod.DELETE)
 	public ResponseEntity<Boolean> delTerrain(@PathVariable("identifiant") int pIdTerrain) {
 		
 		terrainRepo.deleteById(pIdTerrain);

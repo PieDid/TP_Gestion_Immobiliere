@@ -47,7 +47,11 @@ public class AdressePersonne extends Adresse implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AdressePersonne [personne=" + personne + ", toString()=" + super.toString() + "]";
+		return "[idAdresse=" + super.idAdresse + "] " + super.rue + " " + super.codePostal + " " + super.ville;
 	}
+//	@Override
+//	public String toString() {
+//		return "AdressePersonne [personne=" + personne + ", toString()=" + super.toString() + "]";
+//	}
 
 }

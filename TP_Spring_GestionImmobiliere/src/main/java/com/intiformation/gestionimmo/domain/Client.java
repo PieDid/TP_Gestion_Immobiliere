@@ -57,11 +57,15 @@ public class Client extends Personne implements Serializable{
 
 
 
-
+//	@Override
+//	public String toString() {
+//		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="
+//				+ motDePasse + ", statut=" + statut + ", photo=" + photo + ", adresseP=" + adresseP + "]";
+//	}
 	//méthodes
-	@Override
 	public String toString() {
-		return "Client [" + super.toString() + ", liste_visites=" + liste_visites + ", liste_contrats=" + liste_contrats + "]";
+		return "Client [identifiant=" + super.identifiant + ", nom=" + super.nom + ", email=" + super.email + ", motDePasse="
+				+ super.motDePasse + ", statut=" + super.statut + ", photo=" + super.photo + ", adresseP=" + super.adresseP + ", liste_visites=" + liste_visites + ", liste_contrats=" + liste_contrats + "]";
 	}
 
 

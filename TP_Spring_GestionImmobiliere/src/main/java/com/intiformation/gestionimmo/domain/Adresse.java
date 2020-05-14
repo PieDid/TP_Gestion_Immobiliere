@@ -27,16 +27,16 @@ public class Adresse implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment
 	@Column(name = "id_adresse")
-	private int idAdresse;
+	protected int idAdresse;
 
 	@Column(name = "rue")
-	private String rue;
+	protected String rue;
 
 	@Column(name = "codePostal")
-	private String codePostal;
+	protected String codePostal;
 
 	@Column(name = "ville")
-	private String ville;
+	protected String ville;
 
 	/* _________________ ctors ________________ */
 
@@ -79,10 +79,10 @@ public class Adresse implements Serializable {
 		this.idAdresse = idAdresse;
 	}
 
-	@Override
-	public String toString() {
-		return "[idAdresse=" + idAdresse + "] " + rue + " " + codePostal + " " + ville;
-	}
+//	@Override
+//	public String toString() {
+//		return "[idAdresse=" + idAdresse + "] " + rue + " " + codePostal + " " + ville;
+//	}
 
 	/* __________________ G/S _________________ */
 

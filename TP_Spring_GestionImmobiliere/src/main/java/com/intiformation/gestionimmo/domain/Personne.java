@@ -41,34 +41,34 @@ public class Personne implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_personne")
-	private int identifiant;
+	protected int identifiant;
 	
 	@Column(name="nom")
-	private String nom;
+	protected String nom;
 	
 	@Column(name="email")
-	private String email;
+	protected String email;
 	
 	@Column(name="mot_de_passe")
-	private String motDePasse;
+	protected String motDePasse;
 	
 	@Column(name="statut")
-	private boolean statut;
+	protected boolean statut;
 	
 	@Column(name="photo")
-	private String photo;
+	protected String photo;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "adresseP_id", referencedColumnName = "id_adresse") 
-	private AdressePersonne adresseP;
+	protected AdressePersonne adresseP;
 	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(	name = "personne_roles", 
 				joinColumns = @JoinColumn(name = "personne_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	protected Set<Role> roles = new HashSet<>();
 
 	
 	/*_________________ ctors ________________*/
@@ -145,11 +145,11 @@ public class Personne implements Serializable{
 		this.adresseP = adresseP;
 	}
 
-	@Override
-	public String toString() {
-		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="
-				+ motDePasse + ", statut=" + statut + ", photo=" + photo + ", adresseP=" + adresseP + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Personne [identifiant=" + identifiant + ", nom=" + nom + ", email=" + email + ", motDePasse="
+//				+ motDePasse + ", statut=" + statut + ", photo=" + photo + ", adresseP=" + adresseP + "]";
+//	}
 	
 	
 	

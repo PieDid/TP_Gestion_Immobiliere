@@ -279,7 +279,7 @@ public class Application implements CommandLineRunner{
 		/*========================================================================*/
 		/*____________________________ ajout d'un Client ___________________________*/
 		// définir le Client à ajouter
-		Client client1 = new Client("nom", "email", "motDePasse", true, "Andre_Fernandes.png", null, null, null);
+		Client client1 = new Client("nom", "email", "motDePasse", true, "Andre_Fernandes.png", adresseP, null, null);
 
 		
 		//ajout du client via la méthode save()
@@ -565,7 +565,7 @@ public class Application implements CommandLineRunner{
 		roles5.add(adminRole);
 		administrateur.setRoles(roles5);
 		administrateurRepository.save(administrateur);
-		
+		 
 		// Encodage
 		administrateur1.setMotDePasse(encoder.encode(administrateur1.getMotDePasse()));
 		//Ajout du rôle
@@ -863,6 +863,13 @@ public class Application implements CommandLineRunner{
 //		contratRepository.delete(p1);
 		
 
+		System.out.println("\nAdresse P : " + adresseP.toString());
+		System.out.println("Adresse P1 : " + adresseP1.toString());
+		System.out.println("Adresse B : " + adresseB.toString());
+		System.out.println("Adresse B1 : " + adresseB1.toString());
+		System.out.println("terrain : " + terrain.toString());
+		System.out.println("terrain1 : " + terrain1.toString());
+		System.out.println("client1 : " + client1.toString());
 	}//end method run 
 
 

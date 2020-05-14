@@ -405,8 +405,8 @@ public class Application implements CommandLineRunner{
 		adressePRepository.save(adresseP3);
 		
 		// définir les proprietaires à ajouter  ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Proprietaire proprietaire = new Proprietaire("nom", "email", "motDePasse", true, null, null, "0600220022", "0700220022");
-		Proprietaire proprietaire1 = new Proprietaire("nom1", "email1", "motDePasse1", true, null, null, "0600220022", "0700220022");
+		Proprietaire proprietaire = new Proprietaire("Thomas Bonneau", "TBonneau@gmail.com", "123456", true, "Thomas_Bonneau.png", null, null, "0600220022", "0700220022", null, null, null);
+		Proprietaire proprietaire1 = new Proprietaire("nom1", "MAcalet@gmail.com", "123456", true, "Mathieu_Acalet.png", null, null, "0600220022", "0700220022", null, null, null);
 		
 		// Encodage
 		proprietaire.setMotDePasse(encoder.encode(proprietaire.getMotDePasse()));
@@ -441,7 +441,7 @@ public class Application implements CommandLineRunner{
 		Proprietaire p1 = proprietaireRepository.getProprietaireById(3);
 		System.out.println("MODIF PROPRIETAIRE :\n\t > " + p1.getIdentifiant() + " : " + p1.getNom() + ", [Adresse] : " + p1.getAdresseP());
 		
-		p1.setNom("nomModifié");
+		p1.setNom("Mathieu Acalet");
 		System.out.println("\t > " + p1.getIdentifiant() + " : " + p1.getNom() + ", [Adresse] : " + p1.getAdresseP());
 		// Encodage
 		p1.setMotDePasse(encoder.encode(p1.getMotDePasse()));
@@ -479,8 +479,8 @@ public class Application implements CommandLineRunner{
 		adressePRepository.save(adresseP5);
 		
 		// définir les agents à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Agent agent = new Agent("nomAgent", "email", "motDePasse", true, null, null, null);
-		Agent agent1 = new Agent("nomAgent1", "email1", "motDePasse1", true, null);
+		Agent agent = new Agent("Laurène Lacordaire", "LLacordaire@gmail.com", "123456", true, "Laurène_Lacordaire.png", null, null, null);
+		Agent agent1 = new Agent("nom", "ODodier@gmail.com", "123456", true, "Orianne_Dodier.png", null, null, null);
 				
 		// Encodage
 		agent.setMotDePasse(encoder.encode(agent.getMotDePasse()));
@@ -515,7 +515,7 @@ public class Application implements CommandLineRunner{
 		Agent ag = agentRepository.getAgentById(5);
 		System.out.println("MODIF AGENT :\n\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
 		
-		ag.setNom("nomAgentModifié");
+		ag.setNom("Orianne Dodier");
 		System.out.println("\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
 		// Encodage
 		ag.setMotDePasse(encoder.encode(ag.getMotDePasse()));
@@ -553,8 +553,8 @@ public class Application implements CommandLineRunner{
 		adressePRepository.save(adresseP7);
 		
 		// définir les aministrateurs à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Administrateur administrateur = new Administrateur("nomAdmin", "email", "motDePasse", true, null);
-		Administrateur administrateur1 = new Administrateur("nomAdmin1", "email1", "motDePasse1", true, null);
+		Administrateur administrateur = new Administrateur("Mathieu Acalet", "MAcalet@gmail.com", "123456", true, null);
+		Administrateur administrateur1 = new Administrateur("nomAdmin", "NMazzelier@gmail.com", "123456", true, null);
 				
 		// Encodage
 		administrateur.setMotDePasse(encoder.encode(administrateur.getMotDePasse()));
@@ -589,7 +589,7 @@ public class Application implements CommandLineRunner{
 		Administrateur admin = administrateurRepository.getAdministrateurById(7);
 		System.out.println("MODIF ADMINISTRATEUR :\n\t > " + admin.getIdentifiant() + " : " + admin.getNom() + ", " + admin.getAdresseP());
 		
-		admin.setNom("nomAdmin_modifié");
+		admin.setNom("Nicolas Mazzelier");
 		System.out.println("\t > " + admin.getIdentifiant() + " : " + admin.getNom() + ", " + admin.getAdresseP());
 		// Encodage
 		admin.setMotDePasse(encoder.encode(admin.getMotDePasse()));
@@ -682,8 +682,8 @@ public class Application implements CommandLineRunner{
 		adressePRepository.save(adresseP11);
 		
 		// définir les locataires à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Locataire locataire = new Locataire("nomLocataire", "email", "motDePasse", true, null, null);
-		Locataire locataire1 = new Locataire("nomLocataire1", "email1", "motDePasse1", true, null, null);
+		Locataire locataire = new Locataire("Zaccharie Camilleri", "ZCamilleri@gmail.com", "123", true, null, null);
+		Locataire locataire1 = new Locataire("nomLocataire1", "CResten@gmail.com", "123", true, null, null);
 		
 		// Encodage
 		locataire.setMotDePasse(encoder.encode(locataire.getMotDePasse()));
@@ -718,7 +718,7 @@ public class Application implements CommandLineRunner{
 		Locataire locatair = locataireRepository.getLocataireById(11);
 		System.out.println("MODIF LOCATAIRE :\n\t > " + locatair.getIdentifiant() + " : " + locatair.getNom() + ", " + locatair.getAdresseP());
 		
-		locatair.setNom("nomAdmin_modifié");
+		locatair.setNom("Camille Resten");
 		System.out.println("\t > " + locatair.getIdentifiant() + " : " + locatair.getNom() + ", " + locatair.getAdresseP());
 		// Encodage
 		locatair.setMotDePasse(encoder.encode(locatair.getMotDePasse()));

@@ -73,9 +73,12 @@ public class AgentRest {
 	
 	@RequestMapping(value="/agentUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upAgent (@PathVariable("identifiant") int pIdAgent, @RequestBody Agent pAgent) {
-		// Encodage
+	// Encodage
+	String mdp = pAgent.getMotDePasse();
+	if (mdp.length()<15) {
 		pAgent.setMotDePasse(encoder.encode(pAgent.getMotDePasse()));
-		agentRepo.saveAndFlush(pAgent);
+	}
+	agentRepo.saveAndFlush(pAgent);
 		
 	}//end update
 	

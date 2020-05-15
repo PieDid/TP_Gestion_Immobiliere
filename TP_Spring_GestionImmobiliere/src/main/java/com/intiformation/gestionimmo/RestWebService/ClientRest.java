@@ -73,9 +73,12 @@ public class ClientRest {
 	
 	@RequestMapping(value="/clientUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upClient (@PathVariable("identifiant") int pIdClient, @RequestBody Client pClient) {
-		// Encodage
+	// Encodage
+	String mdp = pClient.getMotDePasse();
+	if (mdp.length()<15) {
 		pClient.setMotDePasse(encoder.encode(pClient.getMotDePasse()));
-		clientRepo.saveAndFlush(pClient);
+	}
+	clientRepo.saveAndFlush(pClient);
 		
 	}//end update
 	

@@ -73,7 +73,10 @@ public class LocataireRest {
 	@RequestMapping(value="/locataireUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upLocataire (@PathVariable("identifiant") int pIdLocataire, @RequestBody Locataire pLocataire) {
 		// Encodage
-		pLocataire.setMotDePasse(encoder.encode(pLocataire.getMotDePasse()));
+		String mdp = pLocataire.getMotDePasse();
+		if (mdp.length()<15) {
+			pLocataire.setMotDePasse(encoder.encode(pLocataire.getMotDePasse()));
+		}
 		locataireRepo.saveAndFlush(pLocataire);
 		
 	}//end update

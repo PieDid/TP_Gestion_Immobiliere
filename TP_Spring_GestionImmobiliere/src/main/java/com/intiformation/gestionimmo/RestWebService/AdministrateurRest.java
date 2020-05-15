@@ -72,9 +72,12 @@ public class AdministrateurRest {
 	
 	@RequestMapping(value="/administrateurUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upAdmin (@PathVariable("identifiant") int pIdAdmin, @RequestBody Administrateur pAdmin) {
-		// Encodage
+	// Encodage
+	String mdp = pAdmin.getMotDePasse();
+	if (mdp.length()<15) {
 		pAdmin.setMotDePasse(encoder.encode(pAdmin.getMotDePasse()));
-		adminRepo.saveAndFlush(pAdmin);
+	}
+	adminRepo.saveAndFlush(pAdmin);
 		
 	}//end update
 	

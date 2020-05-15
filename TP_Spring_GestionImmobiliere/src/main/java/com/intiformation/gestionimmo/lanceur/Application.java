@@ -353,7 +353,6 @@ public class Application implements CommandLineRunner{
 		clientUp.setNom("Geoffrey Turgeon");
 		clientUp.setPhoto("Andre_Fernandes.png");
 		
-		clientUp.setMotDePasse(encoder.encode(clientUp.getMotDePasse()));
 		clientRepository.save(clientUp);
 		
 		
@@ -443,8 +442,7 @@ public class Application implements CommandLineRunner{
 		
 		p1.setNom("Mathieu Acalet");
 		System.out.println("\t > " + p1.getIdentifiant() + " : " + p1.getNom() + ", [Adresse] : " + p1.getAdresseP());
-		// Encodage
-		p1.setMotDePasse(encoder.encode(p1.getMotDePasse()));
+		
 		proprietaireRepository.save(p1);
 		
 		
@@ -517,8 +515,7 @@ public class Application implements CommandLineRunner{
 		
 		ag.setNom("Orianne Dodier");
 		System.out.println("\t > " + ag.getIdentifiant() + " : " + ag.getNom() + ", " + ag.getAdresseP());
-		// Encodage
-		ag.setMotDePasse(encoder.encode(ag.getMotDePasse()));
+		
 		agentRepository.save(ag);
 		
 		
@@ -553,7 +550,7 @@ public class Application implements CommandLineRunner{
 		adressePRepository.save(adresseP7);
 		
 		// définir les aministrateurs à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Administrateur administrateur = new Administrateur("Mathieu Acalet", "MAcalet@gmail.com", "123456", true, null);
+		Administrateur administrateur = new Administrateur("Mathieu Baron", "MBaron@gmail.com", "123456", true, null);
 		Administrateur administrateur1 = new Administrateur("nomAdmin", "NMazzelier@gmail.com", "123456", true, null);
 				
 		// Encodage
@@ -591,8 +588,7 @@ public class Application implements CommandLineRunner{
 		
 		admin.setNom("Nicolas Mazzelier");
 		System.out.println("\t > " + admin.getIdentifiant() + " : " + admin.getNom() + ", " + admin.getAdresseP());
-		// Encodage
-		admin.setMotDePasse(encoder.encode(admin.getMotDePasse()));
+		
 		administrateurRepository.save(admin);
 		
 		

@@ -51,15 +51,15 @@ public class ProprietaireRest {
 	
 	@RequestMapping(value="/proprietaireAdd", method=RequestMethod.POST)
 	public void saveProprietaire(@RequestBody Proprietaire proprietaire) {
-		// Encodage
-		proprietaire.setMotDePasse(encoder.encode(proprietaire.getMotDePasse()));
-		//Ajout du rôle
-		Set<Role> roles = new HashSet<>();
-		Role propRole = roleRepository.findByName(ERole.ROLE_PROP)
-				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-		roles.add(propRole);
-		proprietaire.setRoles(roles);
-		proprioRepo.save(proprietaire);
+	// Encodage
+	proprietaire.setMotDePasse(encoder.encode(proprietaire.getMotDePasse()));
+	//Ajout du rôle
+	Set<Role> roles = new HashSet<>();
+	Role propRole = roleRepository.findByName(ERole.ROLE_PROP)
+			.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+	roles.add(propRole);
+	proprietaire.setRoles(roles);
+	proprioRepo.save(proprietaire);
 		
 	}//end save
 	
@@ -74,9 +74,12 @@ public class ProprietaireRest {
 	@RequestMapping(value="/proprietaireUpdate/{identifiant}", method=RequestMethod.PUT)
 	public void upProprietaire (@PathVariable("identifiant") int pIdProprietaire, @RequestBody Proprietaire pProprietaire) {
 		
-		// Encodage
+	// Encodage
+	String mdp = pProprietaire.getMotDePasse();
+	if (mdp.length()<15) {
 		pProprietaire.setMotDePasse(encoder.encode(pProprietaire.getMotDePasse()));
-		proprioRepo.saveAndFlush(pProprietaire);
+	}
+	proprioRepo.saveAndFlush(pProprietaire);
 		
 	}//end update
 	

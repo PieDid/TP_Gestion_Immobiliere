@@ -158,12 +158,12 @@ public class Application implements CommandLineRunner{
 		/*========================================================================*/
 		/*____________________________ ajout d'une adressePersonne & adresseBien ___________________________*/
 		// définir l'adressePersonne à ajouter
-		AdressePersonne adresseP = new AdressePersonne("rue_P", "codePostal_P", "ville_P");
-		AdressePersonne adresseP1 = new AdressePersonne("rue_P1", "codePostal_P1", "ville_P1");
+		AdressePersonne adresseP = new AdressePersonne("33, Rue des Roses", "75008", "PARIS");
+		AdressePersonne adresseP1 = new AdressePersonne("126, Faubourg Poissonnière", "75010", "PARIS");
 		
 		// définir l'adresseBien à ajouter
-		AdresseBien adresseB = new AdresseBien("rue_B", "codePostal_B", "ville_B");
-		AdresseBien adresseB1 = new AdresseBien("rue_B1", "codePostal_B1", "ville_B1");
+		AdresseBien adresseB = new AdresseBien("181 Boulevard des Coquelicot", "92000", "Asnières");
+		AdresseBien adresseB1 = new AdresseBien("7bis Rue du Bien", "75000", "Paris");
 		
 		adressePRepository.save(adresseP1);
 		adresseBRepository.save(adresseB1);
@@ -191,16 +191,16 @@ public class Application implements CommandLineRunner{
 		}
 		
 		/*____________________________ modif d'une adressePersonne & adresseBien ____________*/
-		adresseP1.setCodePostal("75009");
-		adresseB1.setCodePostal("75010");
+		adresseP.setCodePostal("75009");
+//		adresseB1.setCodePostal("75010");
 		adressePRepository.save(adresseP1);
-		adresseBRepository.save(adresseB1);
+//		adresseBRepository.save(adresseB1);
 		
 		/*____________________________ méthodes non crud sur adresse ____________*/
 		Adresse ad = adresseRepository.getAdresseById(1);
 		System.out.println("\t > " + ad.getIdAdresse() + " : " + ad.getRue() + ", " + ad.getCodePostal());
 		
-		ad = adresseRepository.getAdresseByRue("rue_B1");
+		ad = adresseRepository.getAdresseByRue("7bis Rue du Bien");
 		System.out.println("GET BY RUE\n\t > " + ad.getIdAdresse() + " : " + ad.getRue() + ", " + ad.getCodePostal());
 		
 		List<Adresse> liste_ad = adresseRepository.getListeAdresseByCodePostal("75009");
@@ -208,7 +208,7 @@ public class Application implements CommandLineRunner{
 			System.out.println("\t > " + a.getIdAdresse() + " : " + a.getRue() + ", " + a.getCodePostal());
 		}
 		
-		liste_ad = adresseRepository.getListeAdresseByVille("ville_P");
+		liste_ad = adresseRepository.getListeAdresseByVille("Paris");
 		for (Adresse a : liste_ad) {
 			System.out.println("\t > " + a.getIdAdresse() + " : " + a.getRue() + ", " + a.getCodePostal());
 		}
@@ -225,8 +225,8 @@ public class Application implements CommandLineRunner{
 		/*============== Tests sur les Méthode de TerrainRepository ===============*/
 		/*========================================================================*/
 		// définir les terrains à ajouter
-		Terrain terrain = new Terrain(true, "offre", 15000.00, "standard", null, "10/10/2020", "10/10/2020", null, null, 1230);
-		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "standard1", null, "15/11/2020", "15/11/2020", null, null, 2000);
+		Terrain terrain = new Terrain(true, "offre", 15000.00, "3", null, "10/10/2020", "10/10/2020", null, null, 1230);
+		Terrain terrain1 = new Terrain(true, "offre1", 25000.00, "5", null, "15/11/2020", "15/11/2020", null, null, 2000);
 		
 		terrainRepository.save(terrain);
 		terrainRepository.save(terrain1);
@@ -398,8 +398,8 @@ public class Application implements CommandLineRunner{
 		/*=========== Tests sur les Méthode de ProprietaireRepository ============*/
 		/*========================================================================*/
 		// définir les adressePersonne pour proprietaires à ajouter
-		AdressePersonne adresseP2 = new AdressePersonne("rue_P2", "codePostal_P2", "ville_P2");
-		AdressePersonne adresseP3 = new AdressePersonne("rue_P3", "codePostal_P3", "ville_P3");
+		AdressePersonne adresseP2 = new AdressePersonne("38, Quai des Belges", "75015", "PARIS");
+		AdressePersonne adresseP3 = new AdressePersonne("9, Place de la Madeleine", "75008", "PARIS");
 		adressePRepository.save(adresseP2);
 		adressePRepository.save(adresseP3);
 		
@@ -471,8 +471,8 @@ public class Application implements CommandLineRunner{
 		/*============== Tests sur les Méthode de AgentRepository ================*/
 		/*========================================================================*/
 		// définir les adressePersonne pour agents à ajouter
-		AdressePersonne adresseP4 = new AdressePersonne("rue_P4", "codePostal_P4", "ville_P4");
-		AdressePersonne adresseP5 = new AdressePersonne("rue_P5", "codePostal_P5", "ville_P5");
+		AdressePersonne adresseP4 = new AdressePersonne("53, Rue Reine Elisabeth", "33700", "MÉRIGNAC");
+		AdressePersonne adresseP5 = new AdressePersonne("70, Place de Miremont", "47300", "VILLENEUVE-SUR-LOT");
 		adressePRepository.save(adresseP4);
 		adressePRepository.save(adresseP5);
 		
@@ -544,14 +544,14 @@ public class Application implements CommandLineRunner{
 		/*========== Tests sur les Méthode de AdministrateurRepository ===========*/
 		/*========================================================================*/
 		// définir les adressePersonne pour aministrateurs à ajouter
-		AdressePersonne adresseP6 = new AdressePersonne("rue_P6", "codePostal_P6", "ville_P6");
-		AdressePersonne adresseP7 = new AdressePersonne("rue_P7", "codePostal_P7", "ville_P7");
+		AdressePersonne adresseP6 = new AdressePersonne("92, Rue Marie De Médicis", "11000", "CARCASSONNE");
+		AdressePersonne adresseP7 = new AdressePersonne("83, Rue de Verdun", "93370", "MONTFERMEIL");
 		adressePRepository.save(adresseP6);
 		adressePRepository.save(adresseP7);
 		
 		// définir les aministrateurs à ajouter   ## Pb avec l'adresse (Fetch) donc on test à null ##
-		Administrateur administrateur = new Administrateur("Mathieu Baron", "MBaron@gmail.com", "123456", true, null);
-		Administrateur administrateur1 = new Administrateur("nomAdmin", "NMazzelier@gmail.com", "123456", true, null);
+		Administrateur administrateur = new Administrateur("Zaccharie Camilleri", "ZCamilleri@gmail.com", "123456", true, "Zaccharie_Camilleri.png", null);
+		Administrateur administrateur1 = new Administrateur("nomAdmin", "NMazzelier@gmail.com", "123456", true, "Nicolas_Mazzelier.png", null);
 				
 		// Encodage
 		administrateur.setMotDePasse(encoder.encode(administrateur.getMotDePasse()));
@@ -617,8 +617,8 @@ public class Application implements CommandLineRunner{
 		/*========== Tests sur les Méthode de PersonneRepository ===========*/
 		/*========================================================================*/
 		// définir les adressePersonne pour personnes à ajouter
-		AdressePersonne adresseP8 = new AdressePersonne("rue_P8", "codePostal_P8", "ville_P8");
-		AdressePersonne adresseP9 = new AdressePersonne("rue_P9", "codePostal_P9", "ville_P9");
+		AdressePersonne adresseP8 = new AdressePersonne("95, Rue St Ferréol", "92220", "BAGNEUX");
+		AdressePersonne adresseP9 = new AdressePersonne("12, Rue Joseph Vernet", "47300", "VILLENEUVE-SUR-LOT");
 		adressePRepository.save(adresseP8);
 		adressePRepository.save(adresseP9);
 		
@@ -672,8 +672,8 @@ public class Application implements CommandLineRunner{
 		/*========== Tests sur les Méthode de LocataireRepository ===========*/
 		/*========================================================================*/
 		// définir les adressePersonne pour locataires à ajouter
-		AdressePersonne adresseP10 = new AdressePersonne("rue_P10", "codePostal_P10", "ville_P10");
-		AdressePersonne adresseP11 = new AdressePersonne("rue_P11", "codePostal_P11", "ville_P11");
+		AdressePersonne adresseP10 = new AdressePersonne("64, Rue de Penthièvre", "95300", "PONTOISE");
+		AdressePersonne adresseP11 = new AdressePersonne("8, Rue des six frères Ruellan", "44230", "SAINT-SÉBASTIEN-SUR-LOIRE");
 		adressePRepository.save(adresseP10);
 		adressePRepository.save(adresseP11);
 		
@@ -746,8 +746,8 @@ public class Application implements CommandLineRunner{
 		/*========== Tests sur les Méthode de BienRepository ===========*/
 		/*========================================================================*/
 		// définir les adressePersonne pour locataires à ajouter
-		AdresseBien adresseP12 = new AdresseBien("rue_P12", "codePostal_P12", "ville_P12");
-		AdresseBien adresseP13 = new AdresseBien("rue_P13", "codePostal_P13", "ville_P13");
+		AdresseBien adresseP12 = new AdresseBien("35, Rue Saint Germain", "92230", "GENNEVILLIERS");
+		AdresseBien adresseP13 = new AdresseBien("76, Rue Joseph Vernet", "84000", "AVIGNON");
 		adresseBRepository.save(adresseP12);
 		adresseBRepository.save(adresseP13);
 		

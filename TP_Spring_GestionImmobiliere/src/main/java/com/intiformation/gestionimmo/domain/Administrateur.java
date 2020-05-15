@@ -24,9 +24,9 @@ public class Administrateur extends Personne implements Serializable{
 	
 	
 	
-	public Administrateur(int identifiant, String nom, String email, String motDePasse, boolean statut, String photo,
+	public Administrateur(String nom, String email, String motDePasse, boolean statut, String photo,
 			AdressePersonne adresseP) {
-		super(identifiant, nom, email, motDePasse, statut, photo, adresseP);
+		super(nom, email, motDePasse, statut, photo, adresseP);
 
 	}
 

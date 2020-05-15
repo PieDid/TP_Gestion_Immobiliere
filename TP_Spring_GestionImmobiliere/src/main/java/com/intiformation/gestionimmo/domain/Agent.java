@@ -52,7 +52,7 @@ public class Agent extends Personne implements Serializable{
 	}
 
 	public Agent(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Contrat> liste_contrats, List<Visite> liste_visites) {
-		super(nom, email, motDePasse, statut, adresseP);
+		super(nom, email, motDePasse, statut, photo, adresseP);
 		this.liste_contrats = liste_contrats;
 		this.liste_visites = liste_visites;
 	}

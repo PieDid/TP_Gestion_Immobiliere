@@ -83,7 +83,7 @@ public class Proprietaire extends Personne implements Serializable{
 
 	public Proprietaire(String nom, String email, String motDePasse, boolean statut, String photo, AdressePersonne adresseP, List<Visite> liste_visites, String tel_prive, String tel_travail, List<Bien> liste_biens,
 			List<ContratVente> liste_contratsVente, List<ContratLocation> liste_contratsLocation) {
-		super(nom, email, motDePasse, statut, adresseP);
+		super(nom, email, motDePasse, statut, photo, adresseP);
 		this.tel_prive = tel_prive;
 		this.tel_travail = tel_travail;
 		this.liste_biens = liste_biens;
